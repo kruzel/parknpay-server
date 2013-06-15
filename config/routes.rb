@@ -1,10 +1,20 @@
 ParknpayServer::Application.routes.draw do
-  #resources :cars
+
   devise_for :users
 
   resources :users do
     resources :cars
   end
+
+  resources :cities do
+    resources :areas do
+      resources :streets
+      resources :creditors
+      resources :rates
+    end
+  end
+
+  resources :payments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

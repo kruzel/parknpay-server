@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>X pos:</b>
+  <%= @payment.x_pos %>
+</p>
+
+<p>
+  <b>Y pos:</b>
+  <%= @payment.y_pos %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @payment.street %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @payment.area %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @payment.city %>
+</p>
+
+<p>
+  <b>Creditor:</b>
+  <%= @payment.creditor %>
+</p>
+
+<p>
+  <b>Rate:</b>
+  <%= @payment.rate %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @payment.user %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @payment.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @payment.end_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

@@ -1,0 +1,49 @@
+<%= form_for([@creditor.area.city, @creditor.area, @creditor]) do |f| %>
+  <% if @creditor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@creditor.errors.count, "error") %> prohibited this creditor from being saved:</h2>
+
+      <ul>
+      <% @creditor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_name %><br />
+    <%= f.text_field :bank_name %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_code %><br />
+    <%= f.text_field :bank_code %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_office %><br />
+    <%= f.text_field :bank_office %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_account %><br />
+    <%= f.text_field :bank_account %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_name %><br />
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_email %><br />
+    <%= f.text_field :contact_email %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_phone %><br />
+    <%= f.text_field :contact_phone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

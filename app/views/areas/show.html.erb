@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @area.name %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @area.city.name %>
+</p>
+
+<p>
+  <b>Creditor:</b>
+  <%= @area.creditor.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_city_area_path(@area.city,@area) %> |
+<%= link_to 'Back', city_areas_path %>

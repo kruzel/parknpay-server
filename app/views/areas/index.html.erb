@@ -1,0 +1,27 @@
+<h1>Listing areas</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Creditor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @areas.each do |area| %>
+  <tr>
+    <td><%= area.name %></td>
+    <td><%= area.city.name %></td>
+    <td><%= area.creditor.name %></td>
+    <td><%= link_to 'Show', [area.city,area] %></td>
+    <td><%= link_to 'Edit', edit_city_area_path(area.city,area) %></td>
+    <td><%= link_to 'Destroy', [area.city,area], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Area', new_city_area_path %>

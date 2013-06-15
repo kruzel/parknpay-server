@@ -11,21 +11,98 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615113309) do
+ActiveRecord::Schema.define(:version => 20130615144524) do
+
+  create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.integer  "city_id",     :null => false
+    t.integer  "creditor_id", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "areas", ["city_id"], :name => "index_areas_on_city_id"
+  add_index "areas", ["creditor_id"], :name => "index_areas_on_creditor_id"
 
   create_table "cars", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "license_plate"
-    t.string   "car_description"
+    t.integer  "user_id",                                   :null => false
+    t.string   "license_plate",                             :null => false
+    t.string   "car_description",                           :null => false
     t.string   "car_image_file_name"
     t.string   "car_image_content_type"
     t.integer  "car_image_file_size"
     t.datetime "car_image_updated_at"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.boolean  "archive",                :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "cars", ["user_id"], :name => "index_cars_on_user_id"
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "creditors", :force => true do |t|
+    t.string   "name"
+    t.string   "bank_name"
+    t.string   "bank_code"
+    t.string   "bank_office"
+    t.string   "bank_account"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.boolean  "archive",       :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "payments", :force => true do |t|
+    t.float    "x_pos"
+    t.float    "y_pos"
+    t.integer  "street_id",                      :null => false
+    t.integer  "area_id",                        :null => false
+    t.integer  "city_id",                        :null => false
+    t.integer  "creditor_id",                    :null => false
+    t.integer  "rate_id",                        :null => false
+    t.integer  "user_id",                        :null => false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean  "archive",     :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "payments", ["area_id"], :name => "index_payments_on_area_id"
+  add_index "payments", ["city_id"], :name => "index_payments_on_city_id"
+  add_index "payments", ["creditor_id"], :name => "index_payments_on_creditor_id"
+  add_index "payments", ["rate_id"], :name => "index_payments_on_rate_id"
+  add_index "payments", ["street_id"], :name => "index_payments_on_street_id"
+  add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
+
+  create_table "rates", :force => true do |t|
+    t.float    "rate"
+    t.string   "currency"
+    t.integer  "area_id",                       :null => false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean  "archive",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "rates", ["area_id"], :name => "index_rates_on_area_id"
+
+  create_table "streets", :force => true do |t|
+    t.string   "name"
+    t.integer  "area_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "streets", ["area_id"], :name => "index_streets_on_area_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

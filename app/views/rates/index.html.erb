@@ -1,0 +1,31 @@
+<h1>Listing rates</h1>
+
+<table>
+  <tr>
+    <th>Rate</th>
+    <th>Currency</th>
+    <th>Area</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rates.each do |rate| %>
+  <tr>
+    <td><%= rate.rate %></td>
+    <td><%= rate.currency %></td>
+    <td><%= rate.area.name %></td>
+    <td><%= rate.start_time %></td>
+    <td><%= rate.end_time %></td>
+    <td><%= link_to 'Show', [rate.area.city, rate.area, rate] %></td>
+    <td><%= link_to 'Edit', edit_city_area_rate_path(rate.area.city, rate.area, rate) %></td>
+    <td><%= link_to 'Destroy', [rate.area.city, rate.area, rate], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rate', new_city_area_rate_path %>

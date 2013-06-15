@@ -73,6 +73,7 @@ class CarsController < ApplicationController
 
   # DELETE /cars/1
   # DELETE /cars/1.json
+=begin
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
@@ -82,4 +83,5 @@ class CarsController < ApplicationController
       format.json { head :no_content }
     end
   end
+=end
 end
