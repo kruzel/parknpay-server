@@ -4,6 +4,7 @@ class CreateCars < ActiveRecord::Migration
       t.references :user
       t.string :license_plate
       t.string :car_description
+      t.attachment :car_image
 
       t.timestamps
     end

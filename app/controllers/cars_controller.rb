@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.all
+    @cars = Car.where("user_id = ?", current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +25,7 @@ class CarsController < ApplicationController
   # GET /cars/new.json
   def new
     @car = Car.new
+    @car.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,10 +42,11 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = Car.new(params[:car])
+    @car.user = current_user
 
     respond_to do |format|
       if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
+        format.html { redirect_to [@car.user,@car], notice: 'Car was successfully created.' }
         format.json { render json: @car, status: :created, location: @car }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       if @car.update_attributes(params[:car])
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
+        format.html { redirect_to [@car.user,@car], notice: 'Car was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +78,7 @@ class CarsController < ApplicationController
     @car.destroy
 
     respond_to do |format|
-      format.html { redirect_to cars_url }
+      format.html { redirect_to user_cars_url }
       format.json { head :no_content }
     end
   end

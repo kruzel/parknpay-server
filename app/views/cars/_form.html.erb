@@ -1,4 +1,4 @@
-<%= form_for(@car) do |f| %>
+<%= form_for([@car.user, @car]) do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%=  @car.user.email %>
   </div>
   <div class="field">
     <%= f.label :license_plate %><br />
@@ -22,6 +22,10 @@
   <div class="field">
     <%= f.label :car_description %><br />
     <%= f.text_field :car_description %>
+  </div>
+  <div class="field">
+    <%= f.label :car_image %><br />
+    <%= f.file_field  :car_image %>
   </div>
   <div class="actions">
     <%= f.submit %>

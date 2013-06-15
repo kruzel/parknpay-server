@@ -2,10 +2,8 @@ ParknpayServer::Application.routes.draw do
   #resources :cars
   devise_for :users
 
-  namespace :api do
-    resources :users do
-      resource :cars
-    end
+  resources :users do
+    resources :cars
   end
 
   # The priority is based upon order of creation:

@@ -2,7 +2,7 @@
 
 <p>
   <b>User:</b>
-  <%= @car.user %>
+  <%= @car.user.email %>
 </p>
 
 <p>
@@ -16,5 +16,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
+<%= link_to 'Edit', edit_user_car_path(@car.user,@car) %> |
+<%= link_to 'Back', user_cars_path %>
