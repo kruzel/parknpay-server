@@ -38,3 +38,9 @@ gem "paperclip", "~> 3.0"
 
 # To use debugger
 gem 'debugger'
+
+gem 'apipie-rails'
+
+group :development do
+  gem 'sextant'
+end

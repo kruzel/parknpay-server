@@ -67,6 +67,9 @@ ParknpayServer::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'home#index'
 
+  mount_sextant if Rails.env.development?
+  match '*not_found' => 'errors#handle404'
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
