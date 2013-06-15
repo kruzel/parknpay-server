@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615104042) do
+ActiveRecord::Schema.define(:version => 20130615114813) do
+
+  create_table "cars", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "license_plate"
+    t.string   "car_description"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.string   "car_image_file_name"
+    t.string   "car_image_content_type"
+    t.integer  "car_image_file_size"
+    t.datetime "car_image_updated_at"
+  end
+
+  add_index "cars", ["user_id"], :name => "index_cars_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
