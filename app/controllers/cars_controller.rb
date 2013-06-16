@@ -1,4 +1,7 @@
 class CarsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /cars
   # GET /cars.json
   def index
