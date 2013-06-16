@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ParknpayServer</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>ParknpayServer</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap.min.css", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap-responsive.min.css", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      <% end %>
 
-<% if user_signed_in? %>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-<% end %>
-
-<%= yield %>
-
-</body>
+      <%= yield %>
+  </body>
 </html>
