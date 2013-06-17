@@ -3,7 +3,7 @@ ParknpayServer::Application.routes.draw do
   devise_for :users, controllers: { sessions: "sessions" }
 
   scope "/api" do
-    scope "/v1"  do
+    scope "/v1"  do     
       resources :users do
         resources :cars
       end
@@ -26,7 +26,9 @@ ParknpayServer::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-
+  
+  match "/dashboard" => "u_dashboard#index"
+  
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
@@ -73,7 +75,7 @@ ParknpayServer::Application.routes.draw do
 
   mount_sextant if Rails.env.development?
   match '*not_found' => 'errors#handle404'
-
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
