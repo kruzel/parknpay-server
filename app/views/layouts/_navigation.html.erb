@@ -41,7 +41,7 @@
             </li>
             <li>
               <% if user_signed_in? %>
-                  <%= link_to "Dashboard", :controller => :u_dashboard, :action => :index %>
+                  <%= link_to('Dashboard', edit_user_registration_path) %>
               <% else %>
                 <%= link_to('Register', new_user_registration_path)  %>
               <% end %>

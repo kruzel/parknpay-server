@@ -1,18 +1,75 @@
+<%= render "/layouts/navigation" %>
+
+
+<div class="container">
+
+
+
+  <ul class="nav nav-tabs" id="myTab">
+    <li class="active"><a href="#Personal">Personal</a></li>
+    <li><a href="#Cars">Cars</a></li>
+    <li><a href="#Payment">Payment</a></li>
+    <li><a href="#History">History</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="Personal">
+      <h2>Personal information</h2>
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  <div class="control-group"><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
+  <div class="control-group"><%= f.label :password %><br />
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div class="control-group"><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
+
+    <div class="control-group">
+      <%= f.label :"First name" ,:class=>"control-label" %>
+      <div class="controls">
+        <%= f.text_field :firstname , :placeholder=>"First name"%>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :"Last name" ,:class=>"control-label" %>
+      <div class="controls">
+        <%= f.text_field :lastname , :placeholder=>"Last name" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :"Street address" ,:class=>"control-label" %>
+      <div class="controls">
+        <%= f.text_field :address_st , :placeholder=>"Street address" %>
+      </div>
+    </div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render "/users/shared/links" %>
+<%= link_to "Back", :back %>
+
+
+    </div>
+    <div class="tab-pane" id="Cars">List of cars</div>
+    <div class="tab-pane" id="Payment">Credit card information</div>
+    <div class="tab-pane" id="History">payment history</div>
+  </div>
+  <script src="/bootstrap-assets/js/bootstrap-tab.js"></script>
+
+  <script>
+      $('#myTab a').click(function(e) {
+          e.preventDefault();
+          $(this).tab('show');
+      })
+  </script>
+
+</div>
