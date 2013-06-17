@@ -28,7 +28,7 @@ ParknpayServer::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
   
   match "/udashboard" => "u_dashboard#index"
-  match "/udashboard/update" => "u_dashboard#update_personal_details"
+  match "/udashboard/update_personal_details" => "u_dashboard#update_personal_details"
   
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
