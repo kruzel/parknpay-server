@@ -39,6 +39,13 @@
                 <%= link_to 'Login', new_user_session_path %>
               <% end %>
             </li>
+            <li>
+              <% if user_signed_in? %>
+                  <%= link_to "Dashboard", :controller => :u_dashboard, :action => :index %>
+              <% else %>
+                <%= link_to('Register', new_user_registration_path)  %>
+              <% end %>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!-- /.navbar-inner -->

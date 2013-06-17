@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615144524) do
+ActiveRecord::Schema.define(:version => 20130617145616) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20130615144524) do
   add_index "streets", ["area_id"], :name => "index_streets_on_area_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",     :null => false
+    t.string   "encrypted_password",     :default => "",     :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -116,8 +116,18 @@ ActiveRecord::Schema.define(:version => 20130615144524) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.boolean  "active",                 :default => true
+    t.string   "role",                   :default => "user"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "gender"
+    t.date     "dob"
+    t.string   "address_st"
+    t.string   "address_state"
+    t.string   "address_postcode"
+    t.string   "address_country"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
