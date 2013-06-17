@@ -16,4 +16,6 @@
 
 /.idea
 /public/system
-/nbproject/private/
+nbproject
+
+
