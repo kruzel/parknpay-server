@@ -1,0 +1,290 @@
+<div class="container" style="padding-top: 80px;">
+  <ul class="nav nav-tabs" id="myTab">
+    <li class="active"><a href="#Personal">Personal</a></li>
+    <li><a href="#Cars">Cars</a></li>
+    <li><a href="#Payment">Payment</a></li>
+    <li><a href="#History">History</a></li>
+    <li><a href="#messages"><i class="icon-envelope"></i>Messages</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="Personal">
+      <h2>Personal information</h2>
+
+
+
+      <%= form_for(@user,:url => { :action => "update" } ,:html => {:class => "form-horizontal"}) do |f| %>
+
+        <div class="control-group">
+          <%= f.label :"First name" ,:class=>"control-label" %>
+          <div class="controls">
+            <%= f.text_field :firstname , :placeholder=>"First name"%>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :"Last name" ,:class=>"control-label" %>
+          <div class="controls">
+            <%= f.text_field :lastname , :placeholder=>"Last name" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :"Street address" ,:class=>"control-label" %>
+          <div class="controls">
+            <%= f.text_field :address_st , :placeholder=>"Street address" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :email ,:class=>"control-label" %>
+          <div class="controls">
+            <%= f.email_field :email, :placeholder=>"Email", :autofocus => true %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :password ,:class=>"control-label" %>
+          <div class="controls">
+            <%= f.password_field :password , :placeholder=>"Password"%>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :password_confirmation ,:class=>"control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation , :placeholder=>"Password Confirmation"%>
+          </div>
+        </div>
+
+
+
+
+        <div><%= f.submit "Update" %></div>
+      <% end %>
+
+
+
+    </div>
+    <div class="tab-pane" id="Cars">
+      <h2>List of cars</h2>
+      <ul class="thumbnails">
+        <li class="span5 clearfix">
+          <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+            <div class="caption" class="pull-left">
+              <a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Select</a>
+              <h4>      
+                <a href="#" >Luis Felipe Kaufmann</a>
+              </h4>
+              <small><b>RG: </b>99384877</small>
+
+
+            </div>
+          </div>
+        </li>
+        <li class="span5 clearfix">
+          <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+            <div class="caption" class="pull-left">
+              <a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Select</a>
+              <h4>      
+                <a href="#" >Luis Felipe Kaufmann</a>
+              </h4>
+              <small><b>RG: </b>99384877</small>
+
+
+            </div>
+          </div>
+        </li>
+        <li class="span5 clearfix">
+          <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+            <div class="caption" class="pull-left">
+              <a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Select</a>
+              <h4>      
+                <a href="#" >Luis Felipe Kaufmann</a>
+              </h4>
+              <small><b>RG: </b>99384877</small>
+
+
+            </div>
+          </div>
+        </li>
+        <li class="span5 clearfix">
+          <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+            <div class="caption" class="pull-left">
+              <a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Select</a>
+              <h4>      
+                <a href="#" >Luis Felipe Kaufmann</a>
+              </h4>
+              <small><b>RG: </b>99384877</small>
+
+
+            </div>
+          </div>
+        </li>
+        <li class="span5 clearfix">
+          <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+            <div class="caption" class="pull-left">
+              <a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Select</a>
+              <h4>      
+                <a href="#" >Luis Felipe Kaufmann</a>
+              </h4>
+              <small><b>RG: </b>99384877</small>
+
+
+            </div>
+          </div>
+        </li>
+        <li class="span5 clearfix">
+          <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+            <div class="caption" class="pull-left">
+              <a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Select</a>
+              <h4>      
+                <a href="#" >Luis Felipe Kaufmann</a>
+              </h4>
+              <small><b>RG: </b>99384877</small>
+
+
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+    <div class="tab-pane" id="Payment">
+      <form class="form-horizontal span6">
+        <fieldset>
+          <legend>Payment</legend>
+
+          <div class="control-group">
+            <label class="control-label">Card Holder's Name</label>
+            <div class="controls">
+              <input type="text" class="input-block-level" pattern="\w+ \w+.*" title="Fill your first and last name" required>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Card Number</label>
+            <div class="controls">
+              <div class="row-fluid">
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
+                </div>
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
+                </div>
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
+                </div>
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Card Expiry Date</label>
+            <div class="controls">
+              <div class="row-fluid">
+                <div class="span9">
+                  <select class="input-block-level">
+                    <option>January</option>
+                    <option>...</option>
+                    <option>December</option>
+                  </select>
+                </div>
+                <div class="span3">
+                  <select class="input-block-level">
+                    <option>2013</option>
+                    <option>...</option>
+                    <option>2015</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Card CVV</label>
+            <div class="controls">
+              <div class="row-fluid">
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required>
+                </div>
+                <div class="span8">
+                  <!-- screenshot may be here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn">Cancel</button>
+          </div>
+        </fieldset>
+      </form>
+
+    </div>
+    <div class="tab-pane" id="History">payment history</div>
+    <div class="tab-pane" id="messages">
+      <table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th class="span1"><input type="checkbox"></th>
+      <th class="span2"></th>
+      <th class="span2"></th>
+      <th class="span9"></th>
+      <th class="span2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="checkbox"> <a href="#"><i class="icon-star-empty"></i></a></td>
+      <td><strong>John Doe</strong></td>
+      <td><span class="label pull-right">Notifications</span></td>
+      <td><strong>Message body goes here</strong></td>
+      <td><strong>11:23 PM</strong></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox"> <a href="#"><i class="icon-star-empty"></i></a></td>
+      <td>John Doe</td>
+      <td><span class="label pull-right">Notifications</span></td>
+      <td>Message body goes here</td>
+      <td>Sept4</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox"> <a href="#"><i class="icon-star"></i></a></td>
+      <td><strong>John Doe</strong></td>
+      <td><span class="label pull-right">Notifications</span></td>
+      <td><strong>Message body goes here</strong></td>
+      <td><strong>Sept3</strong></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox"> <a href="#"><i class="icon-star"></i></a></td>
+      <td><strong>John Doe</strong></td>
+      <td><span class="label pull-right">Notifications</span></td>
+      <td><strong>Message body goes here</strong></td>
+      <td><strong>Sept3</strong></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+  <script src="/bootstrap-assets/js/bootstrap-tab.js"></script>
+
+  <script>
+    $('#myTab a').click(function(e) {
+      e.preventDefault();
+      $(this).tab('show');
+    })
+  </script>
+
+</div>

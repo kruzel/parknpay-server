@@ -1,0 +1,27 @@
+<div class="container" style="padding-top: 80px;">
+  <%= form_for @message, :html => {:class => "well "}, :url => contact_path do |form| %>
+    <div class="row">
+      <div class="span4">
+        <%= form.label :name, "Full name"%>
+        <%= form.text_field :name , :class => "span3",:placeholder=>"Your Full Name"%>
+
+        <%= form.label :email, "Email Address" %>
+        <%= form.text_field :email, :class=>"span3", :placeholder=>"Your email address" %>
+
+        <%= form.label :subject, "Subject" %>
+        <%= form.text_field :subject , :class=>"span3", :placeholder=>"Subject"%>
+
+      </div>
+      <div class="span4">
+        <%= form.label :body, "Message" %>
+        <%= form.text_area :body , :class=>"input-xlarge span5", :rows=>"10"%>
+      </div>
+
+    </div>
+    <div class="row">
+      <%= form.submit "Send" , :class=>"btn btn-primary pull-right"%>
+    </div>
+  <% end %>
+</div>
+
+

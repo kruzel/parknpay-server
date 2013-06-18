@@ -1,42 +1,25 @@
-<%= render "/layouts/navigation" %>
-
-
 <div class="container">
 
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <ul class="nav nav-tabs" id="myTab">
-    <li class="active"><a href="#Personal">Personal</a></li>
-    <li><a href="#Cars">Cars</a></li>
-    <li><a href="#Payment">Payment</a></li>
-    <li><a href="#History">History</a></li>
-  </ul>
+    <div class="control-group"><%= f.label :email %><br />
+      <%= f.email_field :email, :autofocus => true %></div>
 
-  <div class="tab-content">
-    <div class="tab-pane active" id="Personal">
-      <h2>Personal information</h2>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
+    <div class="control-group"><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, :autocomplete => "off" %></div>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <div class="control-group"><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="control-group"><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="control-group"><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div class="control-group"><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div class="control-group"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+    <div class="control-group"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password %></div>
 
     <div class="control-group">
       <%= f.label :"First name" ,:class=>"control-label" %>
@@ -59,30 +42,15 @@
       </div>
     </div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+    <div><%= f.submit "Update" %></div>
+  <% end %>
 
-<h3>Cancel my account</h3>
+  <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
-<%= render "/users/shared/links" %>
-<%= link_to "Back", :back %>
+  <%= render "/users/shared/links" %>
+  <%= link_to "Back", :back %>
 
-
-    </div>
-    <div class="tab-pane" id="Cars">List of cars</div>
-    <div class="tab-pane" id="Payment">Credit card information</div>
-    <div class="tab-pane" id="History">payment history</div>
-  </div>
-  <script src="/bootstrap-assets/js/bootstrap-tab.js"></script>
-
-  <script>
-      $('#myTab a').click(function(e) {
-          e.preventDefault();
-          $(this).tab('show');
-      })
-  </script>
 
 </div>
-

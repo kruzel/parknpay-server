@@ -1,53 +1,118 @@
-<%= render "/layouts/navigation" %>
+<div class="container" style="padding-top: 80px;">
 
+  <h2>Sign in</h2>
+
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div><%= f.label :email %><br />
+      <%= f.email_field :email, :autofocus => true %></div>
+
+    <div><%= f.label :password %><br />
+      <%= f.password_field :password %></div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <% end -%>
+
+    <div><%= f.submit "Sign in" %></div>
+  <% end %>
+
+  <%= render "/users/shared/links" %>
+  <%= link_to "Back", :back %>
+
+</div>
 
 <div class="container">
-
-
-
-  <ul class="nav nav-tabs" id="myTab">
-    <li class="active"><a href="#Personal">Personal</a></li>
-    <li><a href="#Cars">Cars</a></li>
-    <li><a href="#Payment">Payment</a></li>
-    <li><a href="#History">History</a></li>
-  </ul>
-
-  <div class="tab-content">
-    <div class="tab-pane active" id="Personal">
-      <h2>Personal information</h2>
-
-<h2>Sign in</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "/users/shared/links" %>
-<%= link_to "Back", :back %>
-
-
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="span6">
+        <div class="area">
+          <form class="form-horizontal">
+            <div class="heading">
+              <h4 class="form-heading">Sign In</h4>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputUsername">Username</label>
+              <div class="controls">
+                <input type="text" id="inputUsername" placeholder="E.g. ashwinhegde">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputPassword">Password</label>
+              <div class="controls">
+                <input type="password" id="inputPassword" placeholder="Min. 8 Characters">
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <label class="checkbox">
+                  <input type="checkbox"> Keep me signed in   ¦
+                  <a href="#" class="btn btn-link">Forgot my password</a>
+                </label>
+                <button type="submit" class="btn btn-success">Sign In</button>
+                <button type="button" class="btn">Help</button>
+              </div>
+            </div>	
+            <div class="alert alert-error">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>Access Denied!</strong> Please provide valid authorization.
+            </div>
+          </form>	
+        </div>                           
+      </div>
+      <div class="span6">
+        <div class="area">
+          <form class="form-horizontal">
+            <div class="heading">
+              <h4 class="form-heading">Sign Up</h4>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputFirst">First Name</label>
+              <div class="controls">
+                <input type="text" id="inputFirst" placeholder="E.g. Ashwin">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputLast">Last Name</label>
+              <div class="controls">
+                <input type="text" id="inputLast" placeholder="E.g. Hegde">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputEmail">Email</label>
+              <div class="controls">
+                <input type="text" id="inputEmail" placeholder="E.g. ashwinh@cybage.com">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputUser">Username</label>
+              <div class="controls">
+                <input type="text" id="inputUser" placeholder="E.g. ashwinhegde">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputPassword">Password</label>
+              <div class="controls">
+                <input type="password" id="inputPassword" placeholder="Min. 8 Characters">
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <label class="checkbox">
+                  <input type="checkbox"> I agree all your <a href="#">Terms of Services</a>
+                </label>
+                <button type="submit" class="btn btn-success">Sign Up</button>
+                <button type="button" class="btn">Help</button>
+              </div>
+            </div>	
+            <div class="alert alert-info">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>Confirmation: </strong> A confirmation email has been sent to your email.<br>
+              Thank you for your registration.
+            </div>
+          </form>	
+        </div>                            
+      </div>
     </div>
-    <div class="tab-pane" id="Cars">List of cars</div>
-    <div class="tab-pane" id="Payment">Credit card information</div>
-    <div class="tab-pane" id="History">payment history</div>
+
   </div>
-  <script src="/bootstrap-assets/js/bootstrap-tab.js"></script>
-
-  <script>
-      $('#myTab a').click(function(e) {
-          e.preventDefault();
-          $(this).tab('show');
-      })
-  </script>
-
 </div>
