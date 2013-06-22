@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,:active,:role,
     :firstname, :lastname, :gender, :dob,:address_st,:address_state,:address_postcode,:address_country
   # attr_accessible :title, :body
-
+    
   has_many :cars, :dependent => :destroy
   has_many :payments, :dependent => :destroy
+
+  attr_accessible :avatar
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+
 end

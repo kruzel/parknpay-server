@@ -1,118 +1,97 @@
 <div class="container" style="padding-top: 80px;">
-
-  <h2>Sign in</h2>
-
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <div><%= f.label :email %><br />
-      <%= f.email_field :email, :autofocus => true %></div>
-
-    <div><%= f.label :password %><br />
-      <%= f.password_field :password %></div>
-
-    <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-    <% end -%>
-
-    <div><%= f.submit "Sign in" %></div>
-  <% end %>
-
-  <%= render "/users/shared/links" %>
-  <%= link_to "Back", :back %>
-
-</div>
-
-<div class="container">
-  <div class="row-fluid">
-    <div class="span12">
-      <div class="span6">
-        <div class="area">
-          <form class="form-horizontal">
-            <div class="heading">
-              <h4 class="form-heading">Sign In</h4>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputUsername">Username</label>
-              <div class="controls">
-                <input type="text" id="inputUsername" placeholder="E.g. ashwinhegde">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="span6">
+          <div class="area well">
+            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal "}) do |f| %>
+              <div class="heading">
+                <h4 class="form-heading">Sign In</h4>
               </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputPassword">Password</label>
-              <div class="controls">
-                <input type="password" id="inputPassword" placeholder="Min. 8 Characters">
+              <div class="control-group">
+                <%= f.label :email ,:class=>"control-label" %>
+                <div class="controls">
+                  <%= f.email_field :email, :autofocus => true, :placeholder=>"Email address"%>
+                </div>
               </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <label class="checkbox">
-                  <input type="checkbox"> Keep me signed in   ¦
-                  <a href="#" class="btn btn-link">Forgot my password</a>
-                </label>
-                <button type="submit" class="btn btn-success">Sign In</button>
-                <button type="button" class="btn">Help</button>
+              <div class="control-group">
+                <%= f.label :password ,:class=>"control-label" %>
+                <div class="controls">
+                  <%= f.password_field :password, :placeholder=>"Password" %>
+                </div>
               </div>
-            </div>	
-            <div class="alert alert-error">
-              <button type="button" class="close" data-dismiss="alert">×</button>
-              <strong>Access Denied!</strong> Please provide valid authorization.
-            </div>
-          </form>	
-        </div>                           
+              <div class="control-group">
+                <div class="controls">
+                  <label class="checkbox">
+                    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+                    <a href="#" class="btn btn-link">Forgot my password</a>
+                  </label>
+                  <%= f.submit "Sign in",:class=>"btn btn-success" %>
+                  <%= f.button "help",:class=>"btn" %>
+                </div>
+              </div>	
+              <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Access Denied!</strong> Please provide valid authorization.
+              </div>
+            <% end %>
+          </div>                           
+        </div>
+        <div class="span6">
+          <div class="area well">
+            <form class="form-horizontal">
+              <div class="heading">
+                <h4 class="form-heading">Sign Up</h4>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputFirst">First Name</label>
+                <div class="controls">
+                  <input type="text" id="inputFirst" placeholder="E.g. Ashwin">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputLast">Last Name</label>
+                <div class="controls">
+                  <input type="text" id="inputLast" placeholder="E.g. Hegde">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                  <input type="text" id="inputEmail" placeholder="E.g. ashwinh@cybage.com">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputUser">Username</label>
+                <div class="controls">
+                  <input type="text" id="inputUser" placeholder="E.g. ashwinhegde">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputPassword">Password</label>
+                <div class="controls">
+                  <input type="password" id="inputPassword" placeholder="Min. 8 Characters">
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <label class="checkbox">
+                    <input type="checkbox"> I agree all your <a href="#">Terms of Services</a>
+                  </label>
+                  <button type="submit" class="btn btn-success">Sign Up</button>
+                  <button type="button" class="btn">Help</button>
+                </div>
+              </div>	
+              <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Confirmation: </strong> A confirmation email has been sent to your email.<br>
+                Thank you for your registration.
+              </div>
+            </form>	
+          </div>                            
+        </div>
       </div>
-      <div class="span6">
-        <div class="area">
-          <form class="form-horizontal">
-            <div class="heading">
-              <h4 class="form-heading">Sign Up</h4>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputFirst">First Name</label>
-              <div class="controls">
-                <input type="text" id="inputFirst" placeholder="E.g. Ashwin">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputLast">Last Name</label>
-              <div class="controls">
-                <input type="text" id="inputLast" placeholder="E.g. Hegde">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputEmail">Email</label>
-              <div class="controls">
-                <input type="text" id="inputEmail" placeholder="E.g. ashwinh@cybage.com">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputUser">Username</label>
-              <div class="controls">
-                <input type="text" id="inputUser" placeholder="E.g. ashwinhegde">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputPassword">Password</label>
-              <div class="controls">
-                <input type="password" id="inputPassword" placeholder="Min. 8 Characters">
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <label class="checkbox">
-                  <input type="checkbox"> I agree all your <a href="#">Terms of Services</a>
-                </label>
-                <button type="submit" class="btn btn-success">Sign Up</button>
-                <button type="button" class="btn">Help</button>
-              </div>
-            </div>	
-            <div class="alert alert-info">
-              <button type="button" class="close" data-dismiss="alert">×</button>
-              <strong>Confirmation: </strong> A confirmation email has been sent to your email.<br>
-              Thank you for your registration.
-            </div>
-          </form>	
-        </div>                            
-      </div>
+
     </div>
-
   </div>
 </div>

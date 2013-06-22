@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617145616) do
+ActiveRecord::Schema.define(:version => 20130622035050) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20130617145616) do
 
   add_index "areas", ["city_id"], :name => "index_areas_on_city_id"
   add_index "areas", ["creditor_id"], :name => "index_areas_on_creditor_id"
+
+  create_table "assets", :force => true do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cars", :force => true do |t|
     t.integer  "user_id",                                   :null => false
@@ -82,6 +92,13 @@ ActiveRecord::Schema.define(:version => 20130617145616) do
   add_index "payments", ["street_id"], :name => "index_payments_on_street_id"
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "rates", :force => true do |t|
     t.float    "rate"
     t.string   "currency"
@@ -128,6 +145,10 @@ ActiveRecord::Schema.define(:version => 20130617145616) do
     t.string   "address_state"
     t.string   "address_postcode"
     t.string   "address_country"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
