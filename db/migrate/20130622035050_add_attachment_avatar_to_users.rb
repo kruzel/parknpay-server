@@ -3,7 +3,7 @@ class AddAttachmentAvatarToUsers < ActiveRecord::Migration
     change_table :users do |t|
       t.attachment :avatar
     end
-    User.update_all ["avatar_file_name = ?", "/public/img/User-icon.png"]
+    #User.update_all ["avatar_file_name = ?", "/public/img/User-icon.png"]
   end
 
   def self.down
