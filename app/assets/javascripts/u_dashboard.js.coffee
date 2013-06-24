@@ -3,3 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 
+$ ->
+  $('#basic').fileupload
+    done: (e, data)->
+      console.log "Done", data.result
+      $(data.result).appendTo(this)

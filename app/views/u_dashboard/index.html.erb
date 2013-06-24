@@ -1,6 +1,7 @@
 <div class="container" style="padding-top: 80px;">
   <ul class="nav nav-tabs" id="myTab">
-    <li class="active"><a href="#Personal">Personal</a></li>
+    <li class="active"><a href="#General">General</a></li>
+    <li><a href="#Personal">Personal</a></li>
     <li><a href="#Cars">Cars</a></li>
     <li><a href="#Payment">Payment</a></li>
     <li><a href="#History">History</a></li>
@@ -8,13 +9,38 @@
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane active" id="Personal">
-      <h2>Personal information</h2>
-      <%= form_for(@user,:url => { :action => "update" } ,:html => {:multipart => true,:class => "form-horizontal"}) do |f| %>
 
-        <div class="row-fluid">
+    <div class="tab-pane active" id="General">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="span3">
+            <%= image_tag @user.avatar.url,:class=>"img-polaroid"  %>
+          </div>
+          <div class="span9"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="Personal">
+      <h2>Personal information</h2>
+      <%= form_for(@user,:url => { :action => "update" }, :multipart => true ,:html => {:multipart => true,:class => "form-horizontal"}) do |f| %>
+<% if @user.errors.full_messages.any? %>
+<% @user.errors.full_messages.each do |error_message| %>
+<%= error_message if @user.errors.full_messages.first == error_message %> <br />
+<% end %>
+<% end %>
+<div class="row-fluid">
           <div class="span12">
-            <div class="span6">
+            <div class="span3">
+              <div>
+                <%= image_tag @user.avatar.url(:thumb),:class=>"img-polaroid"  %>
+              </div>
+              <div>
+                <%= f.file_field :avatar %>
+              </div>
+            </div>
+
+            <div class="span9">
               <div class="control-group">
                 <%= f.label :"First name" ,:class=>"control-label" %>
                 <div class="controls">
@@ -56,17 +82,14 @@
                   <%= f.password_field :password_confirmation , :placeholder=>"Password Confirmation"%>
                 </div>
               </div>
-
-            </div>
-            <div class="span6">
               <div class="control-group">
+
                 <div class="controls">
-                  <%= image_tag @user.avatar.url(:thumb) %>
+                  <%= f.submit "Update" %>
                 </div>
               </div>
             </div>
           </div>
-          <div><%= f.submit "Update" %></div>
         <% end %>
       </div>
     </div>
@@ -282,13 +305,43 @@
       </table>
     </div>
   </div>
-  <script src="/bootstrap-assets/js/bootstrap-tab.js"></script>
-
-  <script>
-    $('#myTab a').click(function(e) {
-      e.preventDefault();
-      $(this).tab('show');
-    })
-  </script>
-
 </div>
+<script>
+  $('#myTab a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+  })
+</script>
+
+
+<%= stylesheet_link_tag    "jQueryFileUpload/jquery.fileupload-ui.css", :media => "all" %>
+<%= javascript_include_tag "jQueryFileUpload/jquery.ui.widget.js" %>
+<%= javascript_include_tag "jQueryFileUpload/jquery.iframe-transport.js" %>
+<%= javascript_include_tag "jQueryFileUpload/jquery.fileupload.js" %>
+
+<script>
+  /*jslint unparam: true */
+  /*global window, $ */
+  $(function() {
+    'use strict';
+    // Change this to the location of your server-side upload handler:
+    var url = 'server/php/';
+    $('#fileupload').fileupload({
+      url: url,
+      dataType: 'json',
+      done: function(e, data) {
+        $.each(data.result.files, function(index, file) {
+          $('<p/>').text(file.name).appendTo('#files');
+        });
+      },
+      progressall: function(e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .bar').css(
+                'width',
+                progress + '%'
+                );
+      }
+    });
+  });
+</script>
+
