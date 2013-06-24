@@ -33,6 +33,7 @@ ParknpayServer::Application.routes.draw do
   match "/udashboard/update" => "u_dashboard#update"
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
+  match 'about' => 'about#index', :as => 'contact'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

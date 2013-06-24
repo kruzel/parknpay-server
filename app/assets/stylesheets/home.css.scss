@@ -46,6 +46,9 @@
       padding: 15px 20px;
     }
 
+    .navbar .nav > li > a > img {
+      padding: -15px -20px;
+    }
     /* Offset the responsive button for proper vertical alignment */
     .navbar .btn-navbar {
       margin-top: 10px;
