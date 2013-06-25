@@ -1,20 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="padding-top: 80px;">
 
-<p>
-  <b>User:</b>
-  <%= @car.user.email %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>License plate:</b>
-  <%= @car.license_plate %>
-</p>
+  <p>
+    <b>User:</b>
+    <%= @car.user.email %>
+  </p>
 
-<p>
-  <b>Car description:</b>
-  <%= @car.car_description %>
-</p>
+  <p>
+    <b>License plate:</b>
+    <%= @car.license_plate %>
+  </p>
+
+  <p>
+    <b>Car description:</b>
+    <%= @car.car_description %>
+  </p>
 
 
-<%= link_to 'Edit', edit_user_car_path(@car.user,@car) %> |
-<%= link_to 'Back', user_cars_path %>
+  <%= link_to 'Edit', edit_user_car_path(@car.user,@car) %> |
+  <%= link_to 'Back', user_cars_path %>
+
+</div>
