@@ -1,4 +1,8 @@
 class UDashboardController < ApplicationController
+  
+    before_filter :authenticate_user!
+
+  
   # GET /home
   # GET /home.json
   def index
