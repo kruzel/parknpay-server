@@ -1,12 +1,13 @@
 <div class="container" style="padding-top: 80px;">
-  <ul class="nav nav-tabs" id="myTab">
-    <li class="active"><a href="#General">General</a></li>
-    <li><a href="#Personal">Personal</a></li>
-    <li><a href="#Cars">Cars</a></li>
-    <li><a href="#Payment">Payment</a></li>
-    <li><a href="#History">History</a></li>
-    <li><a href="#messages"><i class="icon-envelope"></i>Messages</a></li>
-  </ul>
+
+  <div id="myTab" class="btn-group" data-toggle="buttons-radio" style="padding: 20px 0px;">
+    <a href="#General" class="btn btn-large btn-primary active" data-toggle="tab"><i class="icon-screenshot"></i>General</a>
+    <a href="#Personal" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-user"></i>Personal</a>
+    <a href="#Cars" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-road"></i>Cars</a>
+    <a href="#Payment" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-briefcase"></i>Payment</a>
+    <a href="#History" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-time"></i>History</a>
+    <a href="#messages" class="btn btn-large btn-primary"  data-toggle="tab"><i class="icon-envelope"></i>messages</a>
+  </div>
 
   <div class="tab-content">
 
@@ -87,19 +88,21 @@
       <h2>List of cars</h2>
       <ul class="thumbnails">
         <% @cars.each do |car| %>
-        <li class="span5 clearfix">
-          <div class="thumbnail clearfix">
-            <%= image_tag car.car_image.url(:thumb),:class=>"pull-left span2 clearfix", :style=>'margin-right:10px' %>
-            <div class="caption" class="pull-left">
-              <a href="#" class="btn btn-primary icon  pull-right">Select</a>
-              <h4>      
-                <a href="#" ><%= car.car_description %></a>
-              </h4>
-              <small><b>License plate: </b><%= car.license_plate %></small>
+          <li class="span5 clearfix">
+            <div class="thumbnail clearfix">
+              <%= image_tag car.car_image.url(:thumb),:class=>"pull-left span2 clearfix", :style=>'margin-right:10px' %>
+              <div class="caption pull-right">
+                <%= link_to 'Show', [car.user, car], :class=>"btn btn-primary icon" %>
+                <%= link_to 'Edit', edit_user_car_path(car.user,car), :class=>"btn btn-warning icon" %>
+                <%= link_to 'Destroy', [car.user, car], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger icon"  %>
+
+                <h4><a href="#" ><%= car.car_description %></a></h4>
+                <small><b>License plate: </b><%= car.license_plate %></small>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
         <% end %>
+
       </ul>
     </div>
     <div class="tab-pane" id="Payment">
