@@ -7,6 +7,7 @@ class UDashboardController < ApplicationController
   # GET /home.json
   def index
     @user = current_user
+    @cars = Car.where("user_id = ?", current_user.id)
   end
   
   def update
