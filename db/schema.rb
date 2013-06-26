@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(:version => 20130624125840) do
   add_index "areas", ["city_id"], :name => "index_areas_on_city_id"
   add_index "areas", ["creditor_id"], :name => "index_areas_on_creditor_id"
 
-  create_table "assets", :force => true do |t|
-    t.string   "asset_file_name"
-    t.string   "asset_content_type"
-    t.integer  "asset_file_size"
-    t.datetime "asset_updated_at"
-    t.integer  "post_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "cars", :force => true do |t|
     t.integer  "user_id",                                   :null => false
     t.string   "license_plate",                             :null => false
@@ -91,13 +81,6 @@ ActiveRecord::Schema.define(:version => 20130624125840) do
   add_index "payments", ["rate_id"], :name => "index_payments_on_rate_id"
   add_index "payments", ["street_id"], :name => "index_payments_on_street_id"
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
-
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "rates", :force => true do |t|
     t.float    "rate"
