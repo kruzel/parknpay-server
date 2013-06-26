@@ -1,5 +1,7 @@
 <div class="container" style="padding-top: 80px;">
-
+  <p class="notice" ><%= notice %></p>
+  <p class="alert" ><%= alert %></p>
+  
   <div id="myTab" class="btn-group" data-toggle="buttons-radio" style="padding: 20px 0px;">
     <a href="#General" class="btn btn-large btn-primary active" data-toggle="tab"><i class="icon-screenshot"></i>General</a>
     <a href="#Personal" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-user"></i>Personal</a>
@@ -54,8 +56,9 @@
               </div>
 
               <div class="control-group">
-                <%= f.label :"Profile picture" ,:class=>"control-label" %><%= image_tag @user.avatar.url(:thumb),:class=>"img-rounded"  %>
+                <%= f.label :"Profile picture" ,:class=>"control-label" %>
                 <div class="controls">
+                  <%= image_tag @user.avatar.url(:thumb),:class=>"img-rounded"  %>
                   <%= f.file_field :avatar %>
                 </div>
               </div>

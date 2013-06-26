@@ -15,7 +15,7 @@ class UDashboardController < ApplicationController
     if @user.update_attributes(params[:user])
       # Sign in the user by passing validation in case his password changed
       sign_in @user, :bypass => true
-      flash[:notice] = "Successfully updated post."
+      flash[:notice] = "Successfully updated profile."
       redirect_to :action => :index
     else
       redirect_to :action => :index
