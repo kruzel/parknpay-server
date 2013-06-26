@@ -1,6 +1,16 @@
 <div class="container" style="padding-top: 80px;">
-  <p class="notice" ><%= notice %></p>
-  <p class="alert" ><%= alert %></p>
+
+  
+  <% unless flash.empty? %>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, :class => "alert alert-#{name}", :data => {:alert => nil},:id => "flash_#{name}" do%>
+      <button type="button" class="close" data-dismiss="alert-#{name}">&times;</button>
+      <%= msg %>
+    <% end %>
+  <% end %>
+<% end %>
+  
+
   
   <div id="myTab" class="btn-group" data-toggle="buttons-radio" style="padding: 20px 0px;">
     <a href="#General" class="btn btn-large btn-primary active" data-toggle="tab"><i class="icon-screenshot"></i>General</a>
@@ -10,9 +20,7 @@
     <a href="#History" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-time"></i>History</a>
     <a href="#messages" class="btn btn-large btn-primary"  data-toggle="tab"><i class="icon-envelope"></i>messages</a>
   </div>
-
   <div class="tab-content">
-
     <div class="tab-pane active" id="General">
       <div class="row-fluid">
         <div class="span12">
@@ -20,7 +28,6 @@
         </div>
       </div>
     </div>
-
     <div class="tab-pane" id="Personal">
       <h2>Personal information</h2>
       <%= form_for(@user,:url => { :action => "update" }, :multipart => true ,:html => {:multipart => true,:class => "form-horizontal"}) do |f| %>
@@ -63,21 +70,8 @@
                 </div>
               </div>
 
-              <div class="control-group">
-                <%= f.label :password ,:class=>"control-label" %>
-                <div class="controls">
-                  <%= f.password_field :password , :placeholder=>"Password"%>
-                </div>
-              </div>
 
               <div class="control-group">
-                <%= f.label :password_confirmation ,:class=>"control-label" %>
-                <div class="controls">
-                  <%= f.password_field :password_confirmation , :placeholder=>"Password Confirmation"%>
-                </div>
-              </div>
-              <div class="control-group">
-
                 <div class="controls">
                   <%= f.submit "Update" %>
                 </div>
@@ -259,11 +253,7 @@
     });
 
     marker.setMap(map);
-
-
-
   }
-
   google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>

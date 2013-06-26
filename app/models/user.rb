@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates :email, :uniqueness => true
   validates :terms_of_service, :acceptance => true
-  validates :password, :length => { :in => 6..20 }
+  #validates :password, :length => { :in => 6..20 }
   
   has_many :cars, :dependent => :destroy
   has_many :payments, :dependent => :destroy
