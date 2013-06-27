@@ -21,8 +21,8 @@
               <li><a href="/about">About</a></li>
               <li><%= link_to 'Contact', "/contact" %></li>
               <% if user_signed_in? %>
-              <li><%= link_to "Dashboard", :controller => :u_dashboard, :action => :index %></li>
-               <% end %> 
+              <li><%= link_to "Dashboard", :controller => "/u_dashboard", :action => :index %></li>
+               <% end %>
             </ul>
             <div class="pull-right">
               <ul class="nav pull-right">
@@ -36,7 +36,7 @@
                     </ul>
                   </li>
                   <li>
-                    <%= link_to image_tag(@user.avatar.url(:thumb),:class=>"img-rounded "), {:action => 'index', :controller => 'u_dashboard',:anchor => "Personal"}, {:style => 'padding: 0px;'} %>
+                    <%= link_to image_tag(@user.avatar.url(:thumb),:class=>"img-rounded "), {:action => 'index', :controller => "/u_dashboard",:anchor => "Personal"}, {:style => 'padding: 0px;'} %>
                   </li>
                 <% else %>
                   <li>
