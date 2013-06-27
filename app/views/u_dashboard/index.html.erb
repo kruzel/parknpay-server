@@ -15,6 +15,7 @@
   <div id="myTab" class="btn-group" data-toggle="buttons-radio" style="padding: 20px 0px;">
     <a href="#General" class="btn btn-large btn-primary active" data-toggle="tab"><i class="icon-screenshot"></i>General</a>
     <a href="#Personal" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-user"></i>Personal</a>
+    <a href="#Personal2" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-user"></i>Personal2</a>
     <a href="#Cars" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-road"></i>Cars</a>
     <a href="#Payment" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-briefcase"></i>Payment</a>
     <a href="#History" class="btn btn-large btn-primary" data-toggle="tab"><i class="icon-time"></i>History</a>
@@ -28,6 +29,9 @@
         </div>
       </div>
     </div>
+        <div class="tab-pane" id="Personal2">
+    </div>
+    
     <div class="tab-pane" id="Personal">
       <h2>Personal information</h2>
       <%= form_for(@user,:url => { :action => "update" }, :multipart => true ,:html => {:multipart => true,:class => "form-horizontal"}) do |f| %>
