@@ -1,7 +1,10 @@
-<div class="container" style="padding-top: 80px;">
+<div class="container" style="padding-bottom: 80px;">
 
   <p id="notice"><%= notice %></p>
 
+  <p>
+    <%= image_tag @car.car_image.url(:thumb),:class=>"pull-left span2 clearfix", :style=>'margin-right:10px' %>
+  </p>
   <p>
     <b>User:</b>
     <%= @car.user.email %>

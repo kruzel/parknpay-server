@@ -144,6 +144,7 @@ DEPENDENCIES
   mysql2
   paperclip (~> 3.0)
   rails (= 3.2.13)
+  rake (= 10.1.0)
   sass-rails (~> 3.2.3)
   sextant
   uglifier (>= 1.0.3)

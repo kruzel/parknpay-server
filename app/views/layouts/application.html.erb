@@ -40,8 +40,12 @@
         <ul class="nav nav-tabs">
           <li class="active"><a href="/udashboard"><i class="icon-screenshot"></i>General</a></li>
           <li><a href="/users/edit"><i class="icon-user"></i>Personal</a></li>
-          <li><a href=" "><i class="icon-road"></i>Cars</a></li>
-          <li></li>
+          <li>
+            <%= link_to user_cars_path(@user) do %>
+              <%= content_tag(:i,"",:class=>"icon-road") %>
+              Cars
+            <%end%>
+          </li>
           <li><a href="/cars/show"><i class="icon-briefcase"></i>Payment</a></li>
           <li><a href="/cars/show"><i class="icon-time"></i>History</a></li>
           <li><a href="/cars/show"><i class="icon-road"></i>Cars</a></li>

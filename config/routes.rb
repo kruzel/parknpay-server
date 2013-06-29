@@ -19,15 +19,7 @@ ParknpayServer::Application.routes.draw do
       resources :payments
     end
   end
-
-  
-  resources :users do
-    resources :cars
-  end
-  
-  resources :cars
-
-  match 'cars' , to: 'cars#index', via: :all
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
