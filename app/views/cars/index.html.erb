@@ -1,31 +1,24 @@
-<div class="container" style="padding-top: 80px;">
+<div class="container" style="padding-bottom: 20px;">
 
-  <h1>Listing cars</h1>
+  <h2>List of cars</h2>
+      <ul class="thumbnails">
+        <% @user.cars.each do |car| %>
+          <li class="span5 clearfix">
+            <div class="thumbnail clearfix">
+              <%= image_tag car.car_image.url(:thumb),:class=>"pull-left span2 clearfix", :style=>'margin-right:10px' %>
+              <div class="caption pull-right">
+                <%= link_to 'Show', [car.user, car], :class=>"btn btn-primary icon" %>
+                <%= link_to 'Edit', edit_user_car_path(car.user,car), :class=>"btn btn-warning icon" %>
+                <%= link_to 'Destroy', [car.user, car], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger icon"  %>
 
-  <table>
-    <tr>
-      <th>User</th>
-      <th>License plate</th>
-      <th>Car description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+                <h4><a href="#" ><%= car.car_description %></a></h4>
+                <small><b>License plate: </b><%= car.license_plate %></small>
+              </div>
+            </div>
+          </li>
+        <% end %>
 
-    <% @cars.each do |car| %>
-      <tr>
-        <td><%= car.user.email %></td>
-        <td><%= car.license_plate %></td>
-        <td><%= car.car_description %></td>
-        <td><%= image_tag car.car_image.url(:thumb) %></td>
-        <td><%= link_to 'Show', [car.user, car] %></td>
-        <td><%= link_to 'Edit', edit_user_car_path(car.user,car) %></td>
-        <td><%= link_to 'Destroy', [car.user, car], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
-
+      </ul>
   <br />
-
   <%= link_to 'New Car', new_user_car_path %>
 </div>

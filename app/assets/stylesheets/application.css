@@ -12,3 +12,13 @@
  *= require_tree .
  */
 
+#footer {
+    background-color: #333333;
+    color: black;
+}
+#footer a:link{
+    color: white;
+}    
+#footer.container {
+    padding-bottom: 0px;
+}

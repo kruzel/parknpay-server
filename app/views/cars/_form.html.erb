@@ -1,8 +1,7 @@
-<%= form_for [@car.user, @car], :html => { :multipart => true } do |f| %>
+<%= form_for [@car.user, @car], :html => { :multipart => true ,:class => "form-horizontal"} do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
-
       <ul>
         <% @car.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -11,23 +10,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user %><br />
-    <%=  @car.user.email %>
+  <div class="control-group">
+    <%= f.label :user ,:class=>"control-label"%>
+    <div class="controls">
+      <%=  @car.user.email %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :license_plate %><br />
-    <%= f.text_field :license_plate %>
+  <div class="control-group">
+    <%= f.label :license_plate ,:class=>"control-label"%>
+    <div class="controls">
+      <%= f.text_field :license_plate , :placeholder=>"Street address"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :car_description %><br />
-    <%= f.text_field :car_description %>
+  <div class="control-group">
+    <%= f.label :car_description ,:class=>"control-label"%>
+    <div class="controls">
+      <%= f.text_field :car_description , :placeholder=>"Street address"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :car_image %><br />
-    <%= f.file_field  :car_image %>
+  <div class="control-group">
+    <%= f.label :car_image ,:class=>"control-label"%>
+    <div class="controls">
+      <%= f.file_field  :car_image%>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

@@ -18,7 +18,7 @@ class UDashboardController < ApplicationController
       flash[:info] = "Successfully updated profile."
       redirect_to :action => :index
     else
-      redirect_to :action => :index
+      render :action => :index
     end
   end
 end

@@ -19,15 +19,7 @@ ParknpayServer::Application.routes.draw do
       resources :payments
     end
   end
-
-  
-  resources :users do
-    resources :cars
-  end
-  
-  #resources :cars
-
-  
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -40,7 +32,6 @@ ParknpayServer::Application.routes.draw do
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
   match 'about' => 'about#index'
-  
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
