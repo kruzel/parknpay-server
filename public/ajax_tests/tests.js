@@ -4,11 +4,11 @@ $(document).ready(function() {
 
 	$("#user_add").click(function() {
 		$.ajax({
-			url: "http://localhost:3000/users/add.json",
+			url: "http://localhost:3000/users.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
-			data: {user: { email: "a@a.com", password: "qwerasdf", phone_number: "0541111111", group_id: "1" }},
+			data: { user: { email: "aa@aa.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "aa", lastname: "aa" }},
 			success: function(response) {
                 console.log(response);
                 $("#result").text(response);
