@@ -25,13 +25,13 @@
     <td><%= creditor.contact_name %></td>
     <td><%= creditor.contact_email %></td>
     <td><%= creditor.contact_phone %></td>
-    <td><%= link_to 'Show', [creditor.area.city, creditor.area, creditor] %></td>
-    <td><%= link_to 'Edit', edit_city_area_creditor_path(creditor.area.city, creditor.area, creditor) %></td>
-    <td><%= link_to 'Destroy', [creditor.area.city, creditor.area, creditor], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [creditor] %></td>
+    <td><%= link_to 'Edit', edit_creditor_path(creditor) %></td>
+    <td><%= link_to 'Destroy', creditor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Creditor', new_city_area_creditor_path %>
+<%= link_to 'New Creditor', new_creditor_path %>

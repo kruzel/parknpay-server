@@ -86,4 +86,15 @@ class CitiesController < ApplicationController
     end
   end
 =end
+
+  # GET /cities/get_rates
+  # GET /cities/get_rates.json
+  def get_rates
+    @cities = City.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @cities.as_json(:include => { :areas => { :include => :rates}}) }
+    end
+  end
 end

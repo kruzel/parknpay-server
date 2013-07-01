@@ -2,7 +2,7 @@ class CreditorsController < ApplicationController
   # GET /creditors
   # GET /creditors.json
   def index
-    @creditors = Creditor.where("area_id = ?",params[:area_id])
+    @creditors = Creditor.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,6 @@ class CreditorsController < ApplicationController
   # GET /creditors/new.json
   def new
     @creditor = Creditor.new
-    @creditor.area = Area.find(params[:area_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,18 +35,16 @@ class CreditorsController < ApplicationController
   # GET /creditors/1/edit
   def edit
     @creditor = Creditor.find(params[:id])
-    @creditor.area = Area.find(params[:area_id])
   end
 
   # POST /creditors
   # POST /creditors.json
   def create
     @creditor = Creditor.new(params[:creditor])
-    @creditor.area = Area.find(params[:area_id])
 
     respond_to do |format|
       if @creditor.save
-        format.html { redirect_to [@creditor.area.city,@creditor.area,@creditor], notice: 'Creditor was successfully created.' }
+        format.html { redirect_to @creditor, notice: 'Creditor was successfully created.' }
         format.json { render json: @creditor, status: :created, location: @creditor }
       else
         format.html { render action: "new" }
@@ -60,11 +57,10 @@ class CreditorsController < ApplicationController
   # PUT /creditors/1.json
   def update
     @creditor = Creditor.find(params[:id])
-    @creditor.area = Area.find(params[:area_id])
 
     respond_to do |format|
       if @creditor.update_attributes(params[:creditor])
-        format.html { redirect_to [@creditor.area.city,@creditor.area,@creditor], notice: 'Creditor was successfully updated.' }
+        format.html { redirect_to @creditor, notice: 'Creditor was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

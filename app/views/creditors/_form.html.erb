@@ -1,4 +1,4 @@
-<%= form_for([@creditor.area.city, @creditor.area, @creditor]) do |f| %>
+<%= form_for(@creditor) do |f| %>
   <% if @creditor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@creditor.errors.count, "error") %> prohibited this creditor from being saved:</h2>

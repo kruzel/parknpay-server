@@ -42,7 +42,7 @@ class AreasController < ApplicationController
   # POST /areas
   # POST /areas.json
   def create
-    @area = Area.new(params[:id])
+    @area = Area.new(params[:area])
     @area.city = City.find(params[:city_id])
 
     respond_to do |format|

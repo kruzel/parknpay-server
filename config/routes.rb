@@ -9,12 +9,16 @@ ParknpayServer::Application.routes.draw do
       end
 
       resources :cities do
+        collection do
+          get :get_rates
+        end
         resources :areas do
           resources :streets
-          resources :creditors
           resources :rates
         end
       end
+
+      resources :creditors
 
       resources :payments
     end
