@@ -4,4 +4,5 @@ class Area < ActiveRecord::Base
   attr_accessible :name, :city, :creditor, :creditor_id
 
   has_many :rates
+  has_many :streets
 end
