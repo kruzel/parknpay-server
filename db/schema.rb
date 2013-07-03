@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624125840) do
+ActiveRecord::Schema.define(:version => 20130703193330) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -62,24 +62,18 @@ ActiveRecord::Schema.define(:version => 20130624125840) do
   create_table "payments", :force => true do |t|
     t.float    "x_pos"
     t.float    "y_pos"
-    t.integer  "street_id",                      :null => false
-    t.integer  "area_id",                        :null => false
-    t.integer  "city_id",                        :null => false
-    t.integer  "creditor_id",                    :null => false
-    t.integer  "rate_id",                        :null => false
-    t.integer  "user_id",                        :null => false
+    t.integer  "area_id",                       :null => false
+    t.integer  "rate_id",                       :null => false
+    t.integer  "user_id",                       :null => false
     t.datetime "start_time"
     t.datetime "end_time"
-    t.boolean  "archive",     :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "archive",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "payments", ["area_id"], :name => "index_payments_on_area_id"
-  add_index "payments", ["city_id"], :name => "index_payments_on_city_id"
-  add_index "payments", ["creditor_id"], :name => "index_payments_on_creditor_id"
   add_index "payments", ["rate_id"], :name => "index_payments_on_rate_id"
-  add_index "payments", ["street_id"], :name => "index_payments_on_street_id"
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "rates", :force => true do |t|
