@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   validates :firstname, :lastname, :presence => true, :length => { :minimum => 2 }
   validates :email, :presence => true
   validates :email, :uniqueness => true
-  validates :terms_of_service, :acceptance => true
+  validates :terms_of_service, :acceptance => 1
   #validates :password, :length => { :in => 6..20 }
   
   has_many :cars, :dependent => :destroy
