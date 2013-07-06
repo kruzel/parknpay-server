@@ -55,7 +55,7 @@
               <div class="control-group">
                 <div class="controls">
                   <label class="checkbox">
-                    <%= f.check_box :terms_of_service %>I agree all your <a href="#">Terms of Services</a>
+                    <%= f.check_box :terms_of_service, {}, :true, :false %>I agree all your <a href="#">Terms of Services</a>
                   </label>
                   <%= f.submit "Sign up" ,:class=>"btn btn-success"%>
                   <button type="button" class="btn">Help</button>
