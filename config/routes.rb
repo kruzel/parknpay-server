@@ -1,6 +1,6 @@
 ParknpayServer::Application.routes.draw do
 
-  devise_for :users, controllers: { sessions: "sessions" }
+  devise_for :users, controllers: { sessions: "sessions", registrations: "registration" }
 
   scope "/api" do
     scope "/v1"  do     
