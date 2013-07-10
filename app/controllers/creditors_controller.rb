@@ -24,6 +24,14 @@ class CreditorsController < ApplicationController
   # GET /creditors/new
   # GET /creditors/new.json
   def new
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @creditor = Creditor.new
 
     respond_to do |format|
@@ -34,12 +42,28 @@ class CreditorsController < ApplicationController
 
   # GET /creditors/1/edit
   def edit
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @creditor = Creditor.find(params[:id])
   end
 
   # POST /creditors
   # POST /creditors.json
   def create
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @creditor = Creditor.new(params[:creditor])
 
     respond_to do |format|
@@ -56,6 +80,14 @@ class CreditorsController < ApplicationController
   # PUT /creditors/1
   # PUT /creditors/1.json
   def update
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @creditor = Creditor.find(params[:id])
 
     respond_to do |format|

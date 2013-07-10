@@ -24,6 +24,14 @@ class AreasController < ApplicationController
   # GET /areas/new
   # GET /areas/new.json
   def new
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @area = Area.new
     @area.city = City.find(params[:city_id])
 
@@ -35,6 +43,14 @@ class AreasController < ApplicationController
 
   # GET /areas/1/edit
   def edit
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @area = Area.find(params[:id])
     @area.city = City.find(params[:city_id])
   end
@@ -42,6 +58,14 @@ class AreasController < ApplicationController
   # POST /areas
   # POST /areas.json
   def create
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @area = Area.new(params[:area])
     @area.city = City.find(params[:city_id])
 
@@ -59,6 +83,14 @@ class AreasController < ApplicationController
   # PUT /areas/1
   # PUT /areas/1.json
   def update
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @area = Area.find(params[:id])
     @area.city = City.find(params[:city_id])
 

@@ -17,6 +17,14 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def show
+    unless current_user.try(:admin?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @city = City.find(params[:id])
 
     respond_to do |format|
@@ -28,6 +36,14 @@ class CitiesController < ApplicationController
   # GET /cities/new
   # GET /cities/new.json
   def new
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @city = City.new
 
     respond_to do |format|
@@ -38,12 +54,28 @@ class CitiesController < ApplicationController
 
   # GET /cities/1/edit
   def edit
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @city = City.find(params[:id])
   end
 
   # POST /cities
   # POST /cities.json
   def create
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @city = City.new(params[:city])
 
     respond_to do |format|
@@ -60,6 +92,14 @@ class CitiesController < ApplicationController
   # PUT /cities/1
   # PUT /cities/1.json
   def update
+    unless current_user.try(:admin?) || current_user.try(:manager?)
+      respond_to do |format|
+        format.html render '401.html'
+        format.json { render :status => 401 }
+      end
+      return
+    end
+
     @city = City.find(params[:id])
 
     respond_to do |format|

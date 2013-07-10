@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703193330) do
+ActiveRecord::Schema.define(:version => 20130710172124) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -127,6 +127,9 @@ ActiveRecord::Schema.define(:version => 20130703193330) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "terms_of_service"
+    t.boolean  "inspector"
+    t.boolean  "customer"
+    t.boolean  "admin"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
