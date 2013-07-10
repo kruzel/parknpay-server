@@ -26,7 +26,7 @@ class AreasController < ApplicationController
   def new
     unless current_user.try(:admin?) || current_user.try(:manager?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html render :file => 'public/401.html'
         format.json { render :status => 401 }
       end
       return
@@ -45,7 +45,7 @@ class AreasController < ApplicationController
   def edit
     unless current_user.try(:admin?) || current_user.try(:manager?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html render :file => 'public/401.html'
         format.json { render :status => 401 }
       end
       return
@@ -60,7 +60,7 @@ class AreasController < ApplicationController
   def create
     unless current_user.try(:admin?) || current_user.try(:manager?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html render :file => 'public/401.html'
         format.json { render :status => 401 }
       end
       return
@@ -85,7 +85,7 @@ class AreasController < ApplicationController
   def update
     unless current_user.try(:admin?) || current_user.try(:manager?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html render :file => 'public/401.html'
         format.json { render :status => 401 }
       end
       return

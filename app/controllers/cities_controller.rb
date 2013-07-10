@@ -94,7 +94,7 @@ class CitiesController < ApplicationController
   def update
     unless current_user.try(:admin?) || current_user.try(:manager?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html render :file => 'public/401.html'
         format.json { render :status => 401 }
       end
       return
