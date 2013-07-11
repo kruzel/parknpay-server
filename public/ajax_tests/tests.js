@@ -22,7 +22,7 @@ $(document).ready(function() {
 	
 	$("#user_logout").click(function() {
 		$.ajax({
-			url: "http://http://inigo.com.au/users/sign_out.json"+token,
+			url: "http://inigo.com.au/users/sign_out.json"+token,
 			dataType: "json",
 			type: "delete	",
 			cache: false,
@@ -39,7 +39,7 @@ $(document).ready(function() {
 	
 	$("#user_login").click(function() {
 		$.ajax({
-			url: "http://http://inigo.com.au/users/sign_in.json",
+			url: "http://inigo.com.au/users/sign_in.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
@@ -60,7 +60,7 @@ $(document).ready(function() {
 	
 	$("#cities_index").click(function() {
 		$.ajax({
-			url: "http://http://inigo.com.au/api/v1/cities.json",
+			url: "http://inigo.com.au/api/v1/cities.json",
 			dataType: "json",
 			type: "get",
 			cache: false,
