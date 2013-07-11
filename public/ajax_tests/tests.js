@@ -4,11 +4,11 @@ $(document).ready(function() {
 
 	$("#user_add").click(function() {
 		$.ajax({
-			url: "http://192.168.1.126:3000/users.json",
+			url: "http://inigo.com.au/users.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
-			data: { user: { email: "aaa@aaa.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "aa", lastname: "aa" }},
+			data: { user: { email: "ee@ee.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "aa", lastname: "aa" }},
 			success: function(response) {
                 console.log(response);
                 $("#result").text(response);
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	
 	$("#user_logout").click(function() {
 		$.ajax({
-			url: "http://localhost:3000/users/sign_out.json"+token,
+			url: "http://http://inigo.com.au/users/sign_out.json"+token,
 			dataType: "json",
 			type: "delete	",
 			cache: false,
@@ -39,11 +39,11 @@ $(document).ready(function() {
 	
 	$("#user_login").click(function() {
 		$.ajax({
-			url: "http://localhost:3000/users/sign_in.json",
+			url: "http://http://inigo.com.au/users/sign_in.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
-			data: {user:{email:"a@a.com", password:"qwerasdf"}},
+			data: {user:{email:"ee@ee.com", password:"qwerasdf"}},
 			success: function(response) {
                 console.log(response.session);
                 $("#result").text(response.session.auth_token);
@@ -60,7 +60,7 @@ $(document).ready(function() {
 	
 	$("#cities_index").click(function() {
 		$.ajax({
-			url: "http://localhost:3000/api/v1/cities.json",
+			url: "http://http://inigo.com.au/api/v1/cities.json",
 			dataType: "json",
 			type: "get",
 			cache: false,
