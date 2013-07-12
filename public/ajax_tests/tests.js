@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 	$("#user_add").click(function() {
 		$.ajax({
-			url: "http://inigo.com.au/users.json",
+			url: "http://ozpark.com.au/users.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	
 	$("#user_logout").click(function() {
 		$.ajax({
-			url: "http://inigo.com.au/users/sign_out.json"+token,
+			url: "http://ozpark.com.au/users/sign_out.json"+token,
 			dataType: "json",
 			type: "delete	",
 			cache: false,
@@ -39,7 +39,7 @@ $(document).ready(function() {
 	
 	$("#user_login").click(function() {
 		$.ajax({
-			url: "http://inigo.com.au/users/sign_in.json",
+			url: "http://ozpark.com.au/users/sign_in.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
@@ -60,7 +60,7 @@ $(document).ready(function() {
 	
 	$("#cities_index").click(function() {
 		$.ajax({
-			url: "http://inigo.com.au/api/v1/cities.json",
+			url: "http://ozpark.com.au/api/v1/cities.json",
 			dataType: "json",
 			type: "get",
 			cache: false,
