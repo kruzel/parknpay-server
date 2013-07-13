@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	var token = null;
+	var user_id = null;
 
 	$("#user_add").click(function() {
 		$.ajax({
@@ -39,11 +40,11 @@ $(document).ready(function() {
 			dataType: "json",
 			type: "post",
 			cache: false,
-			data: {user:{email:"lior@au.au", password:"qwerasdf"}},
+			data: {user:{email:"ee@ee.com", password:"qwerasdf"}},
 			success: function(data, textStatus, jqXHR) {
                 $("#result").text(data.session.auth_token);
 				
-				token = response.session.auth_token;
+				token = data.session.auth_token;
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR, textStatus, errorThrown);
@@ -54,13 +55,27 @@ $(document).ready(function() {
 	
 	$("#cities_index").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/api/v1/cities.json",
+			url: "http://ozpark.com.au/api/v1/cities.json?auth_token=" + token,
 			dataType: "json",
 			type: "get",
 			cache: false,
-			data: { "auth_token": token },
 			success: function(data, textStatus, jqXHR) {
-                $("#result").text(textStatus);
+                $("#result").text(data);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
+		   }
+		});
+	});
+	
+	$("#cities_rates").click(function() {
+		$.ajax({
+			url: "http://ozpark.com.au/api/v1/cities/get_rates.json?auth_token=" + token,
+			dataType: "json",
+			type: "get",
+			cache: false,
+			success: function(data, textStatus, jqXHR) {
+                $("#result").text(data);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
