@@ -19,8 +19,8 @@
     <td><%= rate.currency %></td>
     <td><%= rate.area.name %></td>
     <td><%= rate.day_a_week %></td>
-    <td><%= rate.start_time %></td>
-    <td><%= rate.end_time %></td>
+    <td><%= l rate.start_time, :format =>  "%H:%M" %></td>
+    <td><%= l rate.end_time, :format =>  "%H:%M" %></td>
     <td><%= link_to 'Show', [rate.area.city, rate.area, rate] %></td>
     <td><%= link_to 'Edit', edit_city_area_rate_path(rate.area.city, rate.area, rate) %></td>
     <td><%= link_to 'Destroy', [rate.area.city, rate.area, rate], method: :delete, data: { confirm: 'Are you sure?' } %></td>
