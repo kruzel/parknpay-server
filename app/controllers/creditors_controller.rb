@@ -24,9 +24,9 @@ class CreditorsController < ApplicationController
   # GET /creditors/new
   # GET /creditors/new.json
   def new
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -42,9 +42,9 @@ class CreditorsController < ApplicationController
 
   # GET /creditors/1/edit
   def edit
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -56,9 +56,9 @@ class CreditorsController < ApplicationController
   # POST /creditors
   # POST /creditors.json
   def create
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -80,9 +80,9 @@ class CreditorsController < ApplicationController
   # PUT /creditors/1
   # PUT /creditors/1.json
   def update
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render :file => 'public/401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return

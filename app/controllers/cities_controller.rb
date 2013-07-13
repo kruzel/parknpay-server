@@ -19,7 +19,7 @@ class CitiesController < ApplicationController
   def show
     unless current_user.try(:admin?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -36,9 +36,9 @@ class CitiesController < ApplicationController
   # GET /cities/new
   # GET /cities/new.json
   def new
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -54,9 +54,9 @@ class CitiesController < ApplicationController
 
   # GET /cities/1/edit
   def edit
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -68,9 +68,9 @@ class CitiesController < ApplicationController
   # POST /cities
   # POST /cities.json
   def create
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render '401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -92,9 +92,9 @@ class CitiesController < ApplicationController
   # PUT /cities/1
   # PUT /cities/1.json
   def update
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render :file => 'public/401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return

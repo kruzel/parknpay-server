@@ -24,9 +24,9 @@ class AreasController < ApplicationController
   # GET /areas/new
   # GET /areas/new.json
   def new
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render :file => 'public/401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -43,9 +43,9 @@ class AreasController < ApplicationController
 
   # GET /areas/1/edit
   def edit
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render :file => 'public/401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -58,9 +58,9 @@ class AreasController < ApplicationController
   # POST /areas
   # POST /areas.json
   def create
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render :file => 'public/401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return
@@ -83,9 +83,9 @@ class AreasController < ApplicationController
   # PUT /areas/1
   # PUT /areas/1.json
   def update
-    unless current_user.try(:admin?) || current_user.try(:manager?)
+    unless current_user.try(:admin?) || current_user.try(:customer?)
       respond_to do |format|
-        format.html render :file => 'public/401.html'
+        format.html { render :file => 'public/401.html' }
         format.json { render :status => 401 }
       end
       return

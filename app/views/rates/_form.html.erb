@@ -23,13 +23,17 @@
     <%= f.label :area %><br />
     <%= @rate.area.name %>
   </div>
+    <div class="field">
+      <%= f.label :day_a_week %> Sunday 0, Monday 1<br />
+      <%= f.text_field :day_a_week %>
+    </div>
   <div class="field">
     <%= f.label :start_time %><br />
-    <%= f.datetime_select :start_time %>
+    <%= f.time_select :start_time %>
   </div>
   <div class="field">
     <%= f.label :end_time %><br />
-    <%= f.datetime_select :end_time %>
+    <%= f.time_select :end_time %>
   </div>
   <div class="actions">
     <%= f.submit %>
