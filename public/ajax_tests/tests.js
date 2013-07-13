@@ -1,16 +1,18 @@
 $(document).ready(function() {
 
+	var server_url = "http://ozpark.com.au";
+    //var server_url = "http://localhost:3000";
 	var token = null;
 	var user_id = null;
 
 	$("#user_add").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/users.json",
+			url: server_url + "/users.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
-			data: { user: { email: "lyi@au.au", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "aa", lastname: "aa" }},
-			success: function( data, textStatus, jqXHR ) {
+			data: { user: { email: "ee1@ee1.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "ee1", lastname: "ee1" }},
+			success: function( response, textStatus, jqXHR ) {
                 $("#result").text(textStatus);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -21,11 +23,11 @@ $(document).ready(function() {
 	
 	$("#user_logout").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/users/sign_out.json/"+token,
+			url: server_url + "/users/sign_out.json/"+token,
 			dataType: "json",
 			type: "delete	",
 			cache: false,
-		   success: function(data, textStatus, jqXHR) {
+		   success: function(response, textStatus, jqXHR) {
 				$("#result").text(textStatus);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -36,15 +38,15 @@ $(document).ready(function() {
 	
 	$("#user_login").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/users/sign_in.json",
+			url: server_url + "/users/sign_in.json",
 			dataType: "json",
 			type: "post",
 			cache: false,
 			data: {user:{email:"ee@ee.com", password:"qwerasdf"}},
-			success: function(data, textStatus, jqXHR) {
-                $("#result").text(data.session.auth_token);
+			success: function(response, textStatus, jqXHR) {
+                $("#result").text(response.session.auth_token);
 				
-				token = data.session.auth_token;
+				token = response.session.auth_token;
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR, textStatus, errorThrown);
@@ -55,12 +57,12 @@ $(document).ready(function() {
 	
 	$("#cities_index").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/api/v1/cities.json?auth_token=" + token,
+			url: server_url + "/api/v1/cities.json?auth_token=" + token,
 			dataType: "json",
 			type: "get",
 			cache: false,
-			success: function(data, textStatus, jqXHR) {
-                $("#result").text(data);
+			success: function(response, textStatus, jqXHR) {
+                $("#result").text(response);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
@@ -70,12 +72,12 @@ $(document).ready(function() {
 	
 	$("#cities_rates").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/api/v1/cities/get_rates.json?auth_token=" + token,
+			url: server_url + "/api/v1/cities/get_rates.json?auth_token=" + token,
 			dataType: "json",
 			type: "get",
 			cache: false,
-			success: function(data, textStatus, jqXHR) {
-                $("#result").text(data);
+			success: function(response, textStatus, jqXHR) {
+                $("#result").text(response);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
@@ -85,13 +87,13 @@ $(document).ready(function() {
 	
 	$("#add_car").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/api/v1/users/0/cars.json?auth_token=" + token,
+			url: server_url + "/api/v1/users/0/cars.json?auth_token=" + token,
 			dataType: "json",
 			type: "post",
 			data: {car:{license_plate:"111111", car_description:"mazda 6"}},
 			cache: false,
-			success: function(data, textStatus, jqXHR) {
-                $("#result").text(data);
+			success: function(response, textStatus, jqXHR) {
+                $("#result").text(response);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
@@ -101,12 +103,12 @@ $(document).ready(function() {
 	
 	$("#get_cars").click(function() {
 		$.ajax({
-			url: "http://ozpark.com.au/api/v1/users/0/cars.json?auth_token=" + token,
+			url: server_url + "/api/v1/users/0/cars.json?auth_token=" + token,
 			dataType: "json",
 			type: "get",
 			cache: false,
-			success: function(data, textStatus, jqXHR) {
-                $("#result").text(data);
+			success: function(response, textStatus, jqXHR) {
+                $("#result").text(response);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
