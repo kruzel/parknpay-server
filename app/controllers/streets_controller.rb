@@ -72,7 +72,7 @@ class StreetsController < ApplicationController
     respond_to do |format|
       if @street.save
         format.html { redirect_to [@street.area.city,@street.area,@street], notice: 'Street was successfully created.' }
-        format.json { render json: @street, status: :created, location: @street }
+        format.json { render json: @street, status: :created, location: [@street.area.city,@street.area,@street] }
       else
         format.html { render action: "new" }
         format.json { render json: @street.errors, status: :unprocessable_entity }

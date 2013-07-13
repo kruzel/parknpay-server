@@ -72,7 +72,7 @@ class RatesController < ApplicationController
     respond_to do |format|
       if @rate.save
         format.html { redirect_to [@rate.area.city,@rate.area,@rate], notice: 'Rate was successfully created.' }
-        format.json { render json: @rate, status: :created, location: @rate }
+        format.json { render json: @rate, status: :created, location: [@rate.area.city,@rate.area,@rate] }
       else
         format.html { render action: "new" }
         format.json { render json: @rate.errors, status: :unprocessable_entity }

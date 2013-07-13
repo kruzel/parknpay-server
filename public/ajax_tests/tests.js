@@ -82,4 +82,35 @@ $(document).ready(function() {
 		   }
 		});
 	});
+	
+	$("#add_car").click(function() {
+		$.ajax({
+			url: "http://ozpark.com.au/api/v1/users/0/cars.json?auth_token=" + token,
+			dataType: "json",
+			type: "post",
+			data: {car:{license_plate:"111111", car_description:"mazda 6"}},
+			cache: false,
+			success: function(data, textStatus, jqXHR) {
+                $("#result").text(data);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
+		   }
+		});
+	});
+	
+	$("#get_cars").click(function() {
+		$.ajax({
+			url: "http://ozpark.com.au/api/v1/users/0/cars.json?auth_token=" + token,
+			dataType: "json",
+			type: "get",
+			cache: false,
+			success: function(data, textStatus, jqXHR) {
+                $("#result").text(data);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				$("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
+		   }
+		});
+	});
 });

@@ -50,7 +50,7 @@ class CarsController < ApplicationController
     respond_to do |format|
       if @car.save
         format.html { redirect_to [@car.user,@car], notice: 'Car was successfully created.' }
-        format.json { render json: @car, status: :created, location: @car }
+        format.json { render json: @car, status: :created, location: [@car.user,@car] }
       else
         format.html { render action: "new" }
         format.json { render json: @car.errors, status: :unprocessable_entity }

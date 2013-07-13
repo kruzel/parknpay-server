@@ -72,7 +72,7 @@ class AreasController < ApplicationController
     respond_to do |format|
       if @area.save
         format.html { redirect_to [@area.city,@area], notice: 'Area was successfully created.' }
-        format.json { render json: @area, status: :created, location: @area }
+        format.json { render json: @area, status: :created, location: [@area.city,@area] }
       else
         format.html { render action: "new" }
         format.json { render json: @area.errors, status: :unprocessable_entity }
