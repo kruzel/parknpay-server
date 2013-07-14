@@ -39,4 +39,6 @@ ParknpayServer::Application.configure do
   
   Paperclip.options[:command_path] = "/usr/bin/"
 
+  config.server_url = "localhost:3000"
+
 end

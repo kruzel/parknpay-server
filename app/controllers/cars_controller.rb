@@ -9,7 +9,7 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @cars }
+      format.json { render json: @cars.as_json( :only => [ :id, :user_id, :archive , :car_description, :license_plate, :created_at, :updated_at ], :methods =>  :image_url) }
     end
   end
 
@@ -20,7 +20,7 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @car }
+      format.json { render json: @car.as_json( :only => [ :id, :user_id, :archive , :car_description, :license_plate, :created_at, :updated_at ], :methods =>  :image_url) }
     end
   end
 
@@ -50,7 +50,7 @@ class CarsController < ApplicationController
     respond_to do |format|
       if @car.save
         format.html { redirect_to [@car.user,@car], notice: 'Car was successfully created.' }
-        format.json { render json: @car, status: :created, location: [@car.user,@car] }
+        format.json { render json: @car.as_json( :only => [ :id, :user_id, :archive , :car_description, :license_plate, :created_at, :updated_at ], :methods =>  :image_url), status: :created, location: [@car.user,@car] }
       else
         format.html { render action: "new" }
         format.json { render json: @car.errors, status: :unprocessable_entity }
