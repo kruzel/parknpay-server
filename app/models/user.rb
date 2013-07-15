@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
   attr_accessible :avatar
   has_attached_file :avatar, :styles => {:large => "300x300>", :medium => "100x100>", :thumb => "50x50>" }, :default_url => "/img/User-icon.png"
 
+  def image_url
+    ::Rails.application.config.server_url + avatar.url(:thumb)
+  end
+
 end

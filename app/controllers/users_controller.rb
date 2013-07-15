@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json { render :json => { :user => current_user }, :status => 200 }
+      format.json { render json: current_user.as_json( :only => [ :id, :email, :password, :firstname, :lastname, :gender, :dob, :inspector , :created_at, :updated_at ], :methods =>  :image_url), :status => 200 }
     end
   end
 
