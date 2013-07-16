@@ -7,7 +7,7 @@ ParknpayServer::Application.routes.draw do
       resources :users do
         resources :cars do
           member do
-            post upload_image
+            post :upload_image
           end
         end
       end
