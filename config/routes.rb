@@ -5,7 +5,11 @@ ParknpayServer::Application.routes.draw do
   scope "/api" do
     scope "/v1"  do     
       resources :users do
-        resources :cars
+        resources :cars do
+          member do
+            post upload_image
+          end
+        end
       end
 
       resources :cities do

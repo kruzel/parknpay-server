@@ -58,6 +58,19 @@ class CarsController < ApplicationController
     end
   end
 
+  #POST user/:user_id/cars/:id/upload_image.json
+  def upload_image
+    @car = Car.find(params[:id])
+
+    respond_to do |format|
+      if @car.update_attributes(params[:file])
+         format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+      end
+    end
+  end
+
   # PUT /cars/1
   # PUT /cars/1.json
   def update
