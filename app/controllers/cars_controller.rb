@@ -63,7 +63,7 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
 
     respond_to do |format|
-      if @car.update_attributes(params[:file])
+      if @car.update_attributes(:car_image => params[:file])
          format.json { head :no_content }
       else
         format.html { render action: "edit" }
