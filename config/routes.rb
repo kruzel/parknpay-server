@@ -24,7 +24,11 @@ ParknpayServer::Application.routes.draw do
 
       resources :creditors
 
-      resources :payments
+      resources :payments do
+        collection do
+          get :users_payments
+        end
+      end
     end
   end
  

@@ -14,6 +14,17 @@ class PaymentsController < ApplicationController
     end
   end
 
+  # GET /payments/users_payments
+  # GET /payments/users_payments.json
+  def users_payments
+    @payments = Payment.where("user_id = ?", current_user.id)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @payments }
+    end
+  end
+
   # GET /payments/1
   # GET /payments/1.json
   def show
