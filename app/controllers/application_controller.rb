@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   before_filter :load_vars
-  before_filter :cors_preflight_check
+  #before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
 
 # For all responses in this controller, return the CORS access control headers.
