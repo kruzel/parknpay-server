@@ -32,7 +32,10 @@ ParknpayServer::Application.routes.draw do
     end
   end
 
+  #chrome PUT support
+  match '/api/v1/users/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
   match '/api/v1/users/:user_id/cars/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
+  match '/api/v1/payments/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
