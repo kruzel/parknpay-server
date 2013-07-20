@@ -32,7 +32,7 @@ ParknpayServer::Application.routes.draw do
     end
   end
 
-  match ':controller', :controller => 'application', :action => 'cors_preflight_check', :constraints => {:method => 'OPTIONS'}
+  match ':controller', :controller => 'application', :action => 'options', :constraints => {:method => 'OPTIONS'}
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
