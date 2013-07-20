@@ -6,9 +6,9 @@ class OptionsController < ApplicationController
   def options
     logger.debug 'options'
     if request.method == 'OPTIONS'
-      headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS,PUT, DELETE'
-      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version'
+      #headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
+      #headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version'
       headers['Access-Control-Max-Age'] = '1728000'
 
       respond_to do |format|
