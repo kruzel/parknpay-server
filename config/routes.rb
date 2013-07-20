@@ -32,7 +32,7 @@ ParknpayServer::Application.routes.draw do
     end
   end
 
-  match '/api/v1/users/:user_id/cars/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
+  match ':controller', :controller => 'application', :action => 'options', :constraints => {:method => 'OPTIONS'}
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
