@@ -55,9 +55,9 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    @user = User.find(params[:payment][:user_id])
-    @area = Area.find(params[:payment][:area_id])
-    @rate = Rate.find(params[:payment][:rate_id])
+    @user = User.find(params[:user_id])
+    @area = Area.find(params[:area_id])
+    @rate = Rate.find(params[:rate_id])
     @payment = Payment.new()
     @payment.user = @user
     @payment.area = @area
