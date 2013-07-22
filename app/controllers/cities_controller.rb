@@ -134,7 +134,7 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @cities.as_json(:include => { :areas => { :include => { :rates => {:only => [:day_a_week, :rate, :currency, :area_id, :archive], :methods => [ :start_time_int, :end_time_int ]  }}}}) }
+      format.json { render json: @cities.as_json(:include => { :areas => { :include => { :rates => {:only => [:id, :day_a_week, :rate, :currency, :area_id, :archive], :methods => [ :start_time_int, :end_time_int ]  }}}}) }
     end
   end
 end
