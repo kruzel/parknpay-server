@@ -17,6 +17,9 @@ ParknpayServer::Application.routes.draw do
           get :get_rates
         end
         resources :areas do
+          collection do
+            get :find_by_street
+          end
           resources :streets
           resources :rates
         end
