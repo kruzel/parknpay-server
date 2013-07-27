@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @street %> |
-<%= link_to 'Back', streets_path %>
+<%= link_to 'Show', [@street.area.city, @street.area, @street] %> |
+<%= link_to 'Back', city_area_streets_path %>

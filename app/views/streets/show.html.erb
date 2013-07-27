@@ -7,9 +7,9 @@
 
 <p>
   <b>Area:</b>
-  <%= @street.area %>
+  <%= @street.area.name %>
 </p>
 
 
-<%= link_to 'Edit', edit_street_path(@street) %> |
-<%= link_to 'Back', streets_path %>
+<%= link_to 'Edit', edit_city_area_street_path(@street.area.city,@street.area,@street) %> |
+<%= link_to 'Back', city_area_streets_path %>
