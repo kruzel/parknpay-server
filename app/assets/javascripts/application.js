@@ -5,13 +5,27 @@
 // or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
+// compiled file.
 //
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
 //
-//= require jquery
+//= require verso/jquery-1.7.1.min
 //= require jquery_ujs
-//= require_tree .
-
+//= require verso/google-code-prettify/prettify
+//= require verso/bootstrap
+//= require verso/jquery.easing
+//= require verso/jquery.transit.min
+//= require verso/jquery.fitvids.min
+//= require verso/jquery.waitforimages
+//= require verso/jquery.prettyPhoto
+//= require verso/jquery.cslider
+//= require verso/jquery.accordion
+//= require verso/superfish
+//= require verso/jquery.ui.totop
+//= require verso/custom
+//= require verso/jquery.mousewheel
+//= require verso/jquery.flexslider-min
+//= require verso/ios-orientation-change-fix
+//= require verso/respond.min
 

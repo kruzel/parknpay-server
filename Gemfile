@@ -6,9 +6,9 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'rake'
+gem 'fb_graph', '~> 2.7.7'
 
-gem 'rake', '10.1.0'
-gem 'fb_graph'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,29 +21,22 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'devise'
+gem 'jquery-rails', '2.0.1'
+
+gem 'devise', '~> 2.2.4'
+gem 'cancan', '~> 1.6.10'
 gem "paperclip", "~> 3.0"
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 gem 'debugger'
 
-gem 'apipie-rails'
+gem 'apipie-rails', '~> 0.0.22'
 
 #gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
-group :development do
-  gem 'sextant'
-end
+#group :development do
+#  gem 'sextant'
+#  gem 'meta_request'
+#  gem 'better_errors'
+#  gem 'binding_of_caller'
+#end

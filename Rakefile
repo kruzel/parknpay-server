@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ParknpayServer::Application.load_tasks
+Verso::Application.load_tasks

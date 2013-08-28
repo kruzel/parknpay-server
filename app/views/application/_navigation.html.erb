@@ -1,0 +1,93 @@
+<!-- ################-->
+<!-- START TOP MENU -->
+<!-- ################-->
+<div class="nav-reaction">
+  <div class="navbar navbar-static-top">
+    <!-- navbar-fixed-top -->
+    <div class="navbar-inner">
+	      <div class="container"> <a class="brand" href="<%= root_url %>">
+        <!--<span>VERSO</span>-->
+        <img src="/assets/verso/ozParkLogo.png" alt="Logo"></a>
+        <div id="main-nav">
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+
+              <li class="active"><a href="<%= root_url %>">Home</a> </li>
+
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Portfolio
+                  <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li><a href="<%= two_column_portfolio_path %>">Two Column</a></li>
+                  <li><a href="<%= three_column_portfolio_path %>">Three Column</a></li>
+                  <li><a href="<%= four_column_portfolio_path %>">Four Column</a></li>
+                  <li><a href="<%= single_portfolio_path %>">Portfolio single</a></li>
+                  <li class="dropdown-submenu"> <a tabindex="-1" href="#">More options</a>
+                    <ul class="">
+                      <li><a tabindex="-1" href="<%= video_portfolio_path %>">Video project</a></li>
+                      <li><a tabindex="-1" href="<%= alternative_slider_portfolio_path %>">Alternative slider</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> Pricing <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<%= pricing_path %>">Pricing tables</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"> Pages <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<%= about_us_pages_path %>">About & FAQ</a></li>
+                  <li><a href="<%= contact_us_pages_path %>">Contact Us</a></li>
+                  <li><a href="<%= team_pages_path %>">Team</a></li>
+                  <li><a href="<%= features_pages_path %>">Features</a></li>
+
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> Blog <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+                  <li><a href="<%= single_blog_path %>">Blog Single Page</a></li>
+                  <li><a href="<%= category_blog_path %>">Blog category</a></li>
+                  <li><a href="<%= category_alternative_blog_path %>">Blog category alt</a></li>
+                  <li><a href="<%= pinterest_blog_path %>">Pinterest style</a></li>
+                </ul>
+              </li>
+
+              <% if current_user %>
+                <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li class="dropdown sfHover"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <div style="padding: 15px;">
+                        <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { style: 'margin-bottom: 0' } do |f| %>
+                          <%= f.email_field :email, autofocus: true, class: 'span2', placeholder: 'Email address', style: 'margin-bottom: 15px;' %>
+                          <%= f.password_field :password, class: 'span2', placeholder: 'Password', style: 'margin-bottom: 15px;' %>
+                          <% if devise_mapping.rememberable? -%>
+                            <%= f.check_box :remember_me, style: 'float: left; margin-right: 10px; margin-bottom: 15px' %>
+                            <%= f.label :remember_me, class: 'string optional' %>
+                          <% end -%>
+                          <%= f.submit 'Sign In', class: 'btn btn-info btn-block', style: 'margin-bottom: 15px;' %>
+                          <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+                          <% end -%>
+                        <% end %>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="<%= new_user_registration_path %>">Sign Up</a></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ################-->
+<!-- END TOP MENU -->
+<!-- ################-->

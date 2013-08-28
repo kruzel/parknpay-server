@@ -1,45 +1,21 @@
-<div class="container" style="padding-top: 80px;">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="span6 offset3">
-          <div class="area well">
-            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal "}) do |f| %>
-            <%= devise_error_messages! %>
-              <div class="heading">
-                <h4 class="form-heading">Sign In</h4>
-              </div>
-              <div class="control-group">
-                <%= f.label :email ,:class=>"control-label" %>
-                <div class="controls">
-                  <%= f.email_field :email, :autofocus => true, :placeholder=>"Email address"%>
-                </div>
-              </div>
-              <div class="control-group">
-                <%= f.label :password ,:class=>"control-label" %>
-                <div class="controls">
-                  <%= f.password_field :password, :placeholder=>"Password" %>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="controls">
-                  <label class="checkbox">
-                    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-                    <a href="#" class="btn btn-link">Forgot my password</a>
-                  </label>
-                  <%= f.submit "Sign in",:class=>"btn btn-success" %>
-                  <%= f.button "help",:class=>"btn" %>
-                </div>
-              </div>	
-              <div class="alert alert-error">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>Access Denied!</strong> Please provide valid authorization.
-              </div>
-            <% end %>
-          </div>                           
-        </div>
-      </div>
-
-    </div>
+<%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'well' } do |f| %>
+  <div class="input-prepend">
+    <span class="add-on"><i class="icon-envelope"></i></span>
+    <%= f.email_field :email, autofocus: true, class: 'span2', placeholder: 'Email address' %>
   </div>
-</div>
+  <div class="input-prepend">
+    <span class="add-on"><i class="icon-key"></i></span>
+    <%= f.password_field :password, class: 'span2', placeholder: 'Password' %>
+  </div>
+  <% if devise_mapping.rememberable? -%>
+    <label>
+      <%= f.check_box :remember_me %> Remember me
+    </label>
+  <% end -%>
+  <br>
+  <div class="input-prepend">
+    <button class="btn btn-danger"><i class="icon-check"></i> Login</button>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

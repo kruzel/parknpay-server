@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module ParknpayServer
+module Verso
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -61,8 +61,24 @@ module ParknpayServer
 
     config.to_prepare do
       DeviseController.respond_to :html, :json
+
+      Devise::SessionsController.layout 'admin_unregistered'
+      Devise::RegistrationsController.layout Proc.new { |c|
+        %W(new create).include?(c.action_name) ? 'admin_unregistered' : 'admin'
+      }
+      Devise::ConfirmationsController.layout "admin"
+      Devise::UnlocksController.layout "admin"
+      Devise::PasswordsController.layout "admin"
     end
-    
+
+    # Devise wraps invalid fields with a .field-with-error div. It makes form elements jump to the next line
+    # This setting will output the invalid input as is. It won't highlight it in any way. I don't see an easy solution
+    # to this (aside from using simple_form or formtastic), since bootstrap requires .error class be added to the
+    # .control-group and not the input itself
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      "#{html_tag}".html_safe
+    }
+
     config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,

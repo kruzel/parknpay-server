@@ -1,60 +1,90 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>ParknpayServer</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio two Columns | VERSO HTML5 Responsive Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <%= stylesheet_link_tag "application", media: "all" %>
 
-  </head>
-  <body>
-    <%= render "/layouts/navigation" %>
+  <!--[if lt IE 7]>
+  <%= stylesheet_link_tag 'verso/font-awesome-ie7.min.css' %>
+  <![endif]-->
 
-    <div class="container" style="padding-top: 80px;">
-      <% unless flash.empty? %>
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, :class => "alert alert-#{name}", :data => {:alert => nil},:id => "flash_#{name}" do%>
-            <button type="button" class="close" data-dismiss="alert-#{name}">&times;</button>
-            <%= msg %>
-          <% end %>
-        <% end %>
-      <% end %>
+  <%= yield :stylesheets %>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Patua+One' %>
 
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <% @user.errors.full_messages.each do |msg| %>
-            <div class="alert alert-error">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <%= msg %>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
+  <![endif]-->
+  <!-- Le fav and touch icons -->
+
+  <%= favicon_link_tag %>
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/verso/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/verso/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/verso/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/assets/verso/apple-touch-icon-57-precomposed.png">
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<!--START MAIN-WRAPPER-->
+<div class="main-wrapper">
+
+<% if content_for? :page_header %>
+  <%= yield :page_header %>
+<% else %>
+
+<%= render 'navigation' %>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="shine">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span12">
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h1>Portfolio 3 columns with filter</h1>
+              <!-- BREADCRUMB -->
+              <ul class="breadcrumb">
+                <li><a href="#">Home</a> <span class="divider">&rarr;</span></li>
+                <li class="active">Portfolio 3 columns with filter</li>
+              </ul>
+              <!--END: BREADCRUMB -->
             </div>
-          <% end %>
+          </div>
         </div>
-      <% end %>
-
-      <% if user_signed_in? %>
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="/udashboard"><i class="icon-screenshot"></i>General</a></li>
-          <li><a href="/users/edit"><i class="icon-user"></i>Personal</a></li>
-          <li>
-            <%= link_to user_cars_path(@user) do %>
-              <%= content_tag(:i,"",:class=>"icon-road") %>
-              Cars
-            <%end%>
-          </li>
-          <li><a href="#"><i class="icon-briefcase"></i>Payment</a></li>
-          <li><a href="#"><i class="icon-time"></i>History</a></li>
-          <li><a href="#"><i class="icon-envelope"></i>messages</a></li>
-        </ul>
-      <%end%>
+      </div>
     </div>
+  </div>
+</div>
+<!-- PAGE HEADER -->
+<% end %>
 
-    <%= yield %>
+<!-- CONTENT CONTAINER-->
+<div class="container">
 
-    <%= render "/layouts/footer" %>
-  </body>
+  <%= yield %>
+
+</div>
+
+<%= render 'footer' %>
+
+</div>
+<!-- END: MAIN-WRAPPER-->
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<%= javascript_include_tag "application" %>
+
+<%= yield :scripts %>
+
+</body>
 </html>

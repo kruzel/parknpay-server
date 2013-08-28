@@ -1,0 +1,52 @@
+<%
+   show_all_label ||= 'Show All'
+   filters ||= []
+%>
+
+<!-- FILTER-->
+<!-- just add your TAG to data-filter="ADD HERE" -->
+<!-- and then add your same TAG to portfolio item class="ADD HERE" -->
+<div class="color-bottom-line center" data-no-turbolink>
+  <div class="line-proj center">
+    <div class="proj">
+      <div id="filters">
+        <a href="#" data-filter="*" class="ione-col active"><%= show_all_label %></a>
+        <% filters.each do |f| %>
+          <a href="#" data-filter="<%= f[:tag] %>" class=" ione-col"><%= f[:label] %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END: FILTER-->
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag "verso/jquery.isotope.min" %>
+
+  <script>
+    jQuery.noConflict()(function($){
+      var $container = $('.ufilter');
+
+      if($container.length) {
+        $container.waitForImages(function() {
+
+          // initialize isotope
+          $container.isotope({
+            itemSelector : '.box',
+            layoutMode : 'fitRows'
+          });
+
+          // filter items when filter link is clicked
+          $('#filters a').click(function(){
+            var selector = $(this).attr('data-filter');
+            $container.isotope({ filter: selector });
+            $(this).removeClass('active').addClass('active').siblings().removeClass('active all');
+
+            return false;
+          });
+
+        },null,true);
+      }});
+
+  </script>
+<% end %>

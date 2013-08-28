@@ -1,7 +1,9 @@
 class CarsController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
+  layout 'admin'
+
   # GET /cars
   # GET /cars.json
   def index

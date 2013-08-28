@@ -1,97 +1,130 @@
- 
-<div class="container" style="padding: 20px 0px;">
-
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :multipart => true ,:html => { :method => :put,:class => "form-horizontal" }) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="row-fluid">
-      <div class="span12">
-        
-        <div class="span6 well">
-          
-          <div class="control-group">
-            <%= f.label :email ,:class=>"control-label"%>
-            <div class="controls">
-              <%= f.email_field :email, :autofocus => true %>
-            </div>
+<%= form_for resource, as: resource_name, :multipart => true, url: registration_path(resource_name),
+             html: { method: :put, class: 'form-horizontal' } do |f| %>
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="accordion" id="accordionCalendar">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a style="text-align: left;text-decoration: none" class="accordion-toggle btn btn-primary"
+               data-toggle="collapse" data-parent="#accordion2" href="#collapseCalendar">
+              <i class="icon-calendar"></i> Edit Profile <i class="icon-minus pull-right"></i>
+            </a>
           </div>
+          <div id="collapseCalendar" class="accordion-body collapse in">
+            <div class="accordion-inner" style="background-color: #ffffff;">
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
+              <%= devise_error_messages! %>
+              <fieldset>
+                <legend>Edit <%= resource_name.to_s.humanize %></legend>
+                <div class="control-group">
+                  <%= f.label :email, class: 'control-label' %>
+                  <div class="controls">
+                    <%= f.email_field :email, :autofocus => true, placeholder: 'Email' %>
+                  </div>
+                </div>
 
-          <div class="control-group">
-            <%= f.label :"First name" ,:class=>"control-label" %>
-            <div class="controls">
-              <%= f.text_field :firstname , :placeholder=>"First name"%>
-            </div>
-          </div>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div class="control-group">
+                    <label class="control-label">Currently waiting confirmation for</label>
+                    <div class="controls">
+                      <span class="input-xlarge uneditable-input">
+                        <%= resource.unconfirmed_email %>
+                      </span>
+                    </div>
+                  </div>
+                <% end %>
 
-          <div class="control-group">
-            <%= f.label :"Last name" ,:class=>"control-label" %>
-            <div class="controls">
-              <%= f.text_field :lastname , :placeholder=>"Last name" %>
-            </div>
-          </div>
+                <div class="control-group">
+                  <%= f.label :"First name" ,:class => "control-label" %>
+                  <div class="controls">
+                    <%= f.text_field :firstname , :placeholder => "First name"%>
+                  </div>
+                </div>
 
-          <div class="control-group">
-            <%= f.label :"Street address" ,:class=>"control-label" %>
-            <div class="controls">
-              <%= f.text_field :address_st , :placeholder=>"Street address" %>
-            </div>
-          </div>
+                <div class="control-group">
+                  <%= f.label :"Last name", :class => "control-label" %>
+                  <div class="controls">
+                    <%= f.text_field :lastname, :placeholder => "Last name" %>
+                  </div>
+                </div>
 
-          <div class="control-group">
-            <%= f.label :"Profile picture" ,:class=>"control-label" %>
-            <div class="controls">
-              <%= f.file_field :avatar %>
-            </div>
-            <%= image_tag @user.avatar.url(:thumb),:class=>"img-rounded"  %>
-          </div>
+                <div class="control-group">
+                  <%= f.label :"Street address", :class => "control-label" %>
+                  <div class="controls">
+                    <%= f.text_field :address_st, :placeholder => "Street address" %>
+                  </div>
+                </div>
 
-          <div class="control-group">
-            <%= f.label :current_password ,:class=>"control-label"%> 
-            <div class="controls">
-              <%= f.password_field :current_password , :placeholder=>"Current password"%>
-            </div>
-            <p>(we need your current password to confirm your changes)</p>
-          </div>
+                <div class="control-group">
+                  <%= f.label :"Profile picture", :class => "control-label" %>
+                  <div class="controls">
+                    <%= f.file_field :avatar %>
+                    <div>
+                      <%= image_tag @user.avatar.url(:thumb), :class => "img-rounded"  %>
+                     </div>
+                  </div>
+                </div>
 
-          <div class="control-group">
-            <div class="controls">
-              <%= f.submit "Update" %>
-            </div>
-          </div>
-        </div>
-        <div class="span6 well">
-          <h2>Password change</h2>
-          <p>(leave blank if you don't want to change it)</p>
-          <div class="control-group">
-            <%= f.label :password ,:class=>"control-label"%> 
-            <div class="controls">
-              <%= f.password_field :password, :placeholder => "New password" %>
-            </div>
-          </div>
+                <div class="control-group">
+                  <%= f.label :current_password, class: 'control-label' %>
+                  <div class="controls">
+                    <%= f.password_field :current_password, :autocomplete => "off", :placeholder => 'Current password' %>
+                    <span class="help-block">we need your current password to confirm your changes</span>
+                  </div>
+                </div>
 
-          <div class="control-group">
-            <%= f.label :password_confirmation ,:class=>"control-label"%>
-            <div class="controls">
-              <%= f.password_field :password_confirmation , :placeholder=>"New Password confirmation"%>
+                <div class="form-actions">
+                  <%= f.submit "Update", class: 'btn btn-primary' %>
+                </div>
+              </fieldset>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="span6">
+      <div class="accordion" id="accordionCalendar">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a style="text-align: left;text-decoration: none" class="accordion-toggle btn btn-primary"
+               data-toggle="collapse" data-parent="#accordion2" href="#collapseCalendar">
+              <i class="icon-calendar"></i> Password change <i class="icon-minus pull-right"></i>
+            </a>
+          </div>
+          <div id="collapseCalendar" class="accordion-body collapse in">
+            <div class="accordion-inner" style="background-color: #ffffff;">
 
-  <% end %>
+              <fieldset>
+                <legend>Password Change</legend>
 
+                <div class="control-group">
+                  <%= f.label :password, class: 'control-label' %>
+                  <div class="controls">
+                    <%= f.password_field :password, :autocomplete => "off", :placeholder => 'New password' %>
+                    <span class="help-block">leave blank if you don't want to change it</span>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :password_confirmation, class: 'control-label' %>
+                  <div class="controls">
+                    <%= f.password_field :password_confirmation, :autocomplete => "off", :placeholder => 'New password confirmation' %>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row-fluid">
   <h3>Cancel my account</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-  <%= render "/users/shared/links" %>
-  <%= link_to "Back", :back %>
-
-
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: 'btn btn-primary' %></p>
 </div>
+
+<%= render "/users/shared/links" %>
+<%= link_to "Back", :back %>

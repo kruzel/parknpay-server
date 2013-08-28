@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    udashboard_path
+    dashboard_admin_pages_path
   end
-  
+
   protected
 
   def load_vars

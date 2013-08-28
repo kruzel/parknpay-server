@@ -11,34 +11,35 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :user ,:class=>"control-label"%>
+    <%= f.label :user ,:class => "control-label"%>
     <div class="controls">
-      <%=  @car.user.email %>
+      <span class="input-large uneditable-input"><%=  @car.user.email %></span>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :license_plate ,:class=>"control-label"%>
+    <%= f.label :license_plate, :class => "control-label"%>
     <div class="controls">
-      <%= f.text_field :license_plate , :placeholder=>"Street address"%>
+      <%= f.text_field :license_plate, :placeholder => "License Plate"%>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :car_description ,:class=>"control-label"%>
+    <%= f.label :car_description,:class => "control-label"%>
     <div class="controls">
-      <%= f.text_field :car_description , :placeholder=>"Street address"%>
+      <%= f.text_field :car_description, :placeholder => "Car Description"%>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :car_image ,:class=>"control-label"%>
+    <%= f.label :car_image ,:class => "control-label"%>
     <div class="controls">
-      <%= f.file_field  :car_image%>
+      <%= f.file_field :car_image %>
+      <div>
+        <%= image_tag @car.car_image.url(:thumb), :class => "img-rounded"  %>
+      </div>
     </div>
   </div>
 
 
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit %>
-    </div>
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

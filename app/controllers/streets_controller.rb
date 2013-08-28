@@ -92,7 +92,7 @@ class StreetsController < ApplicationController
     end
 
     @street = Street.find(params[:id])
-    @street.area = Area.find(params[:area_id])
+    @street.area = Area.find(params[:id])
 
     respond_to do |format|
       if @street.update_attributes(params[:street])

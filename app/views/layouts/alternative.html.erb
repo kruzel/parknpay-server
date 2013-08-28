@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio two Columns | VERSO HTML5 Responsive Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <%= stylesheet_link_tag "application", media: "all" %>
+
+  <!--[if lt IE 7]>
+  <%= stylesheet_link_tag "verso/font-awesome-ie7.min.css" %>
+  <![endif]-->
+
+  <%= yield :stylesheets %>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Patua+One' %>
+
+  <%= stylesheet_link_tag "verso/parallax_slider/style.css" %>
+  <noscript>
+    <%= stylesheet_link_tag "verso/parallax_slider/nojs.css" %>
+  </noscript>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
+  <![endif]-->
+  <!-- Le fav and touch icons -->
+
+  <%= favicon_link_tag %>
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon-57-precomposed.png">
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<!--START MAIN-WRAPPER-->
+<div class="main-wrapper">
+
+<!-- START HEADER headertop -->
+<div class="headertop needhead">
+  <!-- BLURED BACKGROUND-->
+  <div class="action-banner-bg"></div>
+  <!-- END BLURED BACKGROUND-->
+
+  <!-- PIXEL BG DOTTS UNDER BLURED BACKGROUND-->
+  <div class="action-banner-bg-top"></div>
+  <!-- END PIXEL BG DOTTS UNDER BLURED BACKGROUND-->
+
+  <%= render 'navigation' %>
+
+  <%= yield :slider %>
+
+  <!-- SOCIAL PANEL UNDER MENU-->
+  <div class="top-soc hidden-phone">
+    <div class="container">
+      <div class="row">
+        <ul class="social-top">
+          <li><a href="#" title="">
+            <i class="fa-icon-facebook"></i>
+          </a>
+          </li>
+          <li>
+            <a href="#" title="">
+              <i class="fa-icon-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" title="">
+              <i class="fa-icon-github-alt"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" title="">
+              <i class="fa-icon-google-plus"></i>
+            </a>
+          </li>
+          <li>
+            <a href="sitemap.html" title="">
+              <i class="fa-icon-sitemap"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--END SOCIAL PANEL UNDER MENU-->
+</div>
+<!-- END HEADER headertop -->
+
+<!-- CONTENT CONTAINER-->
+<div class="container">
+
+  <%= yield %>
+
+</div>
+
+<%= render 'footer' %>
+
+</div>
+<!-- END: MAIN-WRAPPER-->
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<%= javascript_include_tag 'verso/modernizr.custom.79639.js' %>
+<%= javascript_include_tag "application" %>
+
+<!-- SLIDER -->
+<script type="text/javascript">
+  jQuery(document).ready(function ($) {
+
+    $('#da-slider').cslider({
+      autoplay: true,
+      bgincrement: 50
+    });
+
+  });
+</script>
+<!--END: SLIDER -->
+
+<!--PORTFOLIO SLIDER -->
+<script>
+  // Can also be used with jQuery(document).ready()
+  jQuery(window).load(function () {
+    jQuery('.portfolio_rotator').flexslider({
+      animation: 'slide',
+      animationLoop: false,
+      useCSS: false,
+      controlNav: false,
+      controlsContainer: '.portfolio-controls',
+      easing: 'easeInOutSine',
+      animationSpeed: '500',
+      touch: true,
+      minItems: 1,
+      maxItems: 30,
+      mousewheel: false,
+      pauseOnHover: true,
+      itemWidth: 170,
+      itemMargin: 30,
+      move: 1
+    });
+  });
+
+</script>
+
+<!--END: SLIDER -->
+
+<!--CLIENT SLIDER -->
+<script>
+  // Can also be used with jQuery(document).ready()
+  jQuery(window).load(function () {
+    jQuery('.clients_rotator_widget_wrap').flexslider({
+      animation: 'slide',
+      animationLoop: false,
+      useCSS: false,
+      controlNav: false,
+      controlsContainer: '.flex-controls-cl',
+      easing: 'easeInOutSine',
+      animationSpeed: '200',
+      touch: true,
+      minItems: 1,
+      maxItems: 30,
+      itemWidth: 170,
+      itemMargin: 30,
+      mousewheel: false,
+      pauseOnHover: true,
+      move: 5
+    });
+  });
+
+</script>
+
+<%= yield :scripts %>
+
+</body>
+</html>

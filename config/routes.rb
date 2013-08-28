@@ -1,4 +1,4 @@
-ParknpayServer::Application.routes.draw do
+Verso::Application.routes.draw do
 
   devise_for :users, controllers: { sessions: "sessions", registrations: "registrations" }
 
@@ -17,9 +17,6 @@ ParknpayServer::Application.routes.draw do
           get :get_rates
         end
         resources :areas do
-          collection do
-            get :find_by_street
-          end
           resources :streets
           resources :rates
         end
@@ -39,7 +36,66 @@ ParknpayServer::Application.routes.draw do
   match '/api/v1/users/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
   match '/api/v1/users/:user_id/cars/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
   match '/api/v1/payments/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
- 
+
+
+  # new routes
+  resources :admin_pages, only: [] do
+    collection do
+      get 'sign_in'
+      get 'dashboard'
+      get 'tables'
+      get 'elements'
+      get 'media'
+      get 'forms'
+      get 'grid'
+      get 'buttons'
+      get 'notification'
+      get 'calendar'
+      get 'chat'
+      get 'charts'
+      get 'profile'
+    end
+  end
+
+  resource :portfolio, only: [] do
+    collection do
+      get 'two_column'
+      get 'three_column'
+      get 'four_column'
+      get 'single'
+      get 'video'
+      get 'alternative_slider'
+    end
+  end
+
+  get 'pricing' => 'pricings#index'
+
+  resources :pages, only: [] do
+    collection do
+      get 'about_us'
+      get 'contact_us'
+      get 'team'
+      get 'features'
+      get 'components'
+      get 'sitemap'
+      get 'error_404'
+    end
+  end
+
+  resource :blog, only: [] do
+    collection do
+      get 'single'
+      get 'category'
+      get 'category_alternative'
+      get 'pinterest'
+    end
+  end
+
+  root to: 'pages#home'
+
+
+  # old routes
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -98,7 +154,7 @@ ParknpayServer::Application.routes.draw do
   root :to => 'home#index'
 
   mount_sextant if Rails.env.development?
-  match '*not_found' => 'errors#handle404'
+  #match '*not_found' => 'errors#handle404'
   
   # See how all your routes lay out with "rake routes"
 
