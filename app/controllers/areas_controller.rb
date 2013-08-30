@@ -118,4 +118,13 @@ class AreasController < ApplicationController
     end
   end
 =end
+
+  def find_by_street
+    @area = Street.where('name = ?', params[:street_name])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @area }
+    end
+  end
 end
