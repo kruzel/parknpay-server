@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', '0.3.11'
 gem 'rake'
 gem 'fb_graph', '~> 2.7.7'
 
@@ -28,7 +28,7 @@ gem 'cancan', '~> 1.6.10'
 gem "paperclip", "~> 3.0"
 
 # To use debugger
-gem 'debugger'
+gem 'debugger', '1.6.0'
 
 gem 'apipie-rails', '~> 0.0.22'
 
