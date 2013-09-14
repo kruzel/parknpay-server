@@ -57,20 +57,18 @@ Verso::Application.routes.draw do
     end
   end
 
-  resource :portfolio, only: [] do
+  resource :features, only: [] do
     collection do
-      get 'two_column'
-      get 'three_column'
-      get 'four_column'
-      get 'single'
-      get 'video'
-      get 'alternative_slider'
+      get 'driver_app'
+      get 'driver_dashboard'
+      get 'owner_app'
+      get 'owner_dashboard'
     end
   end
 
   get 'pricing' => 'pricings#index'
 
-  resources :pages, only: [] do
+  resources :abouts, only: [] do
     collection do
       get 'about_us'
       get 'contact_us'
@@ -82,6 +80,7 @@ Verso::Application.routes.draw do
     end
   end
 
+=begin
   resource :blog, only: [] do
     collection do
       get 'single'
@@ -90,8 +89,9 @@ Verso::Application.routes.draw do
       get 'pinterest'
     end
   end
+=end
 
-  root to: 'pages#home'
+  root to: 'abouts#home'
 
 
   # old routes
@@ -107,7 +107,7 @@ Verso::Application.routes.draw do
   match "/udashboard/update" => "u_dashboard#update"
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
-  match 'about' => 'about#index'
+  match 'abouts' => 'abouts#index'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
@@ -151,7 +151,7 @@ Verso::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  #root :to => 'home#index'
 
   mount_sextant if Rails.env.development?
   #match '*not_found' => 'errors#handle404'

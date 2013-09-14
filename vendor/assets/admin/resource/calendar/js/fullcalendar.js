@@ -2375,7 +2375,7 @@ function BasicView(element, calendar, viewName) {
 	
 	
 	function dayClick(ev) {
-		if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
+		if (!opt('selectable')) { // if selectable, SelectionManager will worry abouts dayClick
 			var index = parseInt(this.className.match(/fc\-day(\d+)/)[1]); // TODO: maybe use .data
 			var date = indexDate(index);
 			trigger('dayClick', this, date, true, ev);
@@ -2546,7 +2546,7 @@ function BasicView(element, calendar, viewName) {
 	
 	function _cellDate(row, col) {
 		return addDays(cloneDate(t.visStart), row*7 + col*dis+dit);
-		// what about weekends in middle of week?
+		// what abouts weekends in middle of week?
 	}
 	
 	
@@ -3235,7 +3235,7 @@ function AgendaView(element, calendar, viewName) {
 	
 	
 	function slotClick(ev) {
-		if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
+		if (!opt('selectable')) { // if selectable, SelectionManager will worry abouts dayClick
 			var col = Math.min(colCnt-1, Math.floor((ev.pageX - dayTable.offset().left - axisWidth) / colWidth));
 			var date = colDate(col);
 			var rowMatch = this.parentNode.className.match(/fc-slot(\d+)/); // TODO: maybe use data

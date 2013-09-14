@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725000254) do
+ActiveRecord::Schema.define(:version => 20130725151319) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -79,13 +79,14 @@ ActiveRecord::Schema.define(:version => 20130725000254) do
   create_table "rates", :force => true do |t|
     t.float    "rate"
     t.string   "currency"
-    t.integer  "area_id",                       :null => false
-    t.boolean  "archive",    :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "area_id",                             :null => false
+    t.boolean  "archive",          :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.time     "start_time"
     t.time     "end_time"
-    t.integer  "day_a_week"
+    t.integer  "start_day_a_week"
+    t.integer  "end_day_a_week"
   end
 
   add_index "rates", ["area_id"], :name => "index_rates_on_area_id"

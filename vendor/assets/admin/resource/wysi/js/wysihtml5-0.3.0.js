@@ -1668,7 +1668,7 @@ rangy.createModule("DomUtil", function(api, module) {
             },
 
             selectNodeContents: function(node) {
-                // This doesn't seem well specified: the spec talks only about selecting the node's contents, which
+                // This doesn't seem well specified: the spec talks only abouts selecting the node's contents, which
                 // could be taken to mean only its children. However, browsers implement this the same as selectNode for
                 // text nodes, so I shall do likewise
                 assertNotDetached(this);
@@ -3163,7 +3163,7 @@ rangy.createModule("DomUtil", function(api, module) {
             for (var i = 0, len = ranges.length; i < len; ++i) {
                 ranges[i].deleteContents();
             }
-            // The HTML5 spec says nothing about what the selection should contain after calling deleteContents on each
+            // The HTML5 spec says nothing abouts what the selection should contain after calling deleteContents on each
             // range. Firefox moves the selection to where the final selected range was, so we emulate that
             this.addRange(ranges[len - 1]);
         }
@@ -3451,7 +3451,7 @@ wysihtml5.browser = (function() {
 
     /**
      * IE6+7 throw a mixed content warning when the src of an iframe
-     * is empty/unset or about:blank
+     * is empty/unset or abouts:blank
      * window.querySelector is implemented as of IE8
      */
     throwsMixedContentWarningWhenIframeSrcIsEmpty: function() {

@@ -15,19 +15,20 @@
               <li class="active"><a href="<%= root_url %>">Home</a> </li>
 
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Portfolio
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Features
                   <b class="caret"></b>
                 </a>
-
                 <ul class="dropdown-menu">
-                  <li><a href="<%= two_column_portfolio_path %>">Two Column</a></li>
-                  <li><a href="<%= three_column_portfolio_path %>">Three Column</a></li>
-                  <li><a href="<%= four_column_portfolio_path %>">Four Column</a></li>
-                  <li><a href="<%= single_portfolio_path %>">Portfolio single</a></li>
-                  <li class="dropdown-submenu"> <a tabindex="-1" href="#">More options</a>
+                  <li class="dropdown-submenu"> <a tabindex="-1" href="#">Driver</a>
                     <ul class="">
-                      <li><a tabindex="-1" href="<%= video_portfolio_path %>">Video project</a></li>
-                      <li><a tabindex="-1" href="<%= alternative_slider_portfolio_path %>">Alternative slider</a></li>
+                      <li><a tabindex="-1" href="<%= driver_app_features_path %>">Mobile Application</a></li>
+                      <li><a tabindex="-1" href="<%= driver_dashboard_features_path %>">Dashboard</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu"> <a tabindex="-1" href="#">Owner</a>
+                    <ul class="">
+                      <li><a tabindex="-1" href="<%= owner_app_features_path %>">Inspector Mobile Application</a></li>
+                      <li><a tabindex="-1" href="<%= owner_dashboard_features_path %>">Dashboard</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -37,22 +38,13 @@
                   <li><a href="<%= pricing_path %>">Pricing tables</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"> Pages <b class="caret"></b></a>
+              <li class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"> About <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<%= about_us_pages_path %>">About & FAQ</a></li>
-                  <li><a href="<%= contact_us_pages_path %>">Contact Us</a></li>
-                  <li><a href="<%= team_pages_path %>">Team</a></li>
-                  <li><a href="<%= features_pages_path %>">Features</a></li>
+                  <li><a href="<%= about_us_abouts_path %>">About & FAQ</a></li>
+                  <li><a href="<%= contact_us_abouts_path %>">Contact Us</a></li>
+                  <li><a href="<%= team_abouts_path %>">Team</a></li>
+                  <li><a href="<%= features_abouts_path %>">Features</a></li>
 
-                </ul>
-              </li>
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> Blog <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-
-                  <li><a href="<%= single_blog_path %>">Blog Single Page</a></li>
-                  <li><a href="<%= category_blog_path %>">Blog category</a></li>
-                  <li><a href="<%= category_alternative_blog_path %>">Blog category alt</a></li>
-                  <li><a href="<%= pinterest_blog_path %>">Pinterest style</a></li>
                 </ul>
               </li>
 

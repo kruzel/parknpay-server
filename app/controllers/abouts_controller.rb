@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class PagesController < ApplicationController
+class AboutsController < ApplicationController
   def home
     render layout: 'alternative'
   end

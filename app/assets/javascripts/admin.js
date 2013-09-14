@@ -8,7 +8,7 @@
 // compiled file.
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
+// abouts supported directives.
 //
 //= require admin/jquery
 //= require jquery_ujs
