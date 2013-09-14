@@ -99,9 +99,7 @@ Verso::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-  
-  match "/udashboard" => "u_dashboard#index"
-  match "/udashboard/update" => "u_dashboard#update"
+
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
   match 'abouts' => 'abouts#index'
