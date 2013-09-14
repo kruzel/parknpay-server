@@ -1,3 +1,13 @@
+<% content_for :page_header do %>
+    <h1>Team</h1>
+    <!-- BREADCRUMB -->
+    <ul class="breadcrumb">
+      <li><a href="/abouts/home.html">Home</a> <span class="divider">&rarr;</span></li>
+      <li class="active">Team</li>
+    </ul>
+    <!--END: BREADCRUMB -->
+<% end %>
+
 <%= render 'filter', filters: [{ label: 'Administration', tag: '.administration' },
                                { label: 'Support', tag: '.support' },
                                { label: 'Design', tag: '.design' }],

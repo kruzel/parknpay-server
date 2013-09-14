@@ -36,10 +36,6 @@
 <!--START MAIN-WRAPPER-->
 <div class="main-wrapper">
 
-<% if content_for? :page_header %>
-  <%= yield :page_header %>
-<% else %>
-
 <%= render 'navigation' %>
 
 <!-- PAGE HEADER -->
@@ -51,13 +47,17 @@
 
           <div class="row-fluid">
             <div class="span12">
-              <h1>Portfolio 3 columns with filter</h1>
-              <!-- BREADCRUMB -->
-              <ul class="breadcrumb">
-                <li><a href="#">Home</a> <span class="divider">&rarr;</span></li>
-                <li class="active">Portfolio 3 columns with filter</li>
-              </ul>
-              <!--END: BREADCRUMB -->
+              <% if content_for? :page_header %>
+                  <%= yield :page_header %>
+              <% else %>
+                  <h1>OzPark</h1>
+                  <!-- BREADCRUMB -->
+                  <ul class="breadcrumb">
+                    <li><a href="#">Home</a> <span class="divider">&rarr;</span></li>
+
+                  </ul>
+                  <!--END: BREADCRUMB -->
+              <% end %>
             </div>
           </div>
         </div>
@@ -66,7 +66,6 @@
   </div>
 </div>
 <!-- PAGE HEADER -->
-<% end %>
 
 <!-- CONTENT CONTAINER-->
 <div class="container">
