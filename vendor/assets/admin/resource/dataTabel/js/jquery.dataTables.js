@@ -383,7 +383,7 @@
                     {
                         if ( typeof aTargets[j] === 'number' && aTargets[j] >= 0 )
                         {
-                            /* Add columns that we don't yet know abouts */
+                            /* Add columns that we don't yet know about */
                             while( oSettings.aoColumns.length <= aTargets[j] )
                             {
                                 _fnAddColumn( oSettings );
@@ -438,12 +438,12 @@
         {
             var oCol;
 
-            /* Take an independent copy of the data source so we can bash it abouts as we wish */
+            /* Take an independent copy of the data source so we can bash it about as we wish */
             var aDataIn = ($.isArray(aDataSupplied)) ?
                 aDataSupplied.slice() :
                 $.extend( true, {}, aDataSupplied );
 
-            /* Create the object for storing information abouts this new row */
+            /* Create the object for storing information about this new row */
             var iRow = oSettings.aoData.length;
             var oData = $.extend( true, {}, DataTable.models.oRow );
             oData._aData = aDataIn;
@@ -2385,7 +2385,7 @@
          */
         function _fnUpdateInfo ( oSettings )
         {
-            /* Show information abouts the table */
+            /* Show information about the table */
             if ( !oSettings.oFeatures.bInfo || oSettings.aanFeatures.i.length === 0 )
             {
                 return;
@@ -5732,7 +5732,7 @@
         /**
          * Change the pagination - provides the internal logic for pagination in a simple API
          * function. With this function you can have a DataTables table go to the next,
-         * previous, first or last abouts.
+         * previous, first or last pages.
          *  @param {string|int} mAction Paging action to take: "first", "previous", "next" or "last"
          *    or page number to jump to (integer), note that page 0 is the first page.
          *  @param {bool} [bRedraw=true] Redraw the table or not
@@ -6442,7 +6442,7 @@
 
             if ( bStripeRemove )
             {
-                /* Store the classes which we are abouts to remove so they can be readded on destroy */
+                /* Store the classes which we are about to remove so they can be readded on destroy */
                 oSettings.asDestroyStripes = [ '', '' ];
                 if ( $(anRows[0]).hasClass(oSettings.oClasses.sStripeOdd) )
                 {
@@ -7276,7 +7276,7 @@
 
 
         /**
-         * Store information for DataTables to access globally abouts other instances
+         * Store information for DataTables to access globally about other instances
          *  @namespace
          *  @private
          */
@@ -7290,7 +7290,7 @@
 
 
     /**
-     * Template object for the way in which DataTables holds information abouts
+     * Template object for the way in which DataTables holds information about
      * search information for the global filter and individual column filters.
      *  @namespace
      */
@@ -7330,7 +7330,7 @@
 
 
     /**
-     * Template object for the way in which DataTables holds information abouts
+     * Template object for the way in which DataTables holds information about
      * each individual row. This is the object format used for the settings
      * aoData array.
      *  @namespace
@@ -7396,7 +7396,7 @@
     /**
      * Template object for the column information object in DataTables. This object
      * is held in the settings aoColumns array and contains all the information that
-     * DataTables needs abouts each individual column.
+     * DataTables needs about each individual column.
      *
      * Note that this object is related to {@link DataTable.defaults.columns}
      * but this one is the internal data store for DataTables's cache of columns.
@@ -7789,7 +7789,7 @@
 
         /**
          * The aoColumns option in the initialisation parameter allows you to define
-         * details abouts the way individual columns behave. For a full list of
+         * details about the way individual columns behave. For a full list of
          * column options that can be set, please see
          * {@link DataTable.defaults.columns}. Note that if you use aoColumns to
          * define your columns, you must have an entry in the array for every single
@@ -7952,8 +7952,8 @@
 
         /**
          * Enable or disable the table information display. This shows information
-         * abouts the data that is currently visible on the page, including information
-         * abouts filtered data if that action is being performed.
+         * about the data that is currently visible on the page, including information
+         * about filtered data if that action is being performed.
          *  @type boolean
          *  @default true
          *  @dtopt Features
@@ -8287,7 +8287,7 @@
 
         /**
          * This function is called on every 'draw' event, and allows you to
-         * dynamically modify any aspect you want abouts the created DOM.
+         * dynamically modify any aspect you want about the created DOM.
          *  @type function
          *  @param {object} oSettings DataTables settings object
          *  @dtopt Callbacks
@@ -8390,7 +8390,7 @@
         /**
          * This function is called on every 'draw' event, and allows you to
          * dynamically modify the header row. This can be used to calculate and
-         * display useful information abouts the table.
+         * display useful information about the table.
          *  @type function
          *  @param {node} nHead "TR" element for the header
          *  @param {array} aData Full table data (as derived from the original HTML)
@@ -8415,7 +8415,7 @@
 
 
         /**
-         * The information element can be used to convey information abouts the current
+         * The information element can be used to convey information about the current
          * state of the table. Although the internationalisation options presented by
          * DataTables are quite capable of dealing with most customisations, there may
          * be times where you wish to customise the string further. This callback
@@ -9078,7 +9078,7 @@
 
 
             /**
-             * This string gives information to the end user abouts the information that
+             * This string gives information to the end user about the information that
              * is current on display on the page. The _START_, _END_ and _TOTAL_
              * variables are all dynamically replaced as the table display updates, and
              * can be freely moved or removed as the language requirements change.
@@ -10587,21 +10587,21 @@
         "aiDisplayMaster": [],
 
         /**
-         * Store information abouts each column that is in use
+         * Store information about each column that is in use
          *  @type array
          *  @default []
          */
         "aoColumns": [],
 
         /**
-         * Store information abouts the table's header
+         * Store information about the table's header
          *  @type array
          *  @default []
          */
         "aoHeader": [],
 
         /**
-         * Store information abouts the table's footer
+         * Store information about the table's footer
          *  @type array
          *  @default []
          */
@@ -10816,7 +10816,7 @@
         "bInitialised": false,
 
         /**
-         * Information abouts open rows. Each object in the array has the parameters
+         * Information about open rows. Each object in the array has the parameters
          * 'nTr' and 'nParent'
          *  @type array
          *  @default []
@@ -11403,7 +11403,7 @@
 
         /*
          * Variable: iFullNumbersShowPages
-         * Purpose:  Change the number of abouts which can be seen
+         * Purpose:  Change the number of pages which can be seen
          * Scope:    jQuery.fn.dataTableExt.oPagination
          */
         "iFullNumbersShowPages": 5,
@@ -11416,7 +11416,7 @@
         "full_numbers": {
             /*
              * Function: oPagination.full_numbers.fnInit
-             * Purpose:  Initialise dom elements required for pagination with a list of the abouts
+             * Purpose:  Initialise dom elements required for pagination with a list of the pages
              * Returns:  -
              * Inputs:   object:oSettings - dataTables settings object
              *           node:nPaging - the DIV which contains this pagination control
@@ -11748,7 +11748,7 @@
     $.fn.dataTableExt = DataTable.ext;
 
 
-    // Information abouts events fired by DataTables - for documentation.
+    // Information about events fired by DataTables - for documentation.
     /**
      * Draw event, fired whenever the table is redrawn on the page, at the same point as
      * fnDrawCallback. This may be useful for binding events or performing calculations when

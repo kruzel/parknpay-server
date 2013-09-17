@@ -8,7 +8,7 @@
 // compiled file.
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// abouts supported directives.
+// about supported directives.
 //
 //= require verso/jquery-1.7.1.min
 //= require jquery_ujs

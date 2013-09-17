@@ -723,7 +723,7 @@
 
     /*!
      * David Desandro's imagesloaded plugin is included here as a cross-browser way to ensure all images have loaded before slider setup (e.g. testing for image dimensions)
-     * Another reliable method would be to wait until the window.load event before setup - though that could cause considerable delays on certain abouts
+     * Another reliable method would be to wait until the window.load event before setup - though that could cause considerable delays on certain pages
      *
      * jQuery imagesLoaded plugin v2.0.1
      * http://github.com/desandro/imagesloaded
