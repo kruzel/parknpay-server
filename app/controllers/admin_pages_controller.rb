@@ -9,7 +9,7 @@ class AdminPagesController < ApplicationController
   end
 
   def tables
-
+	@billing_hist_data = Payment.order('start_time DESC').all
   end
 
   def elements
