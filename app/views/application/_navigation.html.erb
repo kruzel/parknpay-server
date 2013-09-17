@@ -12,33 +12,30 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
 
-              <li class="active"><a href="<%= root_url %>">Home</a> </li>
+              <li id="home-nav" ><a href="<%= root_url %>">Home</a> </li>
 
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Features
-                  <b class="caret"></b>
-                </a>
+              <li id="driver-nav" class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"> Driver <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="dropdown-submenu"> <a tabindex="-1" href="#">Driver</a>
-                    <ul class="">
-                      <li><a tabindex="-1" href="<%= driver_app_features_path %>">Mobile Application</a></li>
-                      <li><a tabindex="-1" href="<%= driver_dashboard_features_path %>">Dashboard</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu"> <a tabindex="-1" href="#">Owner</a>
-                    <ul class="">
-                      <li><a tabindex="-1" href="<%= owner_app_features_path %>">Inspector Mobile Application</a></li>
-                      <li><a tabindex="-1" href="<%= owner_dashboard_features_path %>">Dashboard</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="<%= driver_app_features_path %>">Mobile Application</a></li>
+                  <li><a href="<%= driver_dashboard_features_path %>">Dashboard</a></li>
+
                 </ul>
               </li>
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> Pricing <b class="caret"></b></a>
+
+              <li id="owner-nav" class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"> Owner <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<%= owner_app_features_path %>">Inspector Mobile Application</a></li>
+                  <li><a href="<%= driver_dashboard_features_path %>">Dashboard</a></li>
+
+                </ul>
+              </li>
+
+              <!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> Pricing <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="<%= pricing_path %>">Pricing tables</a></li>
                 </ul>
-              </li>
-              <li class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"> About <b class="caret"></b></a>
+              </li>-->
+              <li id="about-nav" class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"> About <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="<%= about_us_abouts_path %>">About & FAQ</a></li>
                   <li><a href="<%= contact_us_abouts_path %>">Contact Us</a></li>
