@@ -73,6 +73,7 @@ Verso::Application.routes.draw do
       get 'about_us'
       get 'contact_us'
       get 'team'
+      get 'home'
       get 'error_404'
     end
   end

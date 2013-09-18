@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   
     before_filter :authenticate_user!
 
+    layout 'admin'
   
   # GET /payments
   # GET /payments.json

@@ -7,6 +7,8 @@ class Ability
       when 'superadmin'
         can :manage, :all
       when 'admin'
+        can :manage, :all
+      when 'owner'
         # can ...
       when 'user'
         # can ...
