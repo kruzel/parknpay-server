@@ -9,7 +9,7 @@ class Ability
       when 'admin'
         can :manage, :all
       when 'owner'
-        # can ...
+        can :manage, :all
       when 'inspector'
         can :manage, :all
       when 'user'
