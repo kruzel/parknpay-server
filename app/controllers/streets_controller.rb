@@ -1,4 +1,7 @@
 class StreetsController < ApplicationController
+  load_and_authorize_resource
+  layout 'admin'
+
   # GET /streets
   # GET /streets.json
   def index
@@ -24,14 +27,6 @@ class StreetsController < ApplicationController
   # GET /streets/new
   # GET /streets/new.json
   def new
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @street = Street.new
     @street.area = Area.find(params[:area_id])
 
@@ -43,14 +38,6 @@ class StreetsController < ApplicationController
 
   # GET /streets/1/edit
   def edit
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @street = Street.find(params[:id])
     @street.area = Area.find(params[:area_id])
   end
@@ -58,14 +45,6 @@ class StreetsController < ApplicationController
   # POST /streets
   # POST /streets.json
   def create
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @street = Street.new(params[:street])
     @street.area = Area.find(params[:area_id])
 
@@ -83,14 +62,6 @@ class StreetsController < ApplicationController
   # PUT /streets/1
   # PUT /streets/1.json
   def update
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @street = Street.find(params[:id])
     @street.area = Area.find(params[:area_id])
 

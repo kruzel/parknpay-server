@@ -10,8 +10,16 @@ class Ability
         can :manage, :all
       when 'owner'
         # can ...
+      when 'inspector'
+        can :manage, :all
       when 'user'
-        # can ...
+        can :manage, :Payment
+        can :manage, :User
+        can :manage, :Car
+        can :read, :City
+        can :read, :Area
+        can :read, :Street
+        can :read, :Rate
       else
         # guest user
     end

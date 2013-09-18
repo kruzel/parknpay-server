@@ -1,4 +1,8 @@
 class CreditorsController < ApplicationController
+
+  load_and_authorize_resource
+  layout 'admin'
+
   # GET /creditors
   # GET /creditors.json
   def index
@@ -24,14 +28,6 @@ class CreditorsController < ApplicationController
   # GET /creditors/new
   # GET /creditors/new.json
   def new
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @creditor = Creditor.new
 
     respond_to do |format|
@@ -42,29 +38,13 @@ class CreditorsController < ApplicationController
 
   # GET /creditors/1/edit
   def edit
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @creditor = Creditor.find(params[:id])
   end
 
   # POST /creditors
   # POST /creditors.json
   def create
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
-    @creditor = Creditor.new(params[:creditor])
+   @creditor = Creditor.new(params[:creditor])
 
     respond_to do |format|
       if @creditor.save
@@ -80,14 +60,6 @@ class CreditorsController < ApplicationController
   # PUT /creditors/1
   # PUT /creditors/1.json
   def update
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @creditor = Creditor.find(params[:id])
 
     respond_to do |format|

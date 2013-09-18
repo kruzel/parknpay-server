@@ -1,4 +1,7 @@
 class RatesController < ApplicationController
+  load_and_authorize_resource
+  layout 'admin'
+
   # GET /rates
   # GET /rates.json
   def index
@@ -24,14 +27,6 @@ class RatesController < ApplicationController
   # GET /rates/new
   # GET /rates/new.json
   def new
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @rate = Rate.new
     @rate.area = Area.find(params[:area_id])
 
@@ -43,14 +38,6 @@ class RatesController < ApplicationController
 
   # GET /rates/1/edit
   def edit
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @rate = Rate.find(params[:id])
     @rate.area = Area.find(params[:area_id])
   end
@@ -58,14 +45,6 @@ class RatesController < ApplicationController
   # POST /rates
   # POST /rates.json
   def create
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @rate = Rate.new(params[:rate])
     @rate.area = Area.find(params[:area_id])
 
@@ -83,14 +62,6 @@ class RatesController < ApplicationController
   # PUT /rates/1
   # PUT /rates/1.json
   def update
-    unless current_user.try(:admin?) || current_user.try(:customer?)
-      respond_to do |format|
-        format.html { render :file => 'public/401.html' }
-        format.json { render :status => 401 }
-      end
-      return
-    end
-
     @rate = Rate.find(params[:id])
     @rate.area = Area.find(params[:area_id])
 

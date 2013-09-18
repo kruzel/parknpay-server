@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725151319) do
+ActiveRecord::Schema.define(:version => 20130918220255) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -128,9 +128,6 @@ ActiveRecord::Schema.define(:version => 20130725151319) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "terms_of_service"
-    t.boolean  "inspector"
-    t.boolean  "customer"
-    t.boolean  "admin"
     t.string   "role",                   :default => "user"
   end
 
