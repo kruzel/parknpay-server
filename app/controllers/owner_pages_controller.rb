@@ -5,7 +5,7 @@ class OwnerPagesController < ApplicationController
   end
 
   #load_and_authorize_resource
-  layout 'admin'
+  layout 'owner'
 
   def dashboard
 
