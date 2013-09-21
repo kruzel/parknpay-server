@@ -2,7 +2,7 @@ class AdminPagesController < ApplicationController
 
   before_filter do
     :authenticate_user!
-    redirect_to dashboard_owner_pages_url if current_user.role != "user"
+    #redirect_to dashboard_owner_pages_url if current_user.role != "user"
   end
 
   layout 'admin'

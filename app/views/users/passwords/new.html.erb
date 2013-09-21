@@ -1,21 +1,3 @@
-<%= render "/layouts/navigation" %>
-
-
-<div class="container">
-
-  <ul class="nav nav-tabs" id="myTab">
-    <li class="active"><a href="#Personal">Personal</a></li>
-    <li><a href="#Cars">Cars</a></li>
-    <li><a href="#Payment">Payment</a></li>
-    <li><a href="#History">History</a></li>
-  </ul>
-
-  <div class="tab-content">
-    <div class="tab-pane active" id="Personal">
-      <h2>Personal information</h2>
-
-<h2>Forgot your password?</h2>
-
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -27,20 +9,3 @@
 
 <%= render "/users/shared/links" %>
 <%= link_to "Back", :back %>
-
-
-</div>
-<div class="tab-pane" id="Cars">List of cars</div>
-<div class="tab-pane" id="Payment">Credit card information</div>
-<div class="tab-pane" id="History">payment history</div>
-</div>
-<script src="/assets/js/bootstrap-tab.js"></script>
-
-<script>
-    $('#myTab a').click(function(e) {
-        e.preventDefault();
-        $(this).tab('show');
-    })
-</script>
-
-</div>

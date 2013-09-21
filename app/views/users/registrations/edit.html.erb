@@ -73,6 +73,25 @@
                   </div>
                 </div>
 
+                <fieldset>
+                  <legend>Password Change</legend>
+
+                  <div class="control-group">
+                    <%= f.label :password, class: 'control-label' %>
+                    <div class="controls">
+                      <%= f.password_field :password, :autocomplete => "off", :placeholder => 'New password' %>
+                      <span class="help-block">leave blank if you don't want to change it</span>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <%= f.label :password_confirmation, class: 'control-label' %>
+                    <div class="controls">
+                      <%= f.password_field :password_confirmation, :autocomplete => "off", :placeholder => 'New password confirmation' %>
+                    </div>
+                  </div>
+                </fieldset>
+
                 <div class="form-actions">
                   <%= f.submit "Update", class: 'btn btn-primary' %>
                 </div>
@@ -83,39 +102,7 @@
       </div>
     </div>
     <div class="span6">
-      <div class="accordion" id="accordionCalendar">
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a style="text-align: left;text-decoration: none" class="accordion-toggle btn btn-primary"
-               data-toggle="collapse" data-parent="#accordion2" href="#collapseCalendar">
-              <i class="icon-calendar"></i> Password change <i class="icon-minus pull-right"></i>
-            </a>
-          </div>
-          <div id="collapseCalendar" class="accordion-body collapse in">
-            <div class="accordion-inner" style="background-color: #ffffff;">
 
-              <fieldset>
-                <legend>Password Change</legend>
-
-                <div class="control-group">
-                  <%= f.label :password, class: 'control-label' %>
-                  <div class="controls">
-                    <%= f.password_field :password, :autocomplete => "off", :placeholder => 'New password' %>
-                    <span class="help-block">leave blank if you don't want to change it</span>
-                  </div>
-                </div>
-
-                <div class="control-group">
-                  <%= f.label :password_confirmation, class: 'control-label' %>
-                  <div class="controls">
-                    <%= f.password_field :password_confirmation, :autocomplete => "off", :placeholder => 'New password confirmation' %>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 <% end %>
