@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918220255) do
+ActiveRecord::Schema.define(:version => 20130921155001) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -129,9 +129,12 @@ ActiveRecord::Schema.define(:version => 20130918220255) do
     t.datetime "avatar_updated_at"
     t.boolean  "terms_of_service"
     t.string   "role",                   :default => "user"
+    t.integer  "creditor"
+    t.integer  "creditor_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
+  add_index "users", ["creditor_id"], :name => "index_users_on_creditor_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

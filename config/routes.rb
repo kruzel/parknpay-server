@@ -5,6 +5,9 @@ Verso::Application.routes.draw do
   scope "/api" do
     scope "/v1"  do     
       resources :users do
+        member do
+          get :assign_owners
+        end
         resources :cars do
           member do
             post :upload_image

@@ -8,4 +8,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def assign_owners
+    @creditor = Creditor.find(current_user.creditor_id)  if !current_user.creditor_id.nil?
+
+    if @creditor.nil?
+      render 'not_found', :layout => 'owner'
+    else
+      render :controller => 'users', :action => 'sign_up', :id => current_user.id
+    end
+  end
+
 end

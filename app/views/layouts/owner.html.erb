@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="utf-8">
   <title>Admin Panel</title>
@@ -183,8 +183,16 @@
           </div>
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= elements_owner_pages_path %>">
-                <i class="icon-tasks"></i><span> Elements</span>
+              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn"
+                 href="<%=  current_user.creditor_id.nil? ? new_creditor_path : edit_creditor_path(current_user.creditor_id) %>">
+                <i class="icon-tasks"></i><span> Owner Bank Info</span>
+              </a>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%="/api/v1/users/"+current_user.id.to_s+"/assign_owners"%>>
+                <i class="icon-picture"></i><span>Assign more Owners</span>
               </a>
             </div>
           </div>

@@ -4,14 +4,18 @@ class Ability
   def initialize(user)
     user ||= User.new
     case user.role
-      when 'superadmin'
-        can :manage, :all
-      when 'admin'
+      when 'admin' #ozpark admin - can associate owner
         can :manage, :all
       when 'owner'
         can :manage, :all
       when 'inspector'
-        can :manage, :all
+        can :read, :City
+        can :read, :Area
+        can :read, :Street
+        can :read, :Rate
+        can :read, :Payment
+        can :manage, :User
+        can :read, :Car
       when 'user'
         can :manage, :Payment
         can :manage, :User
