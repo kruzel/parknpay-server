@@ -1,7 +1,7 @@
 class OwnerPagesController < ApplicationController
   before_filter do
     :authenticate_user!
-    redirect_to dashboard_admin_pages_url if current_user.role == "user"
+    #redirect_to dashboard_admin_pages_url if current_user.role == "user"
   end
 
   #load_and_authorize_resource

@@ -1,6 +1,6 @@
 Verso::Application.routes.draw do
 
-  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations" }
+  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations", passwords: "passwords" }
 
   scope "/api" do
     scope "/v1"  do     

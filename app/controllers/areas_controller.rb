@@ -1,7 +1,7 @@
 class AreasController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
-  layout 'admin'
+  layout 'owner'
 
   # GET /areas
   # GET /areas.json
