@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,:active,
-                  :firstname, :lastname, :gender, :dob,:address_st,:address_state,:address_postcode,:address_country, :creditor_id, :creditor
+                  :firstname, :lastname, :gender, :dob,:address_st,:address_state,:address_postcode,:address_country,
+                  :bank_account_id, :bank_account, :terms_of_service
   # attr_accessible :title, :body
 
   before_save :ensure_authentication_token
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   
   has_many :cars, :dependent => :destroy
   has_many :payments, :dependent => :destroy
-  has_one :creditor
+  has_one :bank_account
 
   attr_accessible :avatar
   has_attached_file :avatar, :styles => {:large => "300x300>", :medium => "100x100>", :thumb => "50x50>" }, :default_url => "/img/User-icon.png"

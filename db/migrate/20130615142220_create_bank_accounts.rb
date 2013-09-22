@@ -1,6 +1,6 @@
-class CreateCreditors < ActiveRecord::Migration
+class CreateBankAccounts < ActiveRecord::Migration
   def change
-    create_table :creditors do |t|
+    create_table :bank_accounts do |t|
       t.string :name
       t.string :bank_name
       t.string :bank_code

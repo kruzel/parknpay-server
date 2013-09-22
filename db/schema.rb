@@ -11,18 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130921155001) do
+ActiveRecord::Schema.define(:version => 20130725151319) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
-    t.integer  "city_id",     :null => false
-    t.integer  "creditor_id", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "city_id",         :null => false
+    t.integer  "bank_account_id", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
+  add_index "areas", ["bank_account_id"], :name => "index_areas_on_bank_account_id"
   add_index "areas", ["city_id"], :name => "index_areas_on_city_id"
-  add_index "areas", ["creditor_id"], :name => "index_areas_on_creditor_id"
+
+  create_table "bank_accounts", :force => true do |t|
+    t.string   "name"
+    t.string   "bank_name"
+    t.string   "bank_code"
+    t.string   "bank_office"
+    t.string   "bank_account"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.boolean  "archive",       :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "cars", :force => true do |t|
     t.integer  "user_id",                                   :null => false
@@ -43,20 +57,6 @@ ActiveRecord::Schema.define(:version => 20130921155001) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "creditors", :force => true do |t|
-    t.string   "name"
-    t.string   "bank_name"
-    t.string   "bank_code"
-    t.string   "bank_office"
-    t.string   "bank_account"
-    t.string   "contact_name"
-    t.string   "contact_email"
-    t.string   "contact_phone"
-    t.boolean  "archive",       :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
   end
 
   create_table "payments", :force => true do |t|
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20130921155001) do
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.boolean  "active",                 :default => true
+    t.string   "role",                   :default => "user"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "gender"
@@ -123,18 +124,15 @@ ActiveRecord::Schema.define(:version => 20130921155001) do
     t.string   "address_state"
     t.string   "address_postcode"
     t.string   "address_country"
+    t.integer  "bank_account_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "terms_of_service"
-    t.string   "role",                   :default => "user"
-    t.integer  "creditor"
-    t.integer  "creditor_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
-  add_index "users", ["creditor_id"], :name => "index_users_on_creditor_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

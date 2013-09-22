@@ -25,13 +25,42 @@ Verso::Application.routes.draw do
         end
       end
 
-      resources :creditors
+      resources :bank_accounts
 
       resources :payments do
         collection do
           get :users_payments
         end
       end
+    end
+  end
+
+  resources :users do
+    member do
+      get :assign_owners
+    end
+    resources :cars do
+      member do
+        post :upload_image
+      end
+    end
+  end
+
+  resources :cities do
+    collection do
+      get :get_rates
+    end
+    resources :areas do
+      resources :streets
+      resources :rates
+    end
+  end
+
+  resources :bank_accounts
+
+  resources :payments do
+    collection do
+      get :users_payments
     end
   end
 

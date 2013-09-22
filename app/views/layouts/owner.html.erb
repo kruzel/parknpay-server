@@ -184,8 +184,8 @@
           <div class="accordion-group">
             <div class="accordion-heading">
               <a style="text-decoration: none;text-align: left" class="accordion-toggle btn"
-                 href="<%=  current_user.creditor_id.nil? ? new_creditor_path : edit_creditor_path(current_user.creditor_id) %>">
-                <i class="icon-tasks"></i><span> Owner Bank Info</span>
+                 href="<%=  current_user.bank_account_id.nil? ? new_bank_account_path : edit_bank_account_path(current_user.bank_account_id) %>">
+                <i class="icon-tasks"></i><span> Owner Bank Account</span>
               </a>
             </div>
           </div>

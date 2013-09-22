@@ -11,6 +11,7 @@ class AddFieldsToUsers < ActiveRecord::Migration
       t.string :address_state
       t.string :address_postcode
       t.string :address_country
+      t.references :bank_account
     end
    # User.update_all ["receive_newsletter = ?", true]
   end

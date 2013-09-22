@@ -4,7 +4,7 @@
   <tr>
     <th>Name</th>
     <th>City</th>
-    <th>Creditor</th>
+    <th>Bank Account</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= area.name %></td>
     <td><%= area.city.name %></td>
-    <td><%= area.creditor.name %></td>
+    <td><%= area.bank_account.name %></td>
     <td><%= link_to 'Show', [area.city,area] %></td>
     <td><%= link_to 'Edit', edit_city_area_path(area.city,area) %></td>
     <td><%= link_to 'Destroy', [area.city,area], method: :delete, data: { confirm: 'Are you sure?' } %></td>

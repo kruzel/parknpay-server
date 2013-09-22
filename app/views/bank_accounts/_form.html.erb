@@ -1,10 +1,10 @@
-<%= form_for(@creditor) do |f| %>
-  <% if @creditor.errors.any? %>
+<%= form_for(@bankaccount) do |f| %>
+  <% if @bankaccount.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@creditor.errors.count, "error") %> prohibited this creditor from being saved:</h2>
+      <h2><%= pluralize(@bankaccount.errors.count, "error") %> prohibited this bank account from being saved:</h2>
 
       <ul>
-      <% @creditor.errors.full_messages.each do |msg| %>
+      <% @bankaccount.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
