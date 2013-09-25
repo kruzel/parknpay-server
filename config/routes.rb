@@ -2,6 +2,35 @@ Verso::Application.routes.draw do
 
   devise_for :users, controllers: { sessions: "sessions", registrations: "registrations" }
 
+  resources :users do
+    member do
+      get :assign_owners
+    end
+    resources :cars do
+      member do
+        post :upload_image
+      end
+    end
+  end
+
+  resources :cities do
+    collection do
+      get :get_rates
+    end
+    resources :areas do
+      resources :streets
+      resources :rates
+    end
+  end
+
+  resources :bank_accounts
+
+  resources :payments do
+    collection do
+      get :users_payments
+    end
+  end
+
   scope "/api" do
     scope "/v1"  do     
       resources :users do
@@ -35,40 +64,10 @@ Verso::Application.routes.draw do
     end
   end
 
-  resources :users do
-    member do
-      get :assign_owners
-    end
-    resources :cars do
-      member do
-        post :upload_image
-      end
-    end
-  end
-
-  resources :cities do
-    collection do
-      get :get_rates
-    end
-    resources :areas do
-      resources :streets
-      resources :rates
-    end
-  end
-
-  resources :bank_accounts
-
-  resources :payments do
-    collection do
-      get :users_payments
-    end
-  end
-
   #chrome PUT support
   match '/api/v1/users/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
   match '/api/v1/users/:user_id/cars/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
   match '/api/v1/payments/:id(.:format)', :controller => 'options', :action => 'options', :constraints => {:method => 'OPTIONS'}
-
 
   # new routes
   resources :admin_pages, only: [] do

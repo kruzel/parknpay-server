@@ -1,49 +1,81 @@
-<%= form_for(@bankaccount) do |f| %>
-  <% if @bankaccount.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bankaccount.errors.count, "error") %> prohibited this bank account from being saved:</h2>
+<%= form_for(@bank_account) do |f| %>
+<div class="row-fluid">
+  <div class="span6">
+    <div class="accordion" id="accordionFormState">
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a style="text-align: left;text-decoration: none" class="accordion-toggle btn btn-primary"
+             data-toggle="collapse" data-parent="#accordion2" href="#collapseFormState">
+            <i class="icon-list-alt"></i> Horizontal forms <i class="icon-minus pull-right"></i>
+          </a>
+        </div>
+        <div id="collapseFormState" class="accordion-body collapse in">
+          <div class="accordion-inner" style="background-color: #ffffff;">
+            <form class="form-horizontal">
+              <fieldset>
+                  <% if @bank_account.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@bank_account.errors.count, "error") %> prohibited this bank account from being saved:</h2>
 
-      <ul>
-      <% @bankaccount.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+                      <ul>
+                      <% @bank_account.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <!--<div class="control-group">
+                    <label class="control-label" for="input01"><%= f.label :name %></label>
+                    <div class="controls">
+                      <input type="text" class="input-xlarge" id="input01">
+                      <p class="help-block">In addition to freeform text, any HTML5 text-based input appears like so.</p>
+                    </div>
+                  </div>-->
+
+                  <div class="control-group">
+                    <%= f.label 'Owner Name', :class =>"control-label", :for=>"bank_account_name" %>
+                    <div class="controls">
+                      <%= f.text_field :name %>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <%= f.label :bank_name %><br />
+                    <%= f.text_field :bank_name %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :bank_code %><br />
+                    <%= f.text_field :bank_code %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :bank_office %><br />
+                    <%= f.text_field :bank_office %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :bank_account %><br />
+                    <%= f.text_field :bank_account %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :contact_name %><br />
+                    <%= f.text_field :contact_name %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :contact_email %><br />
+                    <%= f.text_field :contact_email %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :contact_phone %><br />
+                    <%= f.text_field :contact_phone %>
+                  </div>
+                  <div class="form-actions">
+                    <%= f.submit "Submit", class: 'btn btn-primary'%>
+                  </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :bank_name %><br />
-    <%= f.text_field :bank_name %>
-  </div>
-  <div class="field">
-    <%= f.label :bank_code %><br />
-    <%= f.text_field :bank_code %>
-  </div>
-  <div class="field">
-    <%= f.label :bank_office %><br />
-    <%= f.text_field :bank_office %>
-  </div>
-  <div class="field">
-    <%= f.label :bank_account %><br />
-    <%= f.text_field :bank_account %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_name %><br />
-    <%= f.text_field :contact_name %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_email %><br />
-    <%= f.text_field :contact_email %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_phone %><br />
-    <%= f.text_field :contact_phone %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

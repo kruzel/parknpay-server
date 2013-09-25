@@ -6,53 +6,62 @@ class BankAccountsController < ApplicationController
   # GET /bank_accounts
   # GET /bank_accounts.json
   def index
-    @bankaccounts = BankAccount.all
+    @bank_accounts = BankAccount.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @bankaccounts }
+      format.json { render json: @bank_accounts }
     end
   end
 
   # GET /bank_accounts/1
   # GET /bank_accounts/1.json
   def show
-    @bankaccount = BankAccount.find(params[:id])
+    @bank_account = BankAccount.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @bankaccount }
+      format.json { render json: @bank_account }
     end
   end
 
   # GET /bank_accounts/new
   # GET /bank_accounts/new.json
   def new
-    @bankaccount = BankAccount.new
+    unless current_user.bank_account_id.nil?
+      @bank_account = BankAccount.find(current_user.bank_account_id)
+      redirect_to @bank_account
+      return
+    end
+
+    @bank_account = BankAccount.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @bankaccount }
+      format.json { render json: @bank_account }
     end
   end
 
   # GET /bank_accounts/1/edit
   def edit
-    @bankaccount = BankAccount.find(params[:id])
+    @bank_account = BankAccount.find(params[:id])
   end
 
   # POST /bank_accounts
   # POST /bank_accounts.json
   def create
-   @bankaccount = BankAccount.new(params[:bankaccount])
+   @bank_account = BankAccount.new(params[:bank_account])
 
     respond_to do |format|
-      if @bankaccount.save
-        format.html { redirect_to @bankaccount, notice: 'BankAccount was successfully created.' }
-        format.json { render json: @bankaccount, status: :created, location: @bankaccount }
+      if @bank_account.save
+        current_user.bank_account_id = @bank_account.id
+        current_user.save
+
+        format.html { redirect_to edit_bank_account_path, notice: 'BankAccount was successfully created.' }
+        format.json { render json: @bank_account, status: :created, location: @bank_account }
       else
         format.html { render action: "new" }
-        format.json { render json: @bankaccount.errors, status: :unprocessable_entity }
+        format.json { render json: @bank_account.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,15 +69,15 @@ class BankAccountsController < ApplicationController
   # PUT /bank_accounts/1
   # PUT /bank_accounts/1.json
   def update
-    @bankaccount = BankAccount.find(params[:id])
+    @bank_account = BankAccount.find(params[:id])
 
     respond_to do |format|
-      if @bankaccount.update_attributes(params[:bankaccount])
-        format.html { redirect_to @bankaccount, notice: 'BankAccount was successfully updated.' }
+      if @bank_account.update_attributes(params[:bank_account])
+        format.html { redirect_to edit_bank_account_path, notice: 'BankAccount was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @bankaccount.errors, status: :unprocessable_entity }
+        format.json { render json: @bank_account.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,8 +86,8 @@ class BankAccountsController < ApplicationController
   # DELETE /bank_accounts/1.json
 =begin
   def destroy
-    @bankaccount = BankAccount.find(params[:id])
-    @bankaccount.destroy
+    @bank_account = BankAccount.find(params[:id])
+    @bank_account.destroy
 
     respond_to do |format|
       format.html { redirect_to bank_accounts_url }

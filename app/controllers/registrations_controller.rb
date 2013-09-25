@@ -6,7 +6,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     respond_to do |format|
-      format.html { super }
+      format.html {
+        super
+        resource.bank_account = params[:bank_account_id] if !params[:bank_account_id].nil?
+      }
       format.json {
         build_resource
 =begin
