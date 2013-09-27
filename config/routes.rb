@@ -72,7 +72,9 @@ Verso::Application.routes.draw do
   resources :admin_pages, only: [] do
     collection do
       get 'sign_in'
+=begin
       get 'dashboard'
+=end
       get 'tables'
       get 'elements'
       get 'media'
@@ -90,7 +92,9 @@ Verso::Application.routes.draw do
   resources :owner_pages, only: [] do
     collection do
       get 'sign_in'
+=begin
       get 'dashboard'
+=end
       get 'tables'
       get 'elements'
       get 'media'
