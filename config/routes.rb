@@ -74,7 +74,6 @@ Verso::Application.routes.draw do
       get 'sign_in'
 =begin
       get 'dashboard'
-=end
       get 'tables'
       get 'elements'
       get 'media'
@@ -86,6 +85,7 @@ Verso::Application.routes.draw do
       get 'chat'
       get 'charts'
       get 'profile'
+=end
     end
   end
 
@@ -94,7 +94,6 @@ Verso::Application.routes.draw do
       get 'sign_in'
 =begin
       get 'dashboard'
-=end
       get 'tables'
       get 'elements'
       get 'media'
@@ -106,6 +105,7 @@ Verso::Application.routes.draw do
       get 'chat'
       get 'charts'
       get 'profile'
+=end
     end
   end
 

@@ -191,62 +191,36 @@
           </div>
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= media_owner_pages_path %>">
-                <i class="icon-picture"></i><span> Media</span>
+              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= cities_path %>>
+                <i class="icon-picture"></i><span>Cities</span>
               </a>
             </div>
           </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= forms_owner_pages_path %>">
-                <i class="icon-align-center"></i><span> Forms</span>
-              </a>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= grid_owner_pages_path %>">
-                <i class="icon-indent-left"></i><span> Grid</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= buttons_owner_pages_path %>">
-                <i class="icon-gift"></i><span> Buttons </span>
-              </a>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= notification_owner_pages_path %>">
-                <i class="icon-info-sign"></i><span> Notification</span>
-              </a>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= calendar_owner_pages_path %>">
-                <i class="icon-calendar"></i><span> Callendar</span>
-              </a>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= chat_owner_pages_path %>">
-                <i class="icon-comment"></i><span> Chat</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href="<%= charts_owner_pages_path %>">
-                <i class="icon-bar-chart"></i><span> Charts</span>
-              </a>
-            </div>
-          </div>
+          <% if @city && @city.id %>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= city_areas_path(@city) %>>
+                    <i class="icon-picture"></i><span>Areas</span>
+                  </a>
+                </div>
+              </div>
+          <% end %>
+          <% if @area && @area.id %>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= city_area_streets_path(@area.city, @area) %>>
+                    <i class="icon-picture"></i><span>Streets</span>
+                  </a>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= city_area_rates_path(@area.city, @area) %>>
+                    <i class="icon-picture"></i><span>Rates</span>
+                  </a>
+                </div>
+              </div>
+          <% end %>
         </div>
       </li>
     </ul>
