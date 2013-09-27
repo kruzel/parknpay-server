@@ -1,6 +1,6 @@
 Verso::Application.routes.draw do
 
-  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations", :invitations => 'users/invitations' }
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", :invitations => 'users/invitations' }
 
   resources :users do
     resources :cars do
