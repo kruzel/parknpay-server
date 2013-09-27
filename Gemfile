@@ -24,6 +24,7 @@ end
 gem 'jquery-rails', '2.0.1'
 
 gem 'devise', '~> 2.2.4'
+gem 'devise_invitable', '~> 1.1.8'
 gem 'cancan', '~> 1.6.10'
 gem "paperclip", "~> 3.0"
 

@@ -112,7 +112,7 @@
                     <div style="width: 314px">
                       <div class="modal-header">
 
-                        <h3><%= "#{current_user.firstname} #{current_user.lastname}"%></h3>
+                        <h3><%= current_user.firstname + ' ' + current_user.lastname %></h3>
                       </div>
                       <div class="modal-body">
                         <div class="row-fluid">
@@ -191,8 +191,8 @@
           </div>
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%="/users/"+current_user.id.to_s+"/assign_owners"%>>
-                <i class="icon-picture"></i><span>Assign more Owners</span>
+              <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= new_user_invitation_path %>>
+                <i class="icon-picture"></i><span>Add Owners</span>
               </a>
             </div>
           </div>

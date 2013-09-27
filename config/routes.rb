@@ -1,11 +1,8 @@
 Verso::Application.routes.draw do
 
-  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations" }
+  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations", :invitations => 'users/invitations' }
 
   resources :users do
-    member do
-      get :assign_owners
-    end
     resources :cars do
       member do
         post :upload_image
@@ -23,7 +20,11 @@ Verso::Application.routes.draw do
     end
   end
 
-  resources :bank_accounts
+  resources :bank_accounts do
+    collection do
+      get :new_assign_owners
+    end
+  end
 
   resources :payments do
     collection do
@@ -53,8 +54,6 @@ Verso::Application.routes.draw do
           resources :rates
         end
       end
-
-      resources :bank_accounts
 
       resources :payments do
         collection do

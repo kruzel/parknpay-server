@@ -1,36 +1,29 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :invitable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :token_authenticatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,:active,
                   :firstname, :lastname, :gender, :dob,:address_st,:address_state,:address_postcode,:address_country,
-                  :bank_account_id, :bank_account, :terms_of_service
+                  :bank_account_id, :bank_account, :terms_of_service , :avatar
   # attr_accessible :title, :body
 
   before_save :ensure_authentication_token
-
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
-         :token_authenticatable
   
   validates :firstname, :lastname, :presence => true, :length => { :minimum => 2 }
   validates :email, :presence => true
   validates :email, :uniqueness => true
   validates :terms_of_service, :acceptance => {:accept => true}
   #validates :password, :length => { :in => 6..20 }
-  
+
   has_many :cars, :dependent => :destroy
   has_many :payments, :dependent => :destroy
-  has_one :bank_account
+  belongs_to :bank_account
+  has_many :invitations, :class_name => self.to_s, :as => :invited_by
 
-  attr_accessible :avatar
   has_attached_file :avatar, :styles => {:large => "300x300>", :medium => "100x100>", :thumb => "50x50>" }, :default_url => "/img/User-icon.png"
 
   def image_url

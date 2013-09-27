@@ -66,9 +66,10 @@ module Verso
       Devise::RegistrationsController.layout Proc.new { |c|
         %W(new create).include?(c.action_name) ? 'admin_unregistered' : c.current_user.role == 'user' ? 'admin' : 'owner'
       }
-      Devise::ConfirmationsController.layout Proc.new { |c| c.curret_user.role == 'user' ? 'admin' : 'owner' }
-      Devise::UnlocksController.layout Proc.new { |c| c.curret_user.role == 'user' ? 'admin' : 'owner' }
-      Devise::PasswordsController.layout Proc.new { |c| c.curret_user.role == 'user' ? 'admin' : 'owner' }
+      Devise::ConfirmationsController.layout Proc.new { |c| c.current_user.nil? ? 'admin_unregistered' : c.current_user.role == 'user' ? 'admin' : 'owner' }
+      Devise::UnlocksController.layout Proc.new { |c| c.current_user.role == 'user' ? 'admin' : 'owner' }
+      Devise::PasswordsController.layout Proc.new { |c| c.current_user.role == 'user' ? 'admin' : 'owner' }
+      Devise::InvitationsController.layout Proc.new { |c| c.current_user.nil? ? 'admin_unregistered' : 'owner' }
     end
 
     # Devise wraps invalid fields with a .field-with-error div. It makes form elements jump to the next line

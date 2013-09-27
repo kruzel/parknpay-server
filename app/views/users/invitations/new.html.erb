@@ -1,0 +1,27 @@
+<h2><%= t "devise.invitations.new.header" %></h2>
+
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+  <%= devise_error_messages! %>
+
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span>
+      <%= f.email_field :email, autofocus: true, class: 'span2', placeholder: 'Email address' %>
+    </div>
+
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-key"></i></span>
+      <%= f.text_field :firstname, class: 'span2', placeholder: 'First name' %>
+    </div>
+
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-key"></i></span>
+      <%= f.text_field :lastname, class: 'span2', placeholder: 'Last name' %>
+    </div>
+
+    <%= f.password_field :password, :type => "hidden", :value => @pass %>
+    <%= f.password_field :password_confirmation, :type => "hidden", :value => @pass %>
+
+    <div class="input-prepend">
+      <button class="btn btn-danger"><i class="icon-check"></i> Send Invitation</button>
+    </div>
+<% end %>

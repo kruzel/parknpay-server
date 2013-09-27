@@ -57,7 +57,7 @@ class BankAccountsController < ApplicationController
         current_user.bank_account_id = @bank_account.id
         current_user.save
 
-        format.html { redirect_to edit_bank_account_path, notice: 'BankAccount was successfully created.' }
+        format.html { redirect_to edit_bank_account_path(@bank_account), notice: 'BankAccount was successfully created.' }
         format.json { render json: @bank_account, status: :created, location: @bank_account }
       else
         format.html { render action: "new" }
@@ -96,4 +96,17 @@ class BankAccountsController < ApplicationController
   end
 =end
 
+  def new_assign_owners
+    @bank_account = BankAccount.find(current_user.bank_account_id)  if !current_user.bank_account_id.nil?
+
+    if @bank_account.nil?
+      render 'not_found', :layout => 'owner'
+    else
+      redirect_to :controller => 'users', :action => 'admin_new_user', :admin_id => current_user.id, :bank_account_id => @bank_account.id
+    end
+  end
+
+  def create_assign_owners
+
+  end
 end

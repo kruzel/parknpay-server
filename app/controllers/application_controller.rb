@@ -39,6 +39,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  #invitation controller filter
+  def authenticate_inviter!
+    current_user.role == 'owner'
+  end
+
   def load_vars
     unless request.xhr? #check if ajax call
       if(user_signed_in?)
