@@ -51,7 +51,19 @@ Verso::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   #TODO - [production] set real domain name
-  config.action_mailer.default_url_options = { :host => 'domain_name:3000' }
+  config.action_mailer.default_url_options = { :host => 'ozpark.com.au' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => "mail.google.com",
+      :user_name => "okruzel@gmail.com",
+      :password => "Etty1969",
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 
   # Enable threaded mode
   # config.threadsafe!
