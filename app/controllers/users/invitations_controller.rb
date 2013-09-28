@@ -11,7 +11,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def create
-    if current_user.bank_account.nil?
+    unless current_user.bank_account.nil?
       @user = User.find_by_email(params[:user][:email])
       if @user.nil?
         @user = User.new(params[:user])
@@ -35,6 +35,9 @@ class Users::InvitationsController < Devise::InvitationsController
       else
         respond_with_navigational(current_user) { render :new }
       end
+    else
+      set_flash_message :notice, "Must define bank account first"
+      redirect_to new_bank_account_path
     end
   end
 
