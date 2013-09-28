@@ -60,8 +60,8 @@ Verso::Application.configure do
       :address => "smtp.gmail.com",
       :port => 587,
       :domain => "ozpark.com.au",
-      :user_name => "okruzel@gmail.com",
-      :password => "Etty1969",
+      :user_name => "support@ozpark.com.au",
+      :password => "qwerasdf",
       :authentication => :plain,
       :enable_starttls_auto => true
   }
