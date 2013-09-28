@@ -58,7 +58,7 @@ Verso::Application.configure do
   config.action_mailer.smtp_settings = {
       :address => "smtp.gmail.com",
       :port => 587,
-      :domain => "mail.google.com",
+      :domain => "ozpark.com.au",
       :user_name => "okruzel@gmail.com",
       :password => "Etty1969",
       :authentication => :plain,
