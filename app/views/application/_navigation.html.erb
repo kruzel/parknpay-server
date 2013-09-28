@@ -46,9 +46,9 @@
               <% if current_user %>
                 <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
                 <% if current_user.role == "user" %>
-                    <li><a href="<%= dashboard_admin_pages_path %>">Dashboard</a></li>
+                    <li><a href="<%= edit_user_registration_path %>">Dashboard</a></li>
                 <% else %>
-                      <li><a href="<%= dashboard_owner_pages_path %>">Dashboard</a></li>
+                      <li><a href="<%= edit_user_registration_path %>">Dashboard</a></li>
                 <% end %>
               <% else %>
                 <li class="dropdown sfHover"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in</a>

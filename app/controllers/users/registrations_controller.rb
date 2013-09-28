@@ -35,17 +35,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def after_update_path_for(resource)
       if(resource.role == "user")
-        dashboard_admin_pages_path
+        edit_user_registration_path
       else
-        dashboard_owner_page_path
+        edit_user_registration_path
       end
     end
 
     def after_sign_up_path_for(resource)
       if(resource.role == "user")
-        dashboard_admin_pages_path
+        edit_user_registration_path
       else
-        dashboard_owner_page_path
+        edit_user_registration_path
       end
     end
 end

@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    resource.role == 'user' ? dashboard_admin_pages_path : dashboard_owner_pages_path
+    resource.role == 'user' ? edit_user_registration_path : edit_user_registration_path
   end
 
   rescue_from CanCan::AccessDenied do |exception|
