@@ -58,6 +58,7 @@ Verso::Application.routes.draw do
       resources :payments do
         collection do
           get :users_payments
+          get :owners_payments
         end
       end
     end

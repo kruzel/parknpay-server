@@ -24,6 +24,8 @@ class Ability
         can :read, :Area
         can :read, :Street
         can :read, :Rate
+        can :get_rates, City
+        can :find_by_street, Area
       else
         # guest user
     end

@@ -2,23 +2,12 @@ class PaymentsController < ApplicationController
   
     before_filter :authenticate_user!
     load_and_authorize_resource
-    layout 'admin'
+    layout ( current_user.role == 'user' ? 'admin' : 'owner' )
   
   # GET /payments
   # GET /payments.json
   def index
     @payments = Payment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @payments }
-    end
-  end
-
-  # GET /payments/users_payments
-  # GET /payments/users_payments.json
-  def users_payments
-    @payments = Payment.where("user_id = ?", current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -107,4 +96,36 @@ class PaymentsController < ApplicationController
     end
   end
 =end
+
+  # GET /payments/users_payments
+  # GET /payments/users_payments.json
+  def users_payments
+    @payments = Payment.where("user_id = ?", current_user.id)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @payments }
+    end
+  end
+
+  # GET /payments/owner_paymenta
+  # GET /payments/owner_paymenta.json
+  def owners_payments
+    if current_user.role == 'owner' && currenet_user.bankk_account
+      @areas = Area.find(currenet_user.bankk_account.id)
+      @payments = Payment.where("area_id = ?", current_user.id)
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @payments }
+      end
+    else
+      #error page
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @payments }
+      end
+    end
+
+  end
 end
