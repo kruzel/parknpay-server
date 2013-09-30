@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   
     before_filter :authenticate_user!
     load_and_authorize_resource
-    layout ( current_user.role == 'user' ? 'admin' : 'owner' )
+    layout 'admin' #( current_user.role == 'user' ? 'admin' : 'owner' )
   
   # GET /payments
   # GET /payments.json
