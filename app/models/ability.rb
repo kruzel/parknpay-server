@@ -14,12 +14,13 @@ class Ability
         can :read, Street
         can :read, Rate
         can :read, Payment
-        can :manage, User
+        can :read, User
         can :read, Car
       when 'user'
-        can :manage, Payment
-        can :manage, User
-        can :manage, Car
+        can :crud, Payment
+        can :users_payments, Payment
+        can :crud, User
+        can :crud, Car
         can :read, City
         can :read, Area
         can :read, Street
