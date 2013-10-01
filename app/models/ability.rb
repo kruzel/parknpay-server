@@ -9,21 +9,21 @@ class Ability
       when 'owner'
         can :manage, :all
       when 'inspector'
-        can :read, :City
-        can :read, :Area
-        can :read, :Street
-        can :read, :Rate
-        can :read, :Payment
-        can :manage, :User
-        can :read, :Car
+        can :read, City
+        can :read, Area
+        can :read, Street
+        can :read, Rate
+        can :read, Payment
+        can :manage, User
+        can :read, Car
       when 'user'
-        can :manage, :Payment
-        can :manage, :User
-        can :manage, :Car
-        can :read, :City
-        can :read, :Area
-        can :read, :Street
-        can :read, :Rate
+        can :manage, Payment
+        can :manage, User
+        can :manage, Car
+        can :read, City
+        can :read, Area
+        can :read, Street
+        can :read, Rate
         can :get_rates, City
         can :find_by_street, Area
       else
