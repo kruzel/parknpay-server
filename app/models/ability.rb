@@ -17,10 +17,10 @@ class Ability
         can :read, User
         can :read, Car
       when 'user'
-        can :crud, Payment
+        can :manage, Payment
         can :users_payments, Payment
-        can :crud, User
-        can :crud, Car
+        can :manage, User
+        can :manage, Car
         can :read, City
         can :read, Area
         can :read, Street
