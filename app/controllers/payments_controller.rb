@@ -45,7 +45,7 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @area = Area.find(params[:area_id])
     @rate = Rate.find(params[:rate_id])
     @payment = Payment.new()
@@ -53,8 +53,10 @@ class PaymentsController < ApplicationController
     @payment.area = @area
     @payment.rate = @rate
     @payment.start_time = params[:start_time]
-    @payment.x_pos = params[:x_pos]
-    @payment.y_pos = params[:y_pos]
+    if params.has_key?(:x_pos) && params.has_key?(:y_pos)
+      @payment.x_pos = params[:x_pos]
+      @payment.y_pos = params[:y_pos]
+    end
 
     respond_to do |format|
       if @payment.save
