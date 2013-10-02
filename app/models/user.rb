@@ -30,4 +30,9 @@ class User < ActiveRecord::Base
     ::Rails.application.config.server_url + avatar.url(:thumb)
   end
 
+  protected
+  def confirmation_required?
+    false
+  end
+
 end
