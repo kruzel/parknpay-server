@@ -45,7 +45,7 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    payment = Payment.new(params[:payment])
+    @payment = Payment.new(params[:payment])
     #@payment.start_time = params[:start_time]
 
     respond_to do |format|
