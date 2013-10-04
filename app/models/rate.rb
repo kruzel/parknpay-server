@@ -2,6 +2,8 @@ class Rate < ActiveRecord::Base
   belongs_to :area
   attr_accessible :currency, :end_time, :rate, :start_time, :area, :start_day_a_week, :end_day_a_week
 
+  validates :area, :presence => true
+
   def start_time_int
     start_time.strftime('%H%M').to_i
   end

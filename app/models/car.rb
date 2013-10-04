@@ -6,6 +6,7 @@ class Car < ActiveRecord::Base
 
   validates :license_plate, :presence => true
   validates :license_plate, :uniqueness => true
+  validates :user, :presence=>true
 
   def image_url
     ::Rails.application.config.server_url + car_image.url(:thumb)

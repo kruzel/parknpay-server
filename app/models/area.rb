@@ -5,4 +5,7 @@ class Area < ActiveRecord::Base
 
   has_many :rates
   has_many :streets
+
+  validates :city, :presence=>true
+  validates :bank_account, :presence=>true
 end
