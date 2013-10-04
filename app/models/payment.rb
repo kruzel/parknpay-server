@@ -3,4 +3,8 @@ class Payment < ActiveRecord::Base
   belongs_to :rate
   belongs_to :user
   attr_accessible :end_time, :start_time, :x_pos, :y_pos, :bank_account, :street, :area, :city, :rate, :user, :area_id, :rate_id, :user_id
+
+  validates :user, :presence=>true
+  validates :rate, :presence=>true
+  validates :area, :presence=>true
 end

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-	var server_url = "http://ozpark.com.au";
-    //var server_url = "http://localhost:3000";
+	//var server_url = "http://ozpark.com.au";
+    var server_url = "http://localhost:3000";
 	var token = null;
 	var user_id = null;
 
@@ -121,7 +121,7 @@ $(document).ready(function() {
             url: server_url + "/api/v1/payments.json?auth_token=" + token,
             dataType: "json",
             type: "post",
-            data: {payment:{area_id:1, rate_id:1, start_time: "2013-9-3T1:11:25Z", user_id: 7, x_pos: 0, y_pos: 0}},
+            data: {payment:{area_id: 1000, rate_id:1, start_time: "2013-9-3T1:11:25Z", user_id: 7, x_pos: 0, y_pos: 0}},
             cache: false,
             success: function(response, textStatus, jqXHR) {
                 $("#result").text(response);
