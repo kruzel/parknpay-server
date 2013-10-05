@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Car:</b>
+  <%= @payment.car.car_description %>
+</p>
+
+<p>
   <b>X pos:</b>
   <%= @payment.x_pos %>
 </p>
@@ -13,11 +18,6 @@
 <p>
   <b>Area:</b>
   <%= @payment.area %>
-</p>
-
-<p>
-  <b>Rate:</b>
-  <%= @payment.rate.rate %>
 </p>
 
 <p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927162419) do
+ActiveRecord::Schema.define(:version => 20131005185936) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -63,17 +63,16 @@ ActiveRecord::Schema.define(:version => 20130927162419) do
     t.float    "x_pos"
     t.float    "y_pos"
     t.integer  "area_id",                       :null => false
-    t.integer  "rate_id",                       :null => false
     t.integer  "user_id",                       :null => false
     t.datetime "start_time"
     t.datetime "end_time"
     t.boolean  "archive",    :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.integer  "car_id"
   end
 
   add_index "payments", ["area_id"], :name => "index_payments_on_area_id"
-  add_index "payments", ["rate_id"], :name => "index_payments_on_rate_id"
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "rates", :force => true do |t|
@@ -87,9 +86,13 @@ ActiveRecord::Schema.define(:version => 20130927162419) do
     t.time     "end_time"
     t.integer  "start_day_a_week"
     t.integer  "end_day_a_week"
+    t.datetime "valid_start_at"
+    t.datetime "valid_end_at"
   end
 
   add_index "rates", ["area_id"], :name => "index_rates_on_area_id"
+  add_index "rates", ["valid_end_at"], :name => "index_rates_on_valid_end_at"
+  add_index "rates", ["valid_start_at"], :name => "index_rates_on_valid_start_at"
 
   create_table "streets", :force => true do |t|
     t.string   "name"

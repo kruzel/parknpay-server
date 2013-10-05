@@ -9,6 +9,8 @@
     <th>End  Day A Week</th>
     <th>Start time</th>
     <th>End time</th>
+    <th>Valid starting</th>
+    <th>Valid till</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,6 +25,8 @@
     <td><%= rate.end_day_a_week %></td>
     <td><%= l rate.start_time, :format =>  "%H:%M" %></td>
     <td><%= l rate.end_time, :format =>  "%H:%M" %></td>
+    <td><%= rate.valid_start_at %></td>
+    <td><%= rate.valid_end_at %></td>
     <td><%= link_to 'Show', [rate.area.city, rate.area, rate] %></td>
     <td><%= link_to 'Edit', edit_city_area_rate_path(rate.area.city, rate.area, rate) %></td>
     <td><%= link_to 'Destroy', [rate.area.city, rate.area, rate], method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -23,6 +23,7 @@
     <%= f.label :area %><br />
     <%= @rate.area.name %>
   </div>
+
     <div class="field">
       <%= f.label :start_day_a_week %> Sunday 0, Monday 1<br />
       <%= f.text_field :start_day_a_week %>
@@ -38,6 +39,18 @@
   <div class="field">
     <%= f.label :end_time %><br />
     <%= f.time_select :end_time %>
+  </div>
+  <div class="field">
+      <%= f.label :start_time %><br />
+      <%= f.time_select :start_time %>
+  </div>
+  <div class="field">
+      <%= f.label :valid_start_at %><br />
+      <%= f.time_select :valid_start_at %>
+  </div>
+  <div class="field">
+      <%= f.label :valid_end_at %><br />
+      <%= f.time_select :valid_end_at %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -2,11 +2,11 @@
 
 <table>
   <tr>
+    <th>Car</th>
     <th>Area</th>
-    <th>Rate</th>
     <th>User</th>
     <th>Start time</th>
-    <th>End time</th>
+    <th>End time</th>  s
     <th></th>
     <th></th>
     <th></th>
@@ -14,8 +14,8 @@
 
 <% @payments.each do |payment| %>
   <tr>
-    <td><%= payment.area %></td>
-    <td><%= payment.rate %></td>
+    <td><%= payment.car.car_description %></td>
+    <td><%= payment.area.name %></td>
     <td><%= payment.user.firstname + ' ' + payment.user.lastname %></td>
     <td><%= payment.start_time %></td>
     <td><%= payment.end_time %></td>

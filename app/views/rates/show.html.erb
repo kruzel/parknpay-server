@@ -35,6 +35,16 @@
   <%= l @rate.end_time , :format =>  "%H:%M" %>
 </p>
 
+<p>
+  <b>Valid starting:</b>
+  <%= l @rate.valid_start_at  %>
+</p>
+
+<p>
+  <b>Valid till:</b>
+  <%= l @rate.valid_end_at %>
+</p>
+
 
 <%= link_to 'Edit', edit_city_area_rate_path(@rate.area.city,@rate.area,@rate) %> |
 <%= link_to 'Back', city_area_rates_path %>
