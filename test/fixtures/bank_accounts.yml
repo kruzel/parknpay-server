@@ -1,0 +1,14 @@
+# Read abouts fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: Haifa Municipality
+  bank_name: discount
+  bank_code: 11
+  bank_office: 107
+  bank_account: 4849
+  contact_name: ofer
+  contact_email: okruzel@gmail.com
+  contact_phone: 054-4516627
+
+
+

@@ -1,11 +1,12 @@
 # Read abouts fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  city: 
-  creditor: 
+  name: downtown
+  city: one
+  bank_account: one (BankAccount)
 
 two:
-  name: MyString
-  city: 
-  creditor: 
+  name: carmel
+  city: two
+  bank_account: one (BankAccount)
+

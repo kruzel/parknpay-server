@@ -11,33 +11,18 @@
 </p>
 
 <p>
-  <b>Street:</b>
-  <%= @payment.street %>
-</p>
-
-<p>
   <b>Area:</b>
   <%= @payment.area %>
 </p>
 
 <p>
-  <b>City:</b>
-  <%= @payment.city %>
-</p>
-
-<p>
-  <b>Bank Account:</b>
-  <%= @payment.bank_account %>
-</p>
-
-<p>
   <b>Rate:</b>
-  <%= @payment.rate %>
+  <%= @payment.rate.rate %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @payment.user %>
+  <%= @payment.user.firstname + ' ' + @payment.user.lastname %>
 </p>
 
 <p>

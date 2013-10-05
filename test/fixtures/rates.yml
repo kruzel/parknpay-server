@@ -1,15 +1,19 @@
 # Read abouts fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  rate: 1.5
-  currency: MyString
-  area:
-  start_time: 2013-06-15 17:25:35
-  end_time: 2013-06-15 17:25:35
+  rate: 6
+  currency: NIS
+  area: one
+  start_time: '09:00:00'
+  start_day_a_week: 0
+  end_time: '19:00:00'
+  end_day_a_week: 4
 
 two:
-  rate: 1.5
-  currency: MyString
-  area:
-  start_time: 2013-06-15 17:25:35
-  end_time: 2013-06-15 17:25:35
+  rate: 4
+  currency: NIS
+  area: two
+  start_time: '09:00:00'
+  start_day_a_week: 0
+  end_time: '19:00:00'
+  end_day_a_week: 4

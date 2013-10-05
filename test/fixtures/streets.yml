@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  area: 
+  area: one
 
 two:
   name: MyString
-  area: 
+  area: two
