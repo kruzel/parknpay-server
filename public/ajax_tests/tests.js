@@ -11,7 +11,7 @@ $(document).ready(function() {
 			dataType: "json",
 			type: "post",
 			cache: false,
-			data: { user: { email: "okruzel@gmail.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "ofer", lastname: "kruzel" }},
+			data: { user: { email: "ofer.k@downloadius.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "ofer", lastname: "kruzel" }},
 			success: function( response, textStatus, jqXHR ) {
                 $("#result").text(textStatus);
 			},
@@ -42,7 +42,7 @@ $(document).ready(function() {
 			dataType: "json",
 			type: "post",
 			cache: false,
-			data: {user:{email:"okruzel@gmail.com", password:"qwerasdf"}},
+			data: {user:{email:"ofer.k@downloadius.com", password:"qwerasdf"}},
 			success: function(response, textStatus, jqXHR) {
                 $("#result").text(response.session.auth_token);
 				
@@ -121,7 +121,7 @@ $(document).ready(function() {
             url: server_url + "/api/v1/payments.json?auth_token=" + token,
             dataType: "json",
             type: "post",
-            data: {payment:{area_id: 1000, rate_id:1, start_time: "2013-9-3T1:11:25Z", user_id: 7, x_pos: 0, y_pos: 0}},
+            data: {payment:{area_id: 980190962, car_id: 980190962, start_time: "2013-9-3T1:11:25Z", user_id: 980190963, x_pos: 0, y_pos: 0}},
             cache: false,
             success: function(response, textStatus, jqXHR) {
                 $("#result").text(response);

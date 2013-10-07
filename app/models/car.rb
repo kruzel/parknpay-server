@@ -1,5 +1,6 @@
 class Car < ActiveRecord::Base
   belongs_to :user
+  has_many :cars
   attr_accessible :car_description, :license_plate, :car_image, :user, :archive
 
   has_attached_file :car_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/img/:style/missing.png"
