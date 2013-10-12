@@ -30,6 +30,9 @@ Verso::Application.routes.draw do
     collection do
       get :users_payments
     end
+    member do
+      get :amount
+    end
   end
 
   scope "/api" do
@@ -59,6 +62,9 @@ Verso::Application.routes.draw do
         collection do
           get :users_payments
           get :owners_payments
+        end
+        member do
+          get :amount
         end
       end
     end

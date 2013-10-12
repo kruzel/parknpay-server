@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131005185936) do
+ActiveRecord::Schema.define(:version => 20131005200751) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -62,14 +62,15 @@ ActiveRecord::Schema.define(:version => 20131005185936) do
   create_table "payments", :force => true do |t|
     t.float    "x_pos"
     t.float    "y_pos"
-    t.integer  "area_id",                       :null => false
-    t.integer  "user_id",                       :null => false
+    t.integer  "area_id",                                                      :null => false
+    t.integer  "user_id",                                                      :null => false
     t.datetime "start_time"
     t.datetime "end_time"
-    t.boolean  "archive",    :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "archive",                                   :default => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.integer  "car_id"
+    t.decimal  "amount",     :precision => 10, :scale => 0
   end
 
   add_index "payments", ["area_id"], :name => "index_payments_on_area_id"

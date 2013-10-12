@@ -131,4 +131,19 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("#get_charge").click(function() {
+        $.ajax({
+            url: server_url + "/api/v1/payments/"+980190963+"/amount.json?auth_token=" + token,
+            dataType: "json",
+            type: "get",
+            cache: false,
+            success: function(response, textStatus, jqXHR) {
+                $("#result").text(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $("#result").text(textStatus+" "+jQuery.parseJSON(jqXHR.responseText));
+            }
+        });
+    });
 });

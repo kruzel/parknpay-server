@@ -117,6 +117,15 @@ class PaymentsController < ApplicationController
         format.json { render json: @payments }
       end
     end
+  end
 
+  # GET
+  def amount
+    @payment = Payment.find(params[:id])
+    respond_to do |format|
+      format.html # amount.html.erb
+      #format.json { render json: @payment.amount }
+      format.json { render json: 15 }
+    end
   end
 end

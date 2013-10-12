@@ -19,6 +19,7 @@ class Ability
       when 'user'
         can :manage, Payment
         can :users_payments, Payment
+        can :amount, Payment
         can :manage, User
         can :manage, Car
         can :read, City
