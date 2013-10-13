@@ -122,10 +122,11 @@ class PaymentsController < ApplicationController
   # GET
   def amount
     @payment = Payment.find(params[:id])
+    @amount = PaymentCalculation(@payment)
     respond_to do |format|
       format.html # amount.html.erb
       #format.json { render json: @payment.amount }
-      format.json { render json: 15 }
+      format.json { render json: @amount }
     end
   end
 end
