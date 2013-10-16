@@ -15,6 +15,7 @@ one:
   invitation_accepted_at: 2013-06-15 17:45:24
   confirmed_at: 2013-06-15 17:45:24
   remember_created_at: 2013-06-15 17:45:24
+  authentication_token: cD3qXswxkiSxxFuiDuzi
   bank_account: one
 
 two:
