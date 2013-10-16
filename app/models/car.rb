@@ -10,7 +10,7 @@ class Car < ActiveRecord::Base
   validates :user, :presence=>true
 
   def image_url
-    ::Rails.application.config.server_url + car_image.url(:large)
+    ::Rails.application.config.server_url + car_image.url(:original)
   end
 
 end
