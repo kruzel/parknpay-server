@@ -3,8 +3,6 @@
 <table>
   <tr>
     <th>Car</th>
-    <th>X pos</th>
-    <th>Y pos</th>
     <th>Area</th>
     <th>User</th>
     <th>Start time</th>
@@ -18,10 +16,8 @@
 <% @payments.each do |payment| %>
   <tr>
     <td><%= payment.car.car_description %></td>
-    <td><%= payment.x_pos %></td>
-    <td><%= payment.y_pos %></td>
-    <td><%= payment.area %></td>
-    <td><%= payment.user %></td>
+    <td><%= payment.area.name %></td>
+    <td><%= payment.user.firstname + ' ' + payment.user.lastname %></td>
     <td><%= payment.start_time %></td>
     <td><%= payment.end_time %></td>
     <td><%= link_to 'Show', payment %></td>
