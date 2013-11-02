@@ -53,12 +53,11 @@ Verso::Application.routes.draw do
           get :get_rates
         end
         resources :areas do
-          resources :streets
-          resources :rates do
-            collection do
-              get :find_by_street
-            end
+          collection do
+            get :find_by_street
           end
+          resources :streets
+          resources :rates
         end
       end
 
