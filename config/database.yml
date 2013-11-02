@@ -15,7 +15,7 @@ development:
   database: ozpark_dev
   pool: 5
   username: ozpark_dev
-  password: FYYEAJF9CFQnR7Ex
+  password: ozpark_dev
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
