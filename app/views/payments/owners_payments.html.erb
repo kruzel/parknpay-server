@@ -3,6 +3,8 @@
 <table>
   <tr>
     <th>Car</th>
+    <th>X pos</th>
+    <th>Y pos</th>
     <th>Area</th>
     <th>User</th>
     <th>Start time</th>
@@ -12,17 +14,21 @@
     <th></th>
   </tr>
 
+<% if @payments %>
 <% @payments.each do |payment| %>
   <tr>
-    <td><%= payment.car.car_description if payment.car %></td>
-    <td><%= payment.area.name %></td>
-    <td><%= payment.user.firstname + ' ' + payment.user.lastname if payment.user%></td>
+    <td><%= payment.car.car_description %></td>
+    <td><%= payment.x_pos %></td>
+    <td><%= payment.y_pos %></td>
+    <td><%= payment.area %></td>
+    <td><%= payment.user %></td>
     <td><%= payment.start_time %></td>
     <td><%= payment.end_time %></td>
     <td><%= link_to 'Show', payment %></td>
     <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
     <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+<% end %>
 <% end %>
 </table>
 

@@ -8,6 +8,7 @@ class Ability
         can :manage, :all
       when 'owner'
         can :manage, :all
+        can :owners_payments, :owner_payments
       when 'inspector'
         can :read, City
         can :read, Area

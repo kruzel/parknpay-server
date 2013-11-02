@@ -2,7 +2,7 @@
 
 <p>
   <b>Car:</b>
-  <%= @payment.car.car_description %>
+  <%= @payment.car.car_description if @payment.car %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <b>User:</b>
-  <%= @payment.user.firstname + ' ' + @payment.user.lastname %>
+  <%= @payment.user.firstname + ' ' + @payment.user.lastname if @payment.user %>
 </p>
 
 <p>

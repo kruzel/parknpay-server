@@ -1,12 +1,13 @@
 class PaymentsController < ApplicationController
   
     before_filter :authenticate_user!
-    load_and_authorize_resource
-    layout 'admin' #( current_user.role == 'user' ? 'admin' : 'owner' )
+    #load_and_authorize_resource
+    layout 'admin'
   
   # GET /payments
   # GET /payments.json
   def index
+
     @payments = Payment.all
 
     respond_to do |format|
@@ -18,6 +19,8 @@ class PaymentsController < ApplicationController
   # GET /payments/1
   # GET /payments/1.json
   def show
+    authorize! :show, Payment
+
     @payment = Payment.find(params[:id])
 
     respond_to do |format|
@@ -29,6 +32,8 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   # GET /payments/new.json
   def new
+    authorize! :new, Payment
+
     @payment = Payment.new
 
     respond_to do |format|
@@ -39,12 +44,15 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1/edit
   def edit
+    authorize! :edit
     @payment = Payment.find(params[:id])
   end
 
   # POST /payments
   # POST /payments.json
   def create
+    authorize! :create, Payment
+
     @payment = Payment.new(params[:payment])
 
     respond_to do |format|
@@ -61,6 +69,8 @@ class PaymentsController < ApplicationController
   # PUT /payments/1
   # PUT /payments/1.json
   def update
+    authorize! :update, Payment
+
     @payment = Payment.find(params[:id])
 
     respond_to do |format|
@@ -91,6 +101,8 @@ class PaymentsController < ApplicationController
   # GET /payments/users_payments
   # GET /payments/users_payments.json
   def users_payments
+    authorize! :users_payments, Payment
+
     @payments = Payment.where("user_id = ?", current_user.id)
 
     respond_to do |format|
@@ -99,28 +111,10 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # GET /payments/owner_paymenta
-  # GET /payments/owner_paymenta.json
-  def owners_payments
-    if current_user.role == 'owner' && currenet_user.bankk_account
-      @areas = Area.find(currenet_user.bankk_account.id)
-      @payments = Payment.where("area_id = ?", current_user.id)
-
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @payments }
-      end
-    else
-      #error page
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @payments }
-      end
-    end
-  end
-
   # GET
   def amount
+    authorize! :amount, Payment
+
     @payment = Payment.find(params[:id])
     @amount = PaymentCalculation(@payment)
     respond_to do |format|

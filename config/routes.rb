@@ -35,6 +35,12 @@ Verso::Application.routes.draw do
     end
   end
 
+  resources :owner_payments do
+    collection do
+      get :owners_payments
+    end
+  end
+
   scope "/api" do
     scope "/v1"  do     
       resources :users do
