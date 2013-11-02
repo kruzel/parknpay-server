@@ -55,6 +55,9 @@ Verso::Application.routes.draw do
         resources :areas do
           resources :streets
           resources :rates
+          collection do
+            get :find_by_street
+          end
         end
       end
 
