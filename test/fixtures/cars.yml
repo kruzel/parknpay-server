@@ -1,11 +1,11 @@
 # Read abouts fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  user: two
-  license_plate: 24324314
-  car_description: Mazda
+#one:
+#  user: two
+#  license_plate: 24324314
+#  car_description: Mazda
 
-two:
-  user: two
-  license_plate: 456464
-  car_description: Getz
+#two:
+#  user: two
+#  license_plate: 456464
+#  car_description: Getz
