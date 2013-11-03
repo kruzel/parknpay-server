@@ -103,7 +103,7 @@ class PaymentsController < ApplicationController
   def users_payments
     authorize! :users_payments, Payment
 
-    @payments = Payment.where("user_id = ?", current_user.id)
+    @payments = Payment.paginate(:page => params[:page], :per_page => 20).where("user_id = ?", current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb

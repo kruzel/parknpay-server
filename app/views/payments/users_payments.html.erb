@@ -26,6 +26,8 @@
 <% end %>
 </table>
 
+<%= will_paginate @payments if @payments %>
+
 <br />
 
 <%= link_to 'New Payment', new_payment_path %>

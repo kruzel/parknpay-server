@@ -1,5 +1,6 @@
 class OwnerPaymentsController < PaymentsController
 
+  before_filter :authenticate_user!
   layout 'owner'
 
   # GET /payments/owner_paymenta
@@ -8,8 +9,8 @@ class OwnerPaymentsController < PaymentsController
     authorize! :owners_payments, :owner_payments
 
     if current_user.role == 'owner' && current_user.bank_account
-      @areas = Area.find(currenet_user.bankk_account.id)
-      @payments = Payment.where("area_id = ?", current_user.id)
+      @areas = Area.find(current_user.bank_account.id)
+      @payments = Payment.paginate(:page => params[:page], :per_page => 20).where("area_id = ?", current_user.id)
 
       respond_to do |format|
         format.html # index.html.erb

@@ -22,18 +22,16 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.1'
+gem 'apipie-rails', '~> 0.0.22'
 
 gem 'devise', '~> 2.2.4'
 gem 'devise_invitable', '~> 1.1.8'
 gem 'cancan', '~> 1.6.10'
 gem "paperclip", "~> 3.0"
+gem 'will_paginate', '~> 3.0'
 
 # To use debugger
 #gem 'debugger', '1.6.0'
-
-gem 'apipie-rails', '~> 0.0.22'
-
-#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 group :development do
   gem 'linecache19', '>= 0.5.13' #, :git => 'https://github.com/robmathews/linecache19-0.5.13.git'

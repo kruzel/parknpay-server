@@ -15,9 +15,9 @@
 <% if @payments %>
 <% @payments.each do |payment| %>
   <tr>
-    <td><%= payment.car.car_description %></td>
+    <td><%= payment.car.car_description if payment.car %></td>
     <td><%= payment.area.name %></td>
-    <td><%= payment.user.firstname + ' ' + payment.user.lastname %></td>
+    <td><%= payment.user.firstname + ' ' + payment.user.lastname if payment.user %></td>
     <td><%= payment.start_time %></td>
     <td><%= payment.end_time %></td>
     <td><%= link_to 'Show', payment %></td>
@@ -27,6 +27,8 @@
 <% end %>
 <% end %>
 </table>
+
+<%= will_paginate @payments if @payments %>
 
 <br />
 
