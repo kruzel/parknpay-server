@@ -83,15 +83,15 @@ module Verso
     config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :domain               => "inigo.com.au",
-      :user_name            => "support@inigo.com.au",
-      :password             => "Super-Secure-Password",
+      :domain               => "ozpark.com.au",
+      :user_name            => "support@ozpark.com.au",
+      :password             => "qwerasdf",
       :authentication       => :plain,
       :enable_starttls_auto => true
     }
 
     config.action_mailer.default_url_options = {
-      :host => "inigo.com.au"
+      :host => "ozpark.com.au"
     }
     
   end
