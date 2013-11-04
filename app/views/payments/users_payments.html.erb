@@ -10,7 +10,7 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
 <div id="collapsePagination" class="accordion-body collapse in">
 <div class="accordion-inner" style="background-color: #ffffff;">
 <div class="container">
-<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="payments-table">
 <thead>
   <tr>
     <th>Car</th>
@@ -51,6 +51,3 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
 
 <%= will_paginate @payments if @payments %>
 
-<br />
-
-<%= link_to 'New Payment', new_payment_path %>
