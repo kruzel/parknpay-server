@@ -7,6 +7,8 @@ class RatesController < ApplicationController
   # GET /rates.json
   def index
     @rates = Rate.where("area_id = ?",params[:area_id])
+    @area = Area.find(params[:area_id])
+    @city = @area.city
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +20,8 @@ class RatesController < ApplicationController
   # GET /rates/1.json
   def show
     @rate = Rate.find(params[:id])
+    @area = @rate.area
+    @city = @area.city
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,6 +34,8 @@ class RatesController < ApplicationController
   def new
     @rate = Rate.new
     @rate.area = Area.find(params[:area_id])
+    @area = @rate.area
+    @city = @area.city
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +47,8 @@ class RatesController < ApplicationController
   def edit
     @rate = Rate.find(params[:id])
     @rate.area = Area.find(params[:area_id])
+    @area = @rate.area
+    @city = @area.city
   end
 
   # POST /rates
@@ -48,6 +56,8 @@ class RatesController < ApplicationController
   def create
     @rate = Rate.new(params[:rate])
     @rate.area = Area.find(params[:area_id])
+    @area = @rate.area
+    @city = @area.city
 
     respond_to do |format|
       if @rate.save
@@ -65,6 +75,8 @@ class RatesController < ApplicationController
   def update
     @rate = Rate.find(params[:id])
     @rate.area = Area.find(params[:area_id])
+    @area = @rate.area
+    @city = @area.city
 
     respond_to do |format|
       if @rate.update_attributes(params[:rate])

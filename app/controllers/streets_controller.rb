@@ -7,6 +7,8 @@ class StreetsController < ApplicationController
   # GET /streets.json
   def index
     @streets = Street.where("area_id = ?",params[:area_id])
+    @area = Area.find(params[:area_id])
+    @city = @area.city
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +20,8 @@ class StreetsController < ApplicationController
   # GET /streets/1.json
   def show
     @street = Street.find(params[:id])
+    @area = @street.area
+    @city = @area.city
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,6 +34,8 @@ class StreetsController < ApplicationController
   def new
     @street = Street.new
     @street.area = Area.find(params[:area_id])
+    @area = @street.area
+    @city = @area.city
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +47,8 @@ class StreetsController < ApplicationController
   def edit
     @street = Street.find(params[:id])
     @street.area = Area.find(params[:area_id])
+    @area = @street.area
+    @city = @area.city
   end
 
   # POST /streets
@@ -48,6 +56,8 @@ class StreetsController < ApplicationController
   def create
     @street = Street.new(params[:street])
     @street.area = Area.find(params[:area_id])
+    @area = @street.area
+    @city = @area.city
 
     respond_to do |format|
       if @street.save
@@ -65,6 +75,8 @@ class StreetsController < ApplicationController
   def update
     @street = Street.find(params[:id])
     @street.area = Area.find(params[:area_id])
+    @area = @street.area
+    @city = @area.city
 
     respond_to do |format|
       if @street.update_attributes(params[:street])

@@ -7,6 +7,7 @@ class AreasController < ApplicationController
   # GET /areas.json
   def index
     @areas = Area.where("city_id = ?", params[:city_id])
+    @city = City.find(params[:city_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +19,7 @@ class AreasController < ApplicationController
   # GET /areas/1.json
   def show
     @area = Area.find(params[:id])
+    @city = @area.city
 
     respond_to do |format|
       format.html # show.html.erb
