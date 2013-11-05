@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
-  
+    require './lib/user_payments_datatable.rb'
+
     before_filter :authenticate_user!
     #load_and_authorize_resource
     layout 'admin'
@@ -103,7 +104,8 @@ class PaymentsController < ApplicationController
   def users_payments
     authorize! :users_payments, Payment
 
-    @payments = Payment.paginate(:page => params[:page], :per_page => 20).where("user_id = ?", current_user.id)
+    #@payments = Payment.paginate(:page => params[:page], :per_page => 1).where("user_id = ?", current_user.id)
+    @payments = ::UserPaymentsDatatable.new(view_context)
 
     respond_to do |format|
       format.html # index.html.erb

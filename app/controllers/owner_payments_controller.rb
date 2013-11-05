@@ -1,5 +1,7 @@
 class OwnerPaymentsController < PaymentsController
 
+  require './lib/owner_payments_datatable.rb'
+
   before_filter :authenticate_user!
   layout 'owner'
 
@@ -9,8 +11,7 @@ class OwnerPaymentsController < PaymentsController
     authorize! :owners_payments, :owner_payments
 
     if current_user.role == 'owner' && current_user.bank_account
-      @areas = Area.find(current_user.bank_account.id)
-      @payments = Payment.paginate(:page => params[:page], :per_page => 20).where("area_id = ?", current_user.id)
+      @payments = OwnerPaymentsDatatable.new(view_context)
 
       respond_to do |format|
         format.html # index.html.erb
@@ -19,7 +20,7 @@ class OwnerPaymentsController < PaymentsController
     else
       #error page
       respond_to do |format|
-        format.html # index.html.erb
+        format.html # owner_payments.html.erb
         format.json { render json: @payments }
       end
     end
