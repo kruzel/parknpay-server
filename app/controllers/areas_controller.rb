@@ -94,9 +94,9 @@ class AreasController < ApplicationController
 =end
 
   def find_by_street
-    city = City.find_all_by_name(params[:city_name])
+    city = City.where('name like ?',params[:city_name])
     if city
-      @area = Area.joins(:streets).where('areas.city_id = ? AND streets.name = ?',city.id  , params[:street_name])
+      @area = Area.joins(:streets).where('areas.city_id like ? AND streets.name like ?',city.id  , params[:street_name])
     end
 
     respond_to do |format|

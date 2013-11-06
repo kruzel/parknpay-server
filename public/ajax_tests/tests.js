@@ -90,7 +90,7 @@ $(document).ready(function() {
 			url: server_url + "/api/v1/users/0/cars.json?auth_token=" + token,
 			dataType: "json",
 			type: "post",
-			data: {car:{license_plate:"111111", car_description:"mazda 6"}},
+			data: {car:{license_plate:"111112", car_description:"mazda 6"}},
 			cache: false,
 			success: function(response, textStatus, jqXHR) {
                 $("#result").text(response);
