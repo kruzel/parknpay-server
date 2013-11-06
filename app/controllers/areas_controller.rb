@@ -94,7 +94,8 @@ class AreasController < ApplicationController
 =end
 
   def find_by_street
-    @area = Area.joins(:streets).where('areas.city_id = ? AND streets.name = ?', params[:city_id] , params[:street_name])
+    city = City.find_all_by_name(params[:city_name])
+    @area = Area.joins(:streets).where('areas.city_id = ? AND streets.name = ?',city.id  , params[:street_name])
 
     respond_to do |format|
       format.html # show.html.erb
