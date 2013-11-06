@@ -95,6 +95,7 @@ class AreasController < ApplicationController
 
   def find_by_street
     city = City.where('name like ?',params[:city_name])
+    logger.debug("city= "+city)
     if city
       @area = Area.joins(:streets).where('areas.city_id like ? AND streets.name like ?',city.id  , params[:street_name])
     end
