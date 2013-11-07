@@ -32,9 +32,9 @@ serverApi.prototype = {
             success: function(response, textStatus, jqXHR)
             {
                 //console.log(response.session);
-                serverApi.auth_token = response.session.auth_token;
-                window.localStorage.setItem("auth_token",serverApi.auth_token);
-                params['success'](serverApi.auth_token); //callback function
+                _serverApi.auth_token = response.session.auth_token;
+                window.localStorage.setItem("auth_token",_serverApi.auth_token);
+                params['success'](_serverApi.auth_token); //callback function
             },
             error: function(jqXHR, textStatus, errorThrown)
             {
