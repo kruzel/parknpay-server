@@ -4,7 +4,7 @@
 <div class="accordion-heading">
 <a style="text-align: left;text-decoration: none" class="accordion-toggle btn btn-danger"
 data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
-<i class="icon-list"></i> Pagination Tabel <i class="icon-minus pull-right"></i>
+<i class="icon-list"></i> <%= @city.name %> areas <i class="icon-minus pull-right"></i>
 </a>
 </div>
 <div id="collapsePagination" class="accordion-body collapse in">
@@ -13,8 +13,7 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 <thead>
   <tr>
-    <th>Name</th>
-    <th>City</th>
+    <th>Area</th>
     <th>Bank Account</th>
     <th></th>
     <th></th>
@@ -25,7 +24,6 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
 <% @areas.each do |area| %>
   <tr>
     <td><%= area.name %></td>
-    <td><%= area.city.name %></td>
     <td><%= area.bank_account.name %></td>
     <td><%= link_to 'Show', city_area_rates_path(area.city,area) %></td>
     <td><%= link_to 'Edit', edit_city_area_path(area.city,area) %></td>

@@ -4,7 +4,7 @@
 <div class="accordion-heading">
 <a style="text-align: left;text-decoration: none" class="accordion-toggle btn btn-danger"
 data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
-<i class="icon-list"></i> Pagination Tabel <i class="icon-minus pull-right"></i>
+<i class="icon-list"></i> <%= @city.name + " " + @area.name %> <i class="icon-minus pull-right"></i>
 </a>
 </div>
 <div id="collapsePagination" class="accordion-body collapse in">
@@ -15,7 +15,6 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
   <tr>
     <th>Rate</th>
     <th>Currency</th>
-    <th>Area</th>
     <th>Start Day A Week</th>
     <th>End  Day A Week</th>
     <th>Start time</th>
@@ -32,7 +31,6 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
   <tr>
     <td><%= rate.rate %></td>
     <td><%= rate.currency %></td>
-    <td><%= rate.area.name %></td>
     <td><%= rate.start_day_a_week %></td>
     <td><%= rate.end_day_a_week %></td>
     <td><%= l rate.start_time, :format =>  "%H:%M" %></td>
