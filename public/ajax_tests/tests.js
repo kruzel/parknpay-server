@@ -1,9 +1,11 @@
+var _serverApi = null;
+
 $(document).ready(function() {
 
-	var _serverApi = new serverApi();
+	_serverApi = new serverApi();
 
 	$("#user_add").click(function() {
-		var data = { user: { email: "ofer.k2@downloadius.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "ofer", lastname: "kruzel" }};
+		var data = { user: { email: "ofer.k3@downloadius.com", password: "qwerasdf", password_confirmation: "qwerasdf", firstname: "ofer", lastname: "kruzel" }};
 		
 		_serverApi.sign_up({data: data,
 		    success: function(response) {

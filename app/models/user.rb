@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,:active,
                   :firstname, :lastname, :gender, :dob,:address_st,:address_state,:address_postcode,:address_country,
-                  :bank_account_id, :bank_account, :terms_of_service , :avatar, :profile
+                  :bank_account_id, :bank_account, :terms_of_service , :avatar, :profile, :role
   # attr_accessible :title, :body
 
   before_save :ensure_authentication_token
