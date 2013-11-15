@@ -13,7 +13,9 @@ Verso::Application.routes.draw do
   resources :cities do
     collection do
       get :get_rates
+      get :get_areas
     end
+
     resources :areas do
       resources :streets
       resources :rates

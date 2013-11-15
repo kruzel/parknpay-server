@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131013181643) do
+ActiveRecord::Schema.define(:version => 20131114171940) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20131013181643) do
     t.integer  "bank_account_id", :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "polygon"
   end
 
   add_index "areas", ["bank_account_id"], :name => "index_areas_on_bank_account_id"

@@ -1,7 +1,7 @@
 class Area < ActiveRecord::Base
   belongs_to :city
   belongs_to :bank_account
-  attr_accessible :name, :city, :bank_account, :bank_account_id
+  attr_accessible :name, :city, :bank_account, :bank_account_id, :polygon
 
   has_many :rates
   has_many :streets

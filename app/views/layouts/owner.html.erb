@@ -189,31 +189,6 @@
               </a>
             </div>
           </div>
-          <% if @city && @city.id %>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= city_areas_path(@city) %>>
-                    <i class="icon-picture"></i><span>Areas</span>
-                  </a>
-                </div>
-              </div>
-          <% end %>
-          <% if @area && @area.id %>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= city_area_streets_path(@area.city, @area) %>>
-                    <i class="icon-picture"></i><span>Streets</span>
-                  </a>
-                </div>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a style="text-decoration: none;text-align: left" class="accordion-toggle btn" href=<%= city_area_rates_path(@area.city, @area) %>>
-                    <i class="icon-picture"></i><span>Rates</span>
-                  </a>
-                </div>
-              </div>
-          <% end %>
         </div>
       </li>
     </ul>

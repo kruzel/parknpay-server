@@ -99,4 +99,52 @@ class CitiesController < ApplicationController
       format.json { render json: @cities.as_json(:include => { :areas => { :include => { :rates => {:only => [:id, :start_day_a_week, :end_day_a_week, :rate, :currency, :area_id, :archive], :methods => [ :start_time_int, :end_time_int ]  }}}}) }
     end
   end
+
+  def get_areas
+    city = City.find_all_by_name(params[:city_name])
+    areas = @city.areas
+    area = nil
+    areas.each do |tmp_area|
+      #fidn the polygon
+      polygon = area.polygon
+      vertx = Array.new
+      verty = Array.new
+      polygon = JSON.parse(polygon)
+      polygon.each do |point|
+        vertx = point.x
+        verty = point.y
+      end
+      nvert = polygon.size
+
+      #--------------
+
+    end
+
+    respond_to do |format|
+      if area
+        format.json { render json: {:area_id => area.id} }
+      else
+        format.json { head :not_found }
+      end
+    end
+  end
+
+  private
+
+  #nvert: Number of vertices in the polygon. Whether to repeat the first vertex at the end.
+  #vertx, verty: Arrays containing the x- and y-coordinates of the polygon's vertices.
+  #testx, testy: X- and y-coordinate of the test point.
+
+  def pnpoly(nvert, vertx, verty, testx, testy)
+      c = 0
+      i = 0
+      while  j = nvert-1 && i < nvert
+          j = i++
+          if ( ((verty[i]>testy) != (verty[j]>testy)) &&
+              (testx < (vertx[j]-vertx[i]) * (testy-verty[i]) / (verty[j]-verty[i]) + vertx[i]) )
+              c = !c
+          end
+      end
+      return c
+  end
 end

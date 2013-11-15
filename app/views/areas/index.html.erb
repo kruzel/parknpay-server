@@ -1,3 +1,25 @@
+<script>
+    function showRates(area_id, city_id) {
+        $('#area-rates').attr('data-source','/cities/'+city_id+'/areas/'+area_id+'/rates.json');
+
+        $('#area-rates').dataTable( {
+            "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+            "sPaginationType": "bootstrap",
+            "bJQueryUI": true,
+            "bProcessing": true,
+            "bServerSide": true,
+            "bDestroy":true,
+            "sAjaxSource": $('#area-rates').data('source'),
+            "fnServerParams": function ( aoData ) {
+                aoData.push( { "area_id": area_id } );
+            },
+            "oLanguage": {
+                "sLengthMenu": "_MENU_ records per page"
+            }
+        } );
+    }
+</script>
+
 <div class="row-fluid">
 <div class="accordion" id="accordionPagination">
 <div class="accordion-group">
@@ -14,7 +36,6 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
 <thead>
   <tr>
     <th>Area</th>
-    <th>Bank Account</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,8 +45,7 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
 <% @areas.each do |area| %>
   <tr>
     <td><%= area.name %></td>
-    <td><%= area.bank_account.name %></td>
-    <td><%= link_to 'Show', city_area_rates_path(area.city,area) %></td>
+    <td><%= link_to_function 'Show', "javascript:showRates("+area.id.to_s+","+area.city_id.to_s+")" %></td>
     <td><%= link_to 'Edit', edit_city_area_path(area.city,area) %></td>
     <td><%= link_to 'Destroy', [area.city,area], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -40,6 +60,50 @@ data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
 </div>
 </div>
 
+<%= link_to 'New Area', new_city_area_path %>
+<br />
 <br />
 
-<%= link_to 'New Area', new_city_area_path %>
+<div class="row-fluid">
+  <div class="accordion" id="accordionPagination">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a style="text-align: left;text-decoration: none" class="accordion-toggle btn btn-danger"
+           data-toggle="collapse" data-parent="#accordion2" href="#collapsePagination">
+          <i class="icon-list"></i> Rates for area <%= @city.name + " " + @area.name if @area %> <i class="icon-minus pull-right"></i>
+        </a>
+      </div>
+      <div id="collapsePagination" class="accordion-body collapse in">
+        <div class="accordion-inner" style="background-color: #ffffff;">
+          <div class="container">
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="area-rates" data-source="">
+              <thead>
+              <tr>
+                <th>Rate</th>
+                <th>Currency</th>
+                <th>Start Day A Week</th>
+                <th>End  Day A Week</th>
+                <th>Start time</th>
+                <th>End time</th>
+                <th>Valid starting</th>
+                <th>Valid till</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br />
+
+<%= link_to 'New Rate', new_city_area_rate_path if @area%>

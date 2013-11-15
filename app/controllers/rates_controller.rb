@@ -1,4 +1,6 @@
 class RatesController < ApplicationController
+  require './lib/area_rates_datatable.rb'
+
   before_filter :authenticate_user!
   load_and_authorize_resource
   layout 'owner'
@@ -6,9 +8,11 @@ class RatesController < ApplicationController
   # GET /rates
   # GET /rates.json
   def index
-    @rates = Rate.where("area_id = ?",params[:area_id])
     @area = Area.find(params[:area_id])
     @city = @area.city
+
+    #@rates = Rate.where("area_id = ?",params[:area_id])
+    @rates = ::AreaRatesDatatable.new(view_context,@area)
 
     respond_to do |format|
       format.html # index.html.erb
