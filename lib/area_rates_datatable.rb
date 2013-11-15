@@ -24,13 +24,13 @@ class AreaRatesDatatable
           rate.currency,
           rate.start_day_a_week,
           rate.end_day_a_week,
-          rate.start_time, #:format =>  "%H:%M"
-          rate.end_time, #, :format =>  "%H:%M"
-          rate.valid_start_at,
-          rate.valid_end_at,
-          #link_to('Show', rate),
-          #link_to('Edit', edit_rate_path(rate)),
-          #link_to('Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' })
+          rate.start_time.strftime("%H:%M"),
+          rate.end_time.strftime("%H:%M"),
+          rate.valid_start_at.strftime("%y/%m/%d %H:%M"),
+          rate.valid_end_at.strftime("%y/%m/%d %H:%M"),
+          link_to('Show', '/cities/'+@area.city_id.to_s+'/areas/'+@area.id.to_s+'/rates/'+rate.id.to_s),
+          link_to('Edit', '/cities/'+@area.city_id.to_s+'/areas/'+@area.id.to_s+'/rates/'+rate.id.to_s+'/edit'),
+          link_to('Destroy', '/cities/'+@area.city_id.to_s+'/areas/'+@area.id.to_s+'/rates/'+rate.id.to_s,  method: :delete, data: { confirm: 'Are you sure?' })
       ]
     end
   end
