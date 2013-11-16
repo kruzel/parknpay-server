@@ -317,6 +317,8 @@ function addPoint(event)
 			poly_array[data.rslt.obj[0].id].setOptions({ strokeWeight: 5});
 	  		poly_array[data.rslt.obj[0].id].setEditable(true);
 	 		currently_edited_poly = poly_array[data.rslt.obj[0].id];
+
+            //showRates(area_id, city_id);
 		}
 
        //console.log("polygon points " + data.rslt.obj.data("p"));
