@@ -28,7 +28,7 @@ class AreaRatesDatatable
           rate.end_time.strftime("%H:%M"),
           rate.valid_start_at.strftime("%y/%m/%d %H:%M"),
           rate.valid_end_at.strftime("%y/%m/%d %H:%M"),
-          link_to('Show', '/cities/'+@area.city_id.to_s+'/areas/'+@area.id.to_s+'/rates/'+rate.id.to_s),
+          link_to('Rates', '/cities/'+@area.city_id.to_s+'/areas/'+@area.id.to_s+'/rates/'+rate.id.to_s),
           link_to('Edit', '/cities/'+@area.city_id.to_s+'/areas/'+@area.id.to_s+'/rates/'+rate.id.to_s+'/edit'),
           link_to('Destroy', '/cities/'+@area.city_id.to_s+'/areas/'+@area.id.to_s+'/rates/'+rate.id.to_s,  method: :delete, data: { confirm: 'Are you sure?' })
       ]
