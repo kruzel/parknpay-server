@@ -63,7 +63,9 @@ class AreasController < ApplicationController
         @area.bank_account = current_user.bank_account
         area_success = @area.save
       end
-      unless area_success success = false
+      unless area_success
+        success = false
+      end
     end
 
     respond_to do |format|
