@@ -18,7 +18,9 @@
             }
         } );
 
-        $("body").append("<a href=/cities/"+city_id+"/areas/"+area_id+"/rates/new >new Rate</>")
+        if(!document.getElementById('new-rate')) {
+            $("body").append("<a id='new-rate' href=/cities/"+city_id+"/areas/"+area_id+"/rates/new >new Rate</>");
+        }
     }
 </script>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
