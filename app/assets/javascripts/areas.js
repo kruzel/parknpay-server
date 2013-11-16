@@ -242,7 +242,7 @@ function addPoint(event)
 						"valid_children" : "folder",
 						// If we specify an icon for the default type it WILL OVERRIDE the theme icons
 						"icon" : {
-							"image" : "static/map.png"
+							"image" : "/jstree/map.png"
 						}
 					},
 					// The `folder` type
@@ -250,7 +250,7 @@ function addPoint(event)
 						// can have files and other folders inside of it, but NOT `drive` nodes
 						"valid_children" : [ "default", "folder" ],
 						"icon" : {
-							"image" : "static/map.png"
+							"image" : "/jstree/map.png"
 						}
 					},
 					// The `drive` nodes 
@@ -258,8 +258,8 @@ function addPoint(event)
 						// can have files and folders inside, but NOT other `drive` nodes
 						"valid_children" : [ "default", "folder" ],
 						"icon" : {
-							"image" : "static/tag.png"
-						},
+							"image" : "/images/jstree/tag.png"
+						}
 						// those prevent the functions with the same name to be used on `drive` nodes
 						// internally the `before` event is used
 						
