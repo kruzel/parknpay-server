@@ -19,6 +19,7 @@ var currently_edited_poly;
     
   var json_data =  [{  "data" : "Sidney", 
                       "metadata" : { "lat":24.88 , "lon":-70.26 },
+                      "attr" : { "id" : "0"},
                        "children" : 
                        [ 
                             {
@@ -29,7 +30,7 @@ var currently_edited_poly;
                                            {"lat":18.464652, "lon":-66.118292}, 
                                            {"lat":32.321384, "lon":-64.75737}
                                        ]  },
-                               "attr" : { "id" : "0"}                                                    
+                               "attr" : { "id" : "0"}
                            },
                            {
                                "data" :"Opera", 
@@ -318,7 +319,7 @@ function addPoint(event)
 	  		poly_array[data.rslt.obj[0].id].setEditable(true);
 	 		currently_edited_poly = poly_array[data.rslt.obj[0].id];
 
-            //showRates(area_id, city_id);
+            showRates(298486374, 298486374);
 		}
 
        //console.log("polygon points " + data.rslt.obj.data("p"));
