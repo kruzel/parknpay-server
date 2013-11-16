@@ -5,13 +5,73 @@ class AreasController < ApplicationController
 
   # GET /areas
   # GET /areas.json
+=begin
+  [{
+      "name" : "Sidney",
+    "metadata" : { "lat":24.88 , "lon":-70.26 }
+      "attr" : { "id" : "0"},
+      "children" :
+      [
+          {
+              "name" :"Beach Area",
+              "polygons" :
+              [
+                  {"lat":25.774252, "lon":-80.190262},
+                  {"lat":18.464652, "lon":-66.118292},
+                  {"lat":32.321384, "lon":-64.75737}
+              ]  ,
+              "attr" : { "id" : "0"}
+          },
+          {
+              "name" :"Opera",
+              "polygons" :
+              [
+                  {"lat":26.774252, "lon":-82.190262},
+                  {"lat":17.4664652, "lon":-61.118292},
+                  {"lat":30.321384, "lon":-62.75737}
+              ]  ,
+              "attr" : { "id" : "1"  }
+          }
+      ]
+  }];
+=end
+
   def index
     @areas = Area.where("city_id = ?", params[:city_id])
     @city = City.find(params[:city_id])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @areas }
+      format.json { render json: @city.as_json(:only => [:id, :name], :include => [:areas => { :only => [:id, :name, :polygon ] }] ) }
+    end
+  end
+
+  # PUT /areas/update_areas.json
+  def update_areas
+    @city = City.find(params[:id])
+    areas = params[:areas]
+
+    success = true
+    areas.each do [area]
+      @area = Area.find(area.id)
+      area_success = false
+      if @area
+        area_success = @area.update_attributes(area)
+      else
+        @area = Area.new(area)
+        @area.city_id = params[:id]
+        @area.bank_account = current_user.bank_account
+        area_success = @area.save
+      end
+      unless area_success success = false
+    end
+
+    respond_to do |format|
+      if success
+        format.json { head :no_content }
+      else
+        format.json { render json: @area.errors, status: :unprocessable_entity }
+      end
     end
   end
 
