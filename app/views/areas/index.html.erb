@@ -30,6 +30,9 @@
 <%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=false' %>
 <%= javascript_include_tag 'areas' %>
 <%= stylesheet_link_tag 'areas' %>
+<script>
+  set_city(<%= @city.id %>,"<%= @city.name %>");
+</script>
 <% end %>
 
 <!--<div class="row-fluid">

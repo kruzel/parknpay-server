@@ -48,7 +48,7 @@ class AreasController < ApplicationController
 
   # PUT /areas/update_areas.json
   def update_areas
-    @city = City.find(params[:id])
+    @city = City.find(params[:city_id])
     areas = params[:areas]
 
     success = true
@@ -158,7 +158,7 @@ class AreasController < ApplicationController
 
   def find_by_street
     city = City.where('name like ?',params[:city_name]).first
-    #logger.error("city= "+city.to_json)
+    #logger.error("city_id= "+city_id.to_json)
     if city
       @area = Area.joins(:streets).where('areas.city_id like ? AND streets.name like ?',city.id  , params[:street_name])
     end
@@ -168,4 +168,5 @@ class AreasController < ApplicationController
       format.json { render json: @area }
     end
   end
+
 end

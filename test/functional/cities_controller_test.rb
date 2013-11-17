@@ -16,15 +16,15 @@ class CitiesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create city" do
+  test "should create city_id" do
     assert_difference('City.count') do
-      post :create, city: { name: @city.name }
+      post :create, city_id: { name: @city.name }
     end
 
-    assert_redirected_to city_path(assigns(:city))
+    assert_redirected_to city_path(assigns(:city_id))
   end
 
-  test "should show city" do
+  test "should show city_id" do
     get :show, id: @city
     assert_response :success
   end
@@ -34,12 +34,12 @@ class CitiesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update city" do
-    put :update, id: @city, city: { name: @city.name }
-    assert_redirected_to city_path(assigns(:city))
+  test "should update city_id" do
+    put :update, id: @city, city_id: { name: @city.name }
+    assert_redirected_to city_path(assigns(:city_id))
   end
 
-  test "should destroy city" do
+  test "should destroy city_id" do
     assert_difference('City.count', -1) do
       delete :destroy, id: @city
     end

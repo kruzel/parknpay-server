@@ -118,7 +118,7 @@ class PaymentsController < ApplicationController
     authorize! :amount, Payment
 
     @payment = Payment.find(params[:id])
-    @amount = PaymentCalculation(@payment)
+    @amount = PaymentCalculation.get_amount(@payment)
     respond_to do |format|
       format.html # amount.html.erb
       #format.json { render json: @payment.amount }

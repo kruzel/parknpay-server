@@ -46,7 +46,7 @@ class CitiesController < ApplicationController
   # POST /cities
   # POST /cities.json
   def create
-    @city = City.new(params[:city])
+    @city = City.new(params[:city_id])
 
     respond_to do |format|
       if @city.save
@@ -65,7 +65,7 @@ class CitiesController < ApplicationController
     @city = City.find(params[:id])
 
     respond_to do |format|
-      if @city.update_attributes(params[:city])
+      if @city.update_attributes(params[:city_id])
         format.html { redirect_to @city, notice: 'City was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,8 +79,8 @@ class CitiesController < ApplicationController
   # DELETE /cities/1.json
 =begin
   def destroy
-    @city = City.find(params[:id])
-    @city.destroy
+    @city_id = City.find(params[:id])
+    @city_id.destroy
 
     respond_to do |format|
       format.html { redirect_to cities_url }
@@ -100,13 +100,14 @@ class CitiesController < ApplicationController
     end
   end
 
-  def get_areas
-    city = City.find_all_by_name(params[:city_name])
+  #params: city_name, lat, lon
+  def get_area_by_lat_lon
+    city = City.find_by_name(params[:city_name])
     areas = @city.areas
     area = nil
     areas.each do |tmp_area|
       #fidn the polygon
-      polygon = area.polygon
+      polygon = tmp_area.polygon
       vertx = Array.new
       verty = Array.new
       polygon = JSON.parse(polygon)
@@ -115,9 +116,10 @@ class CitiesController < ApplicationController
         verty = point.y
       end
       nvert = polygon.size
-
-      #--------------
-
+      if pnpoly(nvert, vertx, verty, params[:lat], params[:lon])%2!=0
+        area = tmp_area;
+        break
+      end
     end
 
     respond_to do |format|

@@ -5,6 +5,8 @@ class PaymentCalculation
 
     sum = 0.0;
 
+    #TODO: finish amount calculation
+
     #for each payment day from start to end
     (payment.start_time.change(:hour => 0)..payment.end_time.change(:hour => 0)).step(1.day).each do |day|
       #find rates that are valid and have overlapping days

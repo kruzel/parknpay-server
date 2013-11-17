@@ -13,7 +13,6 @@ Verso::Application.routes.draw do
   resources :cities do
     collection do
       get :get_rates
-      get :get_areas
     end
 
     resources :areas do
@@ -59,6 +58,7 @@ Verso::Application.routes.draw do
       resources :cities do
         collection do
           get :get_rates
+          get :get_area_by_lat_lon
         end
         resources :areas do
           collection do
