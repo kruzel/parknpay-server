@@ -7,6 +7,7 @@ var shapeCounter_ = 0;
 var markerCounter_ = 0;
 var colorIndex_ = 0;
 var featureTable_;
+var city_center = null;
 
 var marker_icon = 'static/marker.png';
 var poly_array = [];
@@ -156,11 +157,11 @@ function area_initialize()
     geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': city_name}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            var city_center = results[0].geometry.location
-
+            var city_center_google = results[0].geometry.location;
+           city_center = {lat:city_center_google.ob, lon:city_center_google.pb};
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 13,
-                center: city_center,
+                center: city_center_google,
                 mapTypeId: google.maps.MapTypeId.MAP
             });
 
@@ -175,6 +176,9 @@ function area_initialize()
   
  }
 
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
 function addPoint(event) 
 {
 		if (currently_edited_poly)
@@ -188,7 +192,8 @@ function customMenu(node)
 {
         var items;
 
-        if ($(node).hasClass("jstree-leaf") )
+       // if ($(node).hasClass("jstree-leaf") )
+        if (node[0].id != "root")
         {
             items =
             {
@@ -204,7 +209,7 @@ function customMenu(node)
              "label": "Delete"	,
              "action": function (obj) {
                  this.remove(obj);
-                 poly_id = obj[0].id - 1;
+                 poly_id = obj[0].id;
                         json_data[0].children.splice(poly_id , 1);
 
                         refresh_polygones();
@@ -222,20 +227,20 @@ function customMenu(node)
              "action": function (obj) {
 
                  var new_id =  json_data[0].children.length;
-                        $("#areasTree").jstree("create", null, "last", {attr: {id: new_id}, data: "New Area"} ,null, true);
+							$("#areasTree").jstree("create", $("#root"), "last", {attr: {id: new_id}, data: "New Area"} ,null, true);
                         //obj.attr("id",  new_id);
                  //this.create(obj);
-                 rnd_pos = Math.random()*3;
+                 rnd_pos = Math.random()*0.01;
                  // TODO: LIOR add default polygone + update JSON
-                 var city_center = json_data[0].metadata;
+
                         new_child = {
                   "data" :"New Area",
                   "metadata" : {p :
                           [
-                              {"lat":city_center.lat-1 +  rnd_pos, "lon":city_center.lon-1 + rnd_pos},
-                              {"lat":city_center.lat-1 +  rnd_pos, "lon":city_center.lon+1 + rnd_pos},
-                              {"lat":city_center.lat+1 +  rnd_pos, "lon":city_center.lon+1 + rnd_pos},
-                              {"lat":city_center.lat+1 +  rnd_pos, "lon":city_center.lon-1 + rnd_pos}
+                              {"lat":city_center.lat-0.01 +  rnd_pos, "lon":city_center.lon-0.01 + rnd_pos},
+                              {"lat":city_center.lat-0.01 +  rnd_pos, "lon":city_center.lon+0.01 + rnd_pos},
+                              {"lat":city_center.lat+0.01 +  rnd_pos, "lon":city_center.lon+0.01 + rnd_pos},
+                              {"lat":city_center.lat+0.01 +  rnd_pos, "lon":city_center.lon-0.01 + rnd_pos}
                           ]  },
                   "attr" : { "id" : new_id  }
                 }
@@ -323,16 +328,18 @@ function init_tree()
         $("#areasTree").bind("select_node.jstree", function (event, data)
         {
             console.log("Selected: id  " + data.rslt.obj[0].id);
-            if (data.rslt.obj[0].id != "") // "" is returned on the root (the city_id name))
+				if (isNumber(data.rslt.obj[0].id)) // "root" is returned on the root (the city name) - all other id's a re numbers
             {
                 if (currently_edited_poly)
                 {
                     currently_edited_poly.setOptions({ strokeWeight: 3});
                     currently_edited_poly.setEditable(false);
                 }
-                poly_array[data.rslt.obj[0].id].setOptions({ strokeWeight: 5});
-                poly_array[data.rslt.obj[0].id].setEditable(true);
-                currently_edited_poly = poly_array[data.rslt.obj[0].id];
+                if(poly_array[data.rslt.obj[0].id]) {
+                    poly_array[data.rslt.obj[0].id].setOptions({ strokeWeight: 5});
+                    poly_array[data.rslt.obj[0].id].setEditable(true);
+                    currently_edited_poly = poly_array[data.rslt.obj[0].id];
+                }
 
                 showRates(298486374, 298486374);
             }
@@ -403,28 +410,24 @@ function server_jason_to_data_json(server_json)
 {
     var json_data= [];
     var areas = [];
-    for (i = 0; i < server_json.areas.length; i++)
-    {
-        var area;
-        var poly = [];
-        for (j=0; j < server_json.areas[i].polygon.length; j++)
+    if(server_json.areas) {
+        for (i = 0; i < server_json.areas.length; i++)
         {
-            poly.push({"lat":server_json.areas[i].polygon[j].lat, "lon":server_json.areas[i].polygon[j].lon});
+            var area;
+            var poly = [];
+            if(server_json.areas[i].polygon) {
+                for (j=0; j < server_json.areas[i].polygon.length; j++)
+                {
+                    poly.push({"lat":server_json.areas[i].polygon[j].lat, "lon":server_json.areas[i].polygon[j].lon});
+                }
+            }
+            area = {"attr":{id:server_json.areas[i].id},"data":server_json.areas[i].name,"metadata":{p:poly}};
+            areas.push(area);
         }
-        area = {"attr":{id:server_json.areas[i].id},"data":server_json.areas[i].name,"metadata":{p:poly}};
-        areas.push(area);
     }
-    // HACK - city_id center is just the first polygon first point
-    //var city_center = {lat:server_json.areas[0].polygon[0].lat,lon:server_json.areas[0].polygon[0].lon};
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode( { 'address': city_name}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            var city_center = results[0].geometry.location
-            json_data[0] = {"data":server_json.name,metadata: city_center,"children":areas};
-        } else {
-            alert("Geocode was not successful for the following reason: " + status);
-        }
-    });
+
+    json_data[0] = {"data":server_json.name,"metadata": city_center, "attr" : { "id" : "root" }, "children":areas};
+
     return  json_data;
     // console.log(json_data);
 }
