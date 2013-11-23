@@ -99,58 +99,58 @@ function updateMarker(marker, cells, opt_changeColor)
 
 function refresh_polygones()
 {
-		for (i=0;i<poly_array.length;i++)
-		{
-			poly_array[i].setMap(null);
-		}
-		poly_array = [];
-		
-	   for (area_index=0; area_index < json_data[0].children.length; area_index ++)  
-      {
-	    	var mypath=[];
-	    	for (point_index = 0; point_index < json_data[0].children[area_index].metadata.p.length;  point_index++)
-	    	{
-	    		mypath.push(new google.maps.LatLng(json_data[0].children[area_index].metadata.p[point_index].lat, json_data[0].children[area_index].metadata.p[point_index].lon));
-	    	}
-	    	var new_poly = new google.maps.Polygon({
+    for (i=0;i<poly_array.length;i++)
+    {
+        poly_array[i].setMap(null);
+    }
+    poly_array = [];
+
+    $.each(json_data[0].children, function(index, value) //for (area_index=0; area_index < json_data[0].children.length; area_index ++)
+    {
+        var mypath=[];
+        $.each(value.metadata.p, function(p_index, p_value)  //for (point_index = 0; point_index < value.metadata.p.length;  point_index++)
+        {
+            mypath.push(new google.maps.LatLng(p_value.lat, p_value.lon));
+        });
+        var new_poly = new google.maps.Polygon({
             paths: mypath,
-            strokeColor: '#FF0000', 
+            strokeColor: '#FF0000',
             strokeOpacity: 0.8,
             strokeWeight: 3,
             fillColor: '#FF0000',
             fillOpacity: 0.35,
-				indexID: area_index
+            indexID: index
         });
-    	
-	     poly_array [area_index] =  new_poly ;
-    	
+
+        poly_array [index] =  new_poly ;
+
         new_poly.setMap(map);
-    
-        google.maps.event.addListener(new_poly, 'click', function() 
+
+        google.maps.event.addListener(new_poly, 'click', function()
         {
-					 console.log(" area " + this.indexID);
-					 $.jstree._reference(areasTree).deselect_all();
-					 $.jstree._reference(areasTree).select_node("#"+(this.indexID),false,true);
-		  });
-        google.maps.event.addListener(new_poly, 'mouseup', function() 
+                     console.log(" area " + this.indexID);
+                     $.jstree._reference(areasTree).deselect_all();
+                     $.jstree._reference(areasTree).select_node("#"+(this.indexID),false,true);
+          });
+        google.maps.event.addListener(new_poly, 'mouseup', function()
         {
 
-					 console.log(" dragend " + (this.indexID));
-					  var vertices = poly_array [this.indexID].getPath();
-					  // Iterate over the vertices.
-					  var contentString="\n";
-					  var p = [];
-					  for (var i =0; i < vertices.getLength(); i++) 
-					  {
-					    var xy = vertices.getAt(i);
-					    contentString += 'Coordinate ' + i + ' : ' + xy.lat() + ',' +  xy.lng() + "\n";
-					    p.push({"lat":xy.lat(), "lon": xy.lng()});
-					  }
-					  json_data[0].children[this.indexID].metadata.p = p;
-					
-					  console.log(contentString);
-		  });
-     }
+                     console.log(" dragend " + (this.indexID));
+                      var vertices = poly_array [this.indexID].getPath();
+                      // Iterate over the vertices.
+                      var contentString="\n";
+                      var p = [];
+                      for (var i =0; i < vertices.getLength(); i++)
+                      {
+                        var xy = vertices.getAt(i);
+                        contentString += 'Coordinate ' + i + ' : ' + xy.lat() + ',' +  xy.lng() + "\n";
+                        p.push({"lat":xy.lat(), "lon": xy.lng()});
+                      }
+                      json_data[0].children[this.indexID].metadata.p = p;
+
+                      console.log(contentString);
+          });
+    });
 }
 function area_initialize()
 {
@@ -420,12 +420,12 @@ function server_jason_to_data_json(server_json)
             if(server_json.areas[i].polygon) {
                 server_polygon = jQuery.parseJSON(server_json.areas[i].polygon);
             }
-            area = {"attr":{id:server_json.areas[i].id},"data":server_json.areas[i].name,"metadata":{p:server_polygon}};
+            area = {"attr":{id:server_json.areas[i].id},data:server_json.areas[i].name, metadata:{p:server_polygon}};
             areas.push(area);
         }
     }
 
-    json_data[0] = {"data":server_json.name,"metadata": city_center, "attr" : { "id" : "root" }, "children":areas};
+    json_data[0] = {"data":server_json.name,"metadata": city_center, attr: { id : "root" }, children:areas};
 
     return  json_data;
     // console.log(json_data);
