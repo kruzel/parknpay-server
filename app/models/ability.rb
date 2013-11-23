@@ -11,6 +11,7 @@ class Ability
         can :manage, :all
         can :owners_payments, :owner_payments
         can :update_areas, Area
+        can :get_free_spots, ParkingSearchesController
       when 'inspector'
         can :read, City
         can :read, Area
@@ -31,6 +32,7 @@ class Ability
         can :read, Rate
         can :get_rates, City
         can :find_by_street, Area
+        can :get_free_spots, ParkingSearchesController
       else
         # guest user
     end

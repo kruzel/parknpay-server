@@ -40,9 +40,7 @@ Verso::Application.routes.draw do
   end
 
   resources :owner_payments do
-    collection do
-      get :owners_payments
-    end
+    get :owners_payments, on: :collection
   end
 
   scope "/api" do
@@ -79,6 +77,12 @@ Verso::Application.routes.draw do
         end
         member do
           get :amount
+        end
+      end
+
+      resource :parking_searches, only: [] do
+        collection do
+          get :get_free_spots
         end
       end
     end
