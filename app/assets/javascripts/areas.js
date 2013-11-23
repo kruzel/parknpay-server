@@ -119,10 +119,10 @@ function refresh_polygones()
             strokeWeight: 3,
             fillColor: '#FF0000',
             fillOpacity: 0.35,
-            indexID: index
+            indexID: value.attr.id
         });
 
-        poly_array [index] =  new_poly ;
+        poly_array [value.attr.id] =  new_poly ;
 
         new_poly.setMap(map);
 
