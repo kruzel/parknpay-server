@@ -6,9 +6,11 @@ class Ability
     case user.role
       when 'admin' #ozpark admin - can associate owner
         can :manage, :all
+        can :update_areas, Area
       when 'owner'
         can :manage, :all
         can :owners_payments, :owner_payments
+        can :update_areas, Area
       when 'inspector'
         can :read, City
         can :read, Area

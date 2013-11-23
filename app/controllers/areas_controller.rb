@@ -5,37 +5,6 @@ class AreasController < ApplicationController
 
   # GET /areas
   # GET /areas.json
-=begin
-  [{
-      "name" : "Sidney",
-    "metadata" : { "lat":24.88 , "lon":-70.26 }
-      "attr" : { "id" : "0"},
-      "children" :
-      [
-          {
-              "name" :"Beach Area",
-              "polygons" :
-              [
-                  {"lat":25.774252, "lon":-80.190262},
-                  {"lat":18.464652, "lon":-66.118292},
-                  {"lat":32.321384, "lon":-64.75737}
-              ]  ,
-              "attr" : { "id" : "0"}
-          },
-          {
-              "name" :"Opera",
-              "polygons" :
-              [
-                  {"lat":26.774252, "lon":-82.190262},
-                  {"lat":17.4664652, "lon":-61.118292},
-                  {"lat":30.321384, "lon":-62.75737}
-              ]  ,
-              "attr" : { "id" : "1"  }
-          }
-      ]
-  }];
-=end
-
   def index
     @areas = Area.where("city_id = ?", params[:city_id])
     @city = City.find(params[:city_id])
@@ -52,15 +21,21 @@ class AreasController < ApplicationController
     areas = params[:areas]
 
     success = true
-    areas.each do [area]
-      @area = Area.find(area.id)
+    areas.each do |area|
+      begin
+        @area = Area.find(area[1]['id'])
+      rescue => e
+        #nothing to do
+      end
       area_success = false
       if @area
         area_success = @area.update_attributes(area)
       else
-        @area = Area.new(area)
-        @area.city_id = params[:id]
+        @area = Area.new()
+        @area.name = area[1]['name']
+        @area.city_id = params[:city_id]
         @area.bank_account = current_user.bank_account
+        @area.polygon = area[1]['polygon'].to_json
         area_success = @area.save
       end
       unless area_success

@@ -16,6 +16,9 @@ Verso::Application.routes.draw do
     end
 
     resources :areas do
+      collection do
+        put :update_areas
+      end
       resources :streets
       resources :rates
     end
@@ -63,7 +66,6 @@ Verso::Application.routes.draw do
         resources :areas do
           collection do
             get :find_by_street
-            put :update_areas
           end
           resources :streets
           resources :rates
