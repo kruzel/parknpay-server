@@ -18,26 +18,27 @@ class AreasController < ApplicationController
   # PUT /areas/update_areas.json
   def update_areas
     @city = City.find(params[:city_id])
-    areas = params[:areas]
+    areas = JSON.parse(request.body.read)
 
     success = true
     areas.each do |area|
+      @area = nil
       begin
-        @area = Area.find(area[1]['id'])
+        @area = Area.find(area['id'])
       rescue => e
         #nothing to do
       end
       area_success = false
-      if @area
-        area_success = @area.update_attributes(area)
-      else
+      unless @area
         @area = Area.new()
-        @area.name = area[1]['name']
-        @area.city_id = params[:city_id]
-        @area.bank_account = current_user.bank_account
-        @area.polygon = area[1]['polygon'].to_json
-        area_success = @area.save
       end
+
+      @area.name = area['name']
+      @area.city_id = params[:city_id]
+      @area.bank_account = current_user.bank_account
+      @area.polygon = area['polygon'].to_json
+      area_success = @area.save
+
       unless area_success
         success = false
       end
