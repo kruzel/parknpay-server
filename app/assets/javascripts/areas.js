@@ -231,7 +231,7 @@ function customMenu(node)
              "action": function (obj) {
 
                  var new_id =  json_data[0].children.length;
-							$("#areasTree").jstree("create", $("#root"), "last", {attr: {id: new_id}, data: "New Area"} ,null, true);
+							$("#areasTree").jstree("create", $("#root"), "last", {"attr": {id: new_id}, data: "New Area"} ,null, true);
                         //obj.attr("id",  new_id);
                  //this.create(obj);
                  rnd_pos = Math.random()*0.01;
@@ -429,12 +429,12 @@ function server_jason_to_data_json(server_json)
             if(json_parsed) {
                 $.each(json_parsed, function(index,value) { server_polygon.push({lat: value.lat, lon: value.lon}); })
             }
-            area = {attr:{id:i},data:server_json.areas[i].name, metadata:{p:server_polygon}, server_area_id:server_json.areas[i].id};
+            area = {"attr":{id:i},data:server_json.areas[i].name, metadata:{p:server_polygon}, server_area_id:server_json.areas[i].id};
             areas.push(area);
         }
     }
 
-    json_data[0] = {data:server_json.name,metadata: city_center, attr: { id: "root" }, children:areas};
+    json_data[0] = {data:server_json.name,metadata: city_center, "attr": { id: "root" }, children:areas};
 
     return  json_data;
     // console.log(json_data);
