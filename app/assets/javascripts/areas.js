@@ -396,8 +396,7 @@ function save()
 
 function data_json_to_server_jason(json_data)
 {
-    // OFER: send this to server
-    // I will send the server the following json format
+   // I will send the server the following json format
     // {"id":980190962,"name":"Haifa","areas":[{"id":980190962,"name":"downtown","polygon":"[{lat:26.774252, lon:-82.190262},{lat:17.4664652, lon:-61.118292},{lat:30.321384, lon:-62.75737}]"}]}
     var areas = [];
     for (var i = 0; i < json_data[0].children.length; i++)
