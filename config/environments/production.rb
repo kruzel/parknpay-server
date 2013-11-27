@@ -12,7 +12,7 @@ Verso::Application.configure do
   config.serve_static_assets = false
 
   #disable pipelining
-  config.assets.enabled = false
+  #config.assets.enabled = false
 
   # Compress JavaScripts and CSS
   config.assets.compress = false #true
