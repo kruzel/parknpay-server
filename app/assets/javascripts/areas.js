@@ -231,7 +231,8 @@ function customMenu(node)
              "action": function (obj) {
 
                  var new_id =  json_data[0].children.length;
-							$("#areasTree").jstree("create", $("#root"), "last", {attr: {id: new_id}, data: "New Area"} ,null, true);
+                 obj.attr("id",  new_id);
+				 $("#areasTree").jstree("create", $("#root"), "last", {attr: {id: new_id}, data: "New Area"} ,null, true);
                         //obj.attr("id",  new_id);
                  //this.create(obj);
                  rnd_pos = Math.random()*0.01;
