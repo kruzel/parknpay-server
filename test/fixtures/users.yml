@@ -8,7 +8,7 @@ one:
   firstname: ofer
   lastname: kruzel
   email: ofer.k@downloadius.com
-  encrypted_password: $2a$10$CqbgSZAY.0dLEHhwm8FKuO5oEPgxhEgXhJ9r8rqDhJllLitkNcHxG
+  encrypted_password: $2a$10$kWIYI1EC8GsJT03gSFvoEuBk0MIVH5J/ZUQPSbOb3.n2Rg3lPPreK
   role: owner
   terms_of_service: true
   invitation_sent_at: 2013-06-15 17:45:24
