@@ -1,12 +1,12 @@
 # Read abouts fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: downtown
-  city: one
-  bank_account: one (BankAccount)
+#one:
+#  name: downtown
+#  city: one
+#  bank_account: one (BankAccount)
 
-two:
-  name: carmel
-  city: two
-  bank_account: one (BankAccount)
+#two:
+#  name: carmel
+#  city: two
+#  bank_account: one (BankAccount)
 
