@@ -57,8 +57,10 @@ function set_city(new_city_id,new_city_name) {
 
 
 $(document).ready(function(){
-    initPage();
-
+				loadScript("/jquery-1.9.1.js", function() 
+                 {	
+					 initPage(); 
+                 });
 });
 
 function initPage() {
@@ -154,6 +156,24 @@ function refresh_polygones()
 
                       console.log(contentString);
           });
+       google.maps.event.addListener(new_poly, 'mouseout', function()
+        {
+
+                     console.log(" mouseout " + (this.indexID));
+                      var vertices = poly_array [this.indexID].getPath();
+                      // Iterate over the vertices.
+                      var contentString="\n";
+                      var p = [];
+                      for (var i =0; i < vertices.getLength(); i++)
+                      {
+                        var xy = vertices.getAt(i);
+                        contentString += 'Coordinate ' + i + ' : ' + xy.lat() + ',' +  xy.lng() + "\n";
+                        p.push({"lat":xy.lat(), "lon": xy.lng()});
+                      }
+                      json_data[0].children[this.indexID].metadata.p = p;
+
+                      console.log(contentString);
+          });
     });
 }
 function area_initialize()
@@ -168,9 +188,12 @@ function area_initialize()
                 center: city_center_google,
                 mapTypeId: google.maps.MapTypeId.MAP
             });
-
+ loadScript("/jquery.jstree.js", function() 
+{
             init_tree();
             refresh_polygones();
+            
+});
             google.maps.event.addListener(map, 'click', addPoint);
 
         } else {
@@ -192,12 +215,27 @@ function addPoint(event)
 		}
 }
 
+function loadScript(url, callback)
+{
+    // Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // Then bind the event to the callback function.
+    // There are several events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // Fire the loading
+    head.appendChild(script);
+}
 function customMenu(node)
 {
         var items;
 
-       // if ($(node).hasClass("jstree-leaf") )
-        if (node[0].id != "root")
+         if (node[0].id != "root")
         {
             items =
             {
@@ -212,13 +250,13 @@ function customMenu(node)
          "Delete": {
              "label": "Delete"	,
              "action": function (obj) {
-                 this.remove(obj);
-                 poly_id = obj[0].id;
-                        json_data[0].children.splice(poly_id , 1);
-
-                        refresh_polygones();
-
-             }
+				 
+                    poly_id = obj[0].id;
+					//json_data[0].children.splice(poly_id , 1);
+					remove_poly_from_json_data(poly_id);
+					refresh_polygones();
+                    this.remove(obj);
+            }
          }
       }
     }
@@ -231,14 +269,12 @@ function customMenu(node)
              "action": function (obj) {
 
                  var new_id =  json_data[0].children.length;
-                 obj.attr("id",  new_id);
 				 $("#areasTree").jstree("create", $("#root"), "last", {attr: {id: new_id}, data: "New Area"} ,null, true);
-                        //obj.attr("id",  new_id);
-                 //this.create(obj);
+               
                  rnd_pos = Math.random()*0.01;
                  // TODO: LIOR add default polygone + update JSON
 
-                        new_child = {
+                 new_child = {
                   "data" :"New Area",
                   "metadata" : {p :
                           [
@@ -267,14 +303,19 @@ function customMenu(node)
 };
 function init_tree()
 {
-      jQuery("#areasTree").jstree(
+      $("#areasTree").jstree(
          {
-                "plugins" : ["themes","json_data","ui","crrm","dnd","search","types","hotkeys","contextmenu"],
-             "json_data" : {"data" : json_data},
+                "plugins" : ["themes","json_data","ui","crrm","dnd","search","types","contextmenu"],
+				"themes": {
+					"theme": "default",
+					"dots": true,
+					"icons": true,
+					"url": "/themes/default/style.css"
+				},"json_data" : {"data" : json_data},
                 //"json_data" : { "data" : json_data},
                 //"html_data" : { "data" : html_data},
                 "core" : { "initially_open" : [ "1" ] },
-               "contextmenu": {  "items": customMenu  }, // custom context menu according to https://learntech.imsu.ox.ac.uk/blog/?p=364
+                "contextmenu": {  "items": customMenu  }, // custom context menu according to https://learntech.imsu.ox.ac.uk/blog/?p=364
                 "types" : {
                     "max_depth" : 2,
                     "max_children" : 15,
@@ -334,7 +375,7 @@ function init_tree()
         $("#areasTree").bind("select_node.jstree", function (event, data)
         {
             console.log("Selected: id  " + data.rslt.obj[0].id);
-				if (isNumber(data.rslt.obj[0].id)) // "root" is returned on the root (the city name) - all other id's a re numbers
+			if (isNumber(data.rslt.obj[0].id)) // "root" is returned on the root (the city name) - all other id's a re numbers
             {
                 if (currently_edited_poly)
                 {
@@ -346,8 +387,7 @@ function init_tree()
                     poly_array[data.rslt.obj[0].id].setEditable(true);
                     currently_edited_poly = poly_array[data.rslt.obj[0].id];
                 }
-
-                showRates(298486374, 298486374);
+                //showRates(298486374, 298486374);
             }
         });
 
@@ -387,12 +427,25 @@ function save()
         cache: false,
         success: function(response, textStatus, jqXHR) {
             alert("Changes saved");
-            initPage();
+            //initPage();
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert("Save failed");
         }
     });
+}
+
+function remove_poly_from_json_data(poly_id)
+{
+    var new_children = [];
+    for (var i = 0; i < json_data[0].children.length; i++)
+    {
+        if (json_data[0].children[i].attr.id != poly_id)
+        {
+			new_children.push(json_data[0].children[i]);
+		}
+    }
+    json_data[0].children = new_children;
 }
 
 function data_json_to_server_jason(json_data)
