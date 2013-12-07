@@ -11,6 +11,18 @@ class RatesController < ApplicationController
     @area = Area.find(params[:area_id])
     @city = @area.city
 
+    @rates = Rate.where("area_id = ?",params[:area_id])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @rates }
+    end
+  end
+
+  def area_rates_table
+    @area = Area.find(params[:area_id])
+    @city = @area.city
+
     #@rates = Rate.where("area_id = ?",params[:area_id])
     @rates = ::AreaRatesDatatable.new(view_context,@area)
 

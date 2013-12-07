@@ -236,28 +236,35 @@ function customMenu(node)
         var items;
 
          if (node[0].id != "root")
-        {
+         {
             items =
             {
 
-         "Rename": {
-             "label": "Rename",
-             "action": function (obj) {
-                 this.rename(obj);
-                        //json_data[0].children[].
+             "Rename": {
+                 "label": "Rename",
+                 "action": function (obj) {
+                     this.rename(obj);
+                            //json_data[0].children[].
+                 }
+             },
+             "Delete": {
+                 "label": "Delete"	,
+                 "action": function (obj) {
+
+                        poly_id = obj[0].id;
+                        //json_data[0].children.splice(poly_id , 1);
+                        remove_poly_from_json_data(poly_id);
+                        refresh_polygones();
+                        this.remove(obj);
+                }
+             },
+             "Edit Rates": {
+                "label": "Edit Rates",
+                "action": function (obj) {
+                    //this.rename(obj);
+                    window.location = "/cities/"+city_id+"/areas/"+json_data[0].children[obj[0].id].server_area_id+"/rates"
+                }
              }
-         },
-         "Delete": {
-             "label": "Delete"	,
-             "action": function (obj) {
-				 
-                    poly_id = obj[0].id;
-					//json_data[0].children.splice(poly_id , 1);
-					remove_poly_from_json_data(poly_id);
-					refresh_polygones();
-                    this.remove(obj);
-            }
-         }
       }
     }
         else
@@ -388,7 +395,8 @@ function init_tree()
                     currently_edited_poly = poly_array[data.rslt.obj[0].id];
                 }
 
-                showRates(json_data[0].children[data.rslt.obj[0].id].server_area_id,city_id);
+                //moved to a separate page
+                //showRates(json_data[0].children[data.rslt.obj[0].id].server_area_id,city_id);
             }
         });
 
