@@ -387,7 +387,8 @@ function init_tree()
                     poly_array[data.rslt.obj[0].id].setEditable(true);
                     currently_edited_poly = poly_array[data.rslt.obj[0].id];
                 }
-                //showRates(298486374, 298486374);
+
+                showRates(json_data[0].children[data.rslt.obj[0].id].server_area_id,city_id);
             }
         });
 
