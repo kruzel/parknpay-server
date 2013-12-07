@@ -279,5 +279,22 @@ serverApi.prototype = {
                 params['error'](errorThrown);  //callback function
             }
         });
+    },
+    get_free_spots: function(params) {
+        $.ajax({
+            url: this.serverUrl + "/api/v1/parking_searches/get_free_spots.json?auth_token=" + this.auth_token,
+            dataType: "json",
+            type: "get",
+            data: params['data'],
+            cache: false,
+            success: function(response, textStatus, jqXHR) {
+                var area_id = response;
+                params['success'](area_id); //callback function
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR, textStatus, errorThrown);
+                params['error'](errorThrown);  //callback function
+            }
+        });
     }
 }

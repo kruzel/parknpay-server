@@ -132,4 +132,20 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("#get_free_spot").click(function() {
+        var location = {lat: 32.790368, lon: 34.985574};
+        var distance = 0.001;
+        var time_delta = 120000;
+        var data = { location: location, distance: distance, time_delta: time_delta };
+
+        _serverApi.find_by_street({data: data,
+            success: function(response) {
+                $("#result").text(response);
+            },
+            error: function(errorThrown) {
+                $("#result").text(errorThrown);
+            }
+        });
+    });
 });
