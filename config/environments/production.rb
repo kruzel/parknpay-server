@@ -1,5 +1,5 @@
 Verso::Application.configure do
-  require 'no_compression'
+  require './lib/no_compression'
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
