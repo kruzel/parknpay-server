@@ -182,7 +182,7 @@ function area_initialize()
     geocoder.geocode( { 'address': city_name}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var city_center_google = results[0].geometry.location;
-           city_center = {lat:city_center_google.ob, lon:city_center_google.pb};
+           city_center = {lat:city_center_google.pb, lon:city_center_google.qb};
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 13,
                 center: city_center_google,
