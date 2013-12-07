@@ -122,6 +122,8 @@ class CitiesController < ApplicationController
       end
     end
 
+    #TODO: test algorithm
+
     respond_to do |format|
       if area
         format.json { render json: {:area_id => area.id} }
