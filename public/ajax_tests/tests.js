@@ -139,7 +139,7 @@ $(document).ready(function() {
         var time_delta = 120000;
         var data = { location: location, distance: distance, time_delta: time_delta };
 
-        _serverApi.find_by_street({data: data,
+        _serverApi.get_free_spots({data: data,
             success: function(response) {
                 $("#result").text(response);
             },
