@@ -14,7 +14,7 @@ class AreasController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @city.as_json(:only => [:id, :name], :include => [:areas => { :only => [:id, :name, :polygon ] }] ) }
       else
-        format.html { render new_bank_account_path, notice: 'can not define areas without having a defined bank account' }
+        format.html { redirect_to new_bank_account_path, notice: 'Can not define areas without having a defined bank account!' }
         format.json { render json: 'missing bank account', status: :unprocessable_entity }
       end
     end
